@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenaForge — 1v1 Mini-Game Arena</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    animation: {
+                        'fade-in': 'fadeIn 0.35s ease-out forwards',
+                        'slide-up': 'slideUp 0.4s cubic-bezier(.4,0,.2,1) forwards',
+                        'slide-down': 'slideDown 0.35s cubic-bezier(.4,0,.2,1) forwards',
+                        'scale-in': 'scaleIn 0.3s cubic-bezier(.4,0,.2,1) forwards',
+                        'morph-in': 'morphIn 0.5s cubic-bezier(.4,0,.2,1) forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'bounce-in': 'bounceIn 0.6s cubic-bezier(.68,-.55,.27,1.55) forwards',
+                        'slide-left': 'slideLeft 0.4s cubic-bezier(.4,0,.2,1) forwards',
+                        'slide-right': 'slideRight 0.4s cubic-bezier(.4,0,.2,1) forwards',
+                        'countdown': 'countdownPop 0.8s cubic-bezier(.68,-.55,.27,1.55) forwards',
+                        'emoji-float': 'emojiFloat 3s ease-out forwards',
+                        'dash-in-1': 'dashIn 0.5s cubic-bezier(.22,1,.36,1) 0.05s forwards',
+                        'dash-in-2': 'dashIn 0.5s cubic-bezier(.22,1,.36,1) 0.12s forwards',
+                        'dash-in-3': 'dashIn 0.5s cubic-bezier(.22,1,.36,1) 0.19s forwards',
+                        'dash-in-4': 'dashIn 0.5s cubic-bezier(.22,1,.36,1) 0.26s forwards',
+                        'dash-in-5': 'dashIn 0.5s cubic-bezier(.22,1,.36,1) 0.33s forwards',
+                        'dash-in-6': 'dashIn 0.5s cubic-bezier(.22,1,.36,1) 0.40s forwards',
+                        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+                        'card-hover-up': 'cardHoverUp 0.3s ease forwards',
+                        'spin-slow': 'spin 1.2s linear infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(24px) scale(0.98)' }, '100%': { opacity: '1', transform: 'translateY(0) scale(1)' } },
+                        slideDown: { '0%': { opacity: '0', transform: 'translateY(-12px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        scaleIn: { '0%': { opacity: '0', transform: 'scale(0.92)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+                        morphIn: { '0%': { opacity: '0', transform: 'translateY(30px) scale(0.95)', borderRadius: '2rem' }, '50%': { borderRadius: '1.5rem' }, '100%': { opacity: '1', transform: 'translateY(0) scale(1)', borderRadius: '1.5rem' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+                        bounceIn: { '0%': { opacity: '0', transform: 'scale(0.3)' }, '50%': { transform: 'scale(1.05)' }, '70%': { transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+                        slideLeft: { '0%': { opacity: '0', transform: 'translateX(40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+                        slideRight: { '0%': { opacity: '0', transform: 'translateX(-40px)' }, '100%': { opacity: '1', transform: 'translateX(0)' } },
+                        countdownPop: { '0%': { opacity: '0', transform: 'scale(0)' }, '50%': { opacity: '1', transform: 'scale(1.3)' }, '100%': { opacity: '0', transform: 'scale(0.8)' } },
+                        emojiFloat: { '0%': { opacity: '1', transform: 'translateY(0) scale(1)' }, '100%': { opacity: '0', transform: 'translateY(-200px) scale(0.5) rotate(30deg)' } },
+                        dashIn: { '0%': { opacity: '0', transform: 'translateY(16px) scale(0.97)' }, '100%': { opacity: '1', transform: 'translateY(0) scale(1)' } },
+                        glowPulse: { '0%, 100%': { boxShadow: '0 0 20px rgba(99,102,241,0.15)' }, '50%': { boxShadow: '0 0 35px rgba(99,102,241,0.3)' } },
+                        cardHoverUp: { '0%': { transform: 'translateY(0)' }, '100%': { transform: 'translateY(-3px)' } },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: rgba(30, 41, 59, 0.7);
+            --bg-card: rgba(30, 41, 59, 0.6);
+            --bg-input: rgba(15, 23, 42, 0.5);
+            --bg-input-focus: rgba(15, 23, 42, 0.7);
+            --border-color: rgba(148,163,184,0.12);
+            --border-hover: rgba(148,163,184,0.2);
+            --border-input: rgba(148,163,184,0.15);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --text-heading: #ffffff;
+            --accent: #6366f1;
+            --accent-glow: rgba(99,102,241,0.25);
+            --mesh-1: rgba(99,102,241,0.08);
+            --mesh-2: rgba(16,185,129,0.06);
+            --mesh-3: rgba(236,72,153,0.05);
+            --scrollbar-thumb: rgba(148,163,184,0.3);
+            --shadow-card: 0 20px 40px -12px rgba(0,0,0,0.4);
+        }
+        [data-theme="light"] {
+            --bg-primary: #f8fafc;
+            --bg-secondary: rgba(255,255,255,0.85);
+            --bg-card: rgba(255,255,255,0.75);
+            --bg-input: rgba(241,245,249,0.8);
+            --bg-input-focus: rgba(226,232,240,0.9);
+            --border-color: rgba(148,163,184,0.2);
+            --border-hover: rgba(148,163,184,0.35);
+            --border-input: rgba(148,163,184,0.25);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --text-heading: #0f172a;
+            --accent: #4f46e5;
+            --accent-glow: rgba(79,70,229,0.15);
+            --mesh-1: rgba(99,102,241,0.06);
+            --mesh-2: rgba(16,185,129,0.04);
+            --mesh-3: rgba(236,72,153,0.03);
+            --scrollbar-thumb: rgba(148,163,184,0.4);
+            --shadow-card: 0 20px 40px -12px rgba(0,0,0,0.08);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .view-hidden { display: none !important; }
+        .view-transition { animation: morphIn 0.5s cubic-bezier(.4,0,.2,1); }
+        .loader { border: 3px solid var(--border-color); border-top: 3px solid var(--accent); border-radius: 50%; width: 40px; height: 40px; animation: spin 0.8s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.5); }
+        .glass-panel { background: var(--bg-secondary); backdrop-filter: blur(20px) saturate(1.5); border: 1px solid var(--border-color); transition: all 0.35s ease; }
+        .glass-card { background: var(--bg-card); backdrop-filter: blur(16px) saturate(1.3); border: 1px solid var(--border-color); transition: all 0.3s cubic-bezier(.4,0,.2,1); }
+        .glass-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-card); }
+        .glass-input { background: var(--bg-input); border: 1px solid var(--border-input); color: var(--text-primary); transition: all 0.25s ease; }
+        .glass-input:focus { background: var(--bg-input-focus); border-color: rgba(99,102,241,0.5); box-shadow: 0 0 0 3px rgba(99,102,241,0.1); }
+        .glass-input::placeholder { color: var(--text-muted); }
+        .text-gradient-ai { background: linear-gradient(135deg, #818cf8 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .mesh-bg {
+            background:
+                radial-gradient(ellipse at 20% 50%, var(--mesh-1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, var(--mesh-2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, var(--mesh-3) 0%, transparent 50%),
+                var(--bg-primary);
+            transition: background 0.4s ease;
+        }
+        .btn-lift { transition: all 0.3s cubic-bezier(.4,0,.2,1); }
+        .btn-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 24px -8px rgba(0,0,0,0.3); }
+        .btn-lift:active { transform: translateY(0) scale(0.98); }
+        .notification-pulse { animation: notifPulse 1.5s ease-in-out infinite; }
+        @keyframes notifPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.4); } 50% { box-shadow: 0 0 0 6px rgba(239,68,68,0); } }
+
+        /* Theme toggle */
+        .theme-toggle { width: 52px; height: 28px; border-radius: 14px; background: var(--bg-input); border: 1px solid var(--border-input); position: relative; cursor: pointer; transition: all 0.3s ease; }
+        .theme-toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); transition: all 0.3s cubic-bezier(.4,0,.2,1); box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        [data-theme="light"] .theme-toggle::after { transform: translateX(24px); background: #f59e0b; }
+        .theme-icon { position: absolute; top: 50%; transform: translateY(-50%); font-size: 13px; z-index: 1; transition: opacity 0.3s; }
+        .theme-icon.moon { left: 6px; opacity: 1; }
+        .theme-icon.sun { right: 6px; opacity: 0.4; }
+        [data-theme="light"] .theme-icon.moon { opacity: 0.4; }
+        [data-theme="light"] .theme-icon.sun { opacity: 1; }
+
+        /* Game tiles */
+        .game-tile { border: 2px solid var(--border-color); border-radius: 18px; padding: 20px; cursor: pointer; transition: all 0.3s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden; }
+        .game-tile::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s ease; }
+        .game-tile:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 16px 48px -12px var(--accent-glow); }
+        .game-tile:hover::before { opacity: 1; }
+        .game-tile.selected { border-color: var(--accent); background: rgba(99,102,241,0.08); }
+
+        /* Lobby */
+        .countdown-number { font-size: 120px; font-weight: 900; color: var(--accent); text-shadow: 0 0 60px var(--accent-glow); animation: countdownPop 0.8s cubic-bezier(.68,-.55,.27,1.55) forwards; }
+        .emoji-reaction { position: absolute; font-size: 32px; pointer-events: none; animation: emojiFloat 3s ease-out forwards; z-index: 50; }
+
+        /* Tic Tac Toe */
+        .ttt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: min(340px, 80vw); margin: 0 auto; }
+        .ttt-cell { aspect-ratio: 1; border-radius: 16px; background: var(--bg-input); border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: clamp(36px, 12vw, 56px); font-weight: 800; cursor: pointer; transition: all 0.2s cubic-bezier(.4,0,.2,1); user-select: none; }
+        .ttt-cell:hover:not(.filled) { border-color: rgba(99,102,241,0.5); background: rgba(99,102,241,0.06); transform: scale(1.03); }
+        .ttt-cell.filled { cursor: default; }
+        .ttt-cell.x { color: #818cf8; animation: scaleIn 0.25s cubic-bezier(.4,0,.2,1); }
+        .ttt-cell.o { color: #f472b6; animation: scaleIn 0.25s cubic-bezier(.4,0,.2,1); }
+        .ttt-cell.win { border-color: #10b981; background: rgba(16,185,129,0.12); box-shadow: 0 0 24px rgba(16,185,129,0.3); }
+
+        /* RPS */
+        .rps-btn { width: clamp(80px, 26vw, 110px); height: clamp(80px, 26vw, 110px); border-radius: 24px; background: var(--bg-input); border: 2px solid var(--border-color); font-size: clamp(36px, 11vw, 52px); cursor: pointer; transition: all 0.25s cubic-bezier(.4,0,.2,1); display: flex; align-items: center; justify-content: center; }
+        .rps-btn:hover { transform: translateY(-6px) scale(1.05); border-color: var(--accent); box-shadow: 0 16px 40px -12px var(--accent-glow); }
+        .rps-btn.picked { border-color: var(--accent); background: rgba(99,102,241,0.12); transform: scale(1.05); }
+        .rps-btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+        /* Reaction pad */
+        .react-pad { width: min(440px, 88vw); height: min(300px, 46vh); border-radius: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: background 0.12s ease; border: 2px solid var(--border-color); text-align: center; }
+        .react-pad.wait { background: linear-gradient(135deg,#7f1d1d,#991b1b); color: #fecaca; }
+        .react-pad.go { background: linear-gradient(135deg,#065f46,#10b981); color: #ecfdf5; }
+        .react-pad.idle { background: var(--bg-input); color: var(--text-secondary); }
+
+        /* Math */
+        .math-opt { padding: 16px; border-radius: 16px; background: var(--bg-input); border: 2px solid var(--border-color); font-size: 22px; font-weight: 800; cursor: pointer; transition: all 0.18s ease; color: var(--text-heading); }
+        .math-opt:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .math-opt.correct { border-color: #10b981; background: rgba(16,185,129,0.15); }
+        .math-opt.wrong { border-color: #ef4444; background: rgba(239,68,68,0.15); }
+
+        /* Leaderboard tabs */
+        .lb-tab { padding: 8px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; color: var(--text-muted); border: 1px solid transparent; }
+        .lb-tab.active { background: rgba(99,102,241,0.12); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
+
+        .vs-pill { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 13px; background: linear-gradient(135deg,#6366f1,#ec4899); color: #fff; box-shadow: 0 0 20px rgba(99,102,241,0.4); }
+        .avatar { border-radius: 50%; object-fit: cover; background: linear-gradient(135deg,#6366f1,#8b5cf6); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; }
+        .pill { padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white mesh-bg min-h-screen">
+
+    <!-- Toasts -->
+    <div id="toast-container" class="fixed top-4 right-4 z-[60] flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Emoji reactions overlay -->
+    <div id="emoji-container" class="fixed inset-0 pointer-events-none z-[55]"></div>
+
+    <!-- Countdown overlay -->
+    <div id="countdown-overlay" class="fixed inset-0 z-[65] hidden items-center justify-center bg-black/70 backdrop-blur-md">
+        <div id="countdown-number" class="countdown-number">3</div>
+    </div>
+
+    <!-- Custom modal -->
+    <div id="custom-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-[70] hidden flex items-center justify-center transition-all duration-300 opacity-0">
+        <div class="glass-panel rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="modal-content">
+            <div class="flex flex-col">
+                <div id="modal-icon" class="w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 text-indigo-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <h3 id="modal-title" class="text-2xl font-bold mb-2" style="color:var(--text-heading)">Title</h3>
+                <p id="modal-message" class="leading-relaxed" style="color:var(--text-secondary)">Message</p>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button id="modal-cancel" class="px-5 py-2.5 rounded-xl font-medium hover:bg-white/5 transition-colors hidden" style="color:var(--text-secondary)">Cancel</button>
+                <button id="modal-confirm" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all btn-lift">Okay</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app" class="min-h-screen flex flex-col relative overflow-hidden">
+        <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full blur-[100px] -z-10 animate-float" style="background:var(--mesh-1)"></div>
+        <div class="absolute top-[40%] -left-32 w-[400px] h-[400px] rounded-full blur-[100px] -z-10 animate-float" style="background:var(--mesh-2);animation-delay:-3s"></div>
+        <div class="absolute bottom-0 right-1/4 w-[300px] h-[300px] rounded-full blur-[80px] -z-10 animate-float" style="background:var(--mesh-3);animation-delay:-1.5s"></div>
+
+        <div class="mx-auto w-full p-3 sm:p-5 lg:p-6 flex-grow" style="max-width:1320px">
+
+            <!-- ============ AUTH VIEW ============ -->
+            <div id="auth-view" class="view-transition">
+                <div id="login-form" class="max-w-md mx-auto mt-8 sm:mt-16">
+                    <div class="glass-panel p-7 sm:p-9 rounded-2xl shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+                        <div class="flex justify-between items-start mb-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 text-white flex items-center justify-center font-extrabold text-xl shadow-lg shadow-indigo-500/30 animate-glow-pulse">A</div>
+                                <div>
+                                    <h1 class="text-2xl font-extrabold tracking-tight" style="color:var(--text-heading)">ArenaForge</h1>
+                                    <p class="text-xs mt-0.5" style="color:var(--text-muted)">Sign in to enter the arena</p>
+                                </div>
+                            </div>
+                            <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                                <span class="theme-icon moon">🌙</span><span class="theme-icon sun">☀️</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold mb-1.5 ml-1 uppercase tracking-wider" style="color:var(--text-muted)">Email</label>
+                                <input type="email" id="login-email" placeholder="name@example.com" class="w-full p-3.5 glass-input rounded-xl focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1.5 ml-1 uppercase tracking-wider" style="color:var(--text-muted)">Password</label>
+                                <input type="password" id="login-password" placeholder="••••••••" class="w-full p-3.5 glass-input rounded-xl focus:outline-none">
+                            </div>
+                        </div>
+                        <p id="login-error" class="text-red-400 text-sm text-center min-h-[1.25rem] mt-2 font-medium"></p>
+                        <button id="login-button" class="w-full mt-1 bg-indigo-600 text-white font-semibold py-3.5 rounded-xl hover:bg-indigo-500 transition-all btn-lift shadow-lg shadow-indigo-500/20 flex justify-center items-center gap-2">
+                            <span>Log in</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </button>
+                        <div class="relative my-5">
+                            <div class="absolute inset-0 flex items-center"><div class="w-full border-t" style="border-color:var(--border-color)"></div></div>
+                            <div class="relative flex justify-center text-xs"><span class="px-3" style="background:var(--bg-secondary);color:var(--text-muted)">Or continue with</span></div>
+                        </div>
+                        <button id="google-login-btn" class="w-full glass-input font-semibold py-3.5 rounded-xl hover:opacity-80 transition-all flex justify-center items-center gap-3">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            <span>Sign in with Google</span>
+                        </button>
+                        <p class="text-center text-sm mt-5" style="color:var(--text-muted)">
+                            New challenger? <a href="javascript:void(0)" id="show-signup" class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">Create an account</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="signup-form" class="view-hidden max-w-md mx-auto mt-8 sm:mt-16">
+                    <div class="glass-panel p-7 sm:p-9 rounded-2xl shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-indigo-500"></div>
+                        <h1 class="text-3xl font-extrabold mb-1 text-center tracking-tight" style="color:var(--text-heading)">Join the Arena</h1>
+                        <p class="mb-6 text-center text-sm" style="color:var(--text-muted)">Pick a handle and start winning</p>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold mb-1.5 ml-1 uppercase tracking-wider" style="color:var(--text-muted)">Username</label>
+                                <input type="text" id="signup-username" maxlength="16" placeholder="e.g. nighthawk" class="w-full p-3.5 glass-input rounded-xl focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1.5 ml-1 uppercase tracking-wider" style="color:var(--text-muted)">Email</label>
+                                <input type="email" id="signup-email" placeholder="name@example.com" class="w-full p-3.5 glass-input rounded-xl focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold mb-1.5 ml-1 uppercase tracking-wider" style="color:var(--text-muted)">Password</label>
+                                <input type="password" id="signup-password" placeholder="Min. 6 characters" class="w-full p-3.5 glass-input rounded-xl focus:outline-none">
+                            </div>
+                        </div>
+                        <p id="signup-error" class="text-red-400 text-sm text-center min-h-[1.25rem] mt-2 font-medium"></p>
+                        <button id="signup-button" class="w-full mt-1 bg-emerald-600 text-white font-semibold py-3.5 rounded-xl hover:bg-emerald-500 transition-all btn-lift shadow-lg shadow-emerald-500/20">Create account</button>
+                        <div class="relative my-5">
+                            <div class="absolute inset-0 flex items-center"><div class="w-full border-t" style="border-color:var(--border-color)"></div></div>
+                            <div class="relative flex justify-center text-xs"><span class="px-3" style="background:var(--bg-secondary);color:var(--text-muted)">Or sign up with</span></div>
+                        </div>
+                        <button id="google-signup-btn" class="w-full glass-input font-semibold py-3.5 rounded-xl hover:opacity-80 transition-all flex justify-center items-center gap-3">
+                            <svg class="h-5 w-5" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                            <span>Sign up with Google</span>
+                        </button>
+                        <p class="text-center text-sm mt-5" style="color:var(--text-muted)">
+                            Already a member? <a href="javascript:void(0)" id="show-login" class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">Log in instead</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ DASHBOARD VIEW ============ -->
+            <div id="dashboard-view" class="view-hidden view-transition">
+                <header class="flex justify-between items-center mb-5 opacity-0 animate-dash-in-1">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-purple-600 text-white flex items-center justify-center font-extrabold text-lg shadow-lg shadow-indigo-500/30 animate-glow-pulse">A</div>
+                        <div>
+                            <h2 class="text-lg font-extrabold tracking-tight" style="color:var(--text-heading)">ArenaForge</h2>
+                            <p class="text-[10px] font-semibold uppercase tracking-wider" style="color:var(--text-muted)">1v1 Arena</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><span class="theme-icon moon">🌙</span><span class="theme-icon sun">☀️</span></div>
+                        <button id="profile-button" class="glass-input px-3 py-2 rounded-xl hover:border-indigo-500/30 transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2" style="color:var(--text-secondary)" title="Your profile">
+                            <div id="header-avatar" class="avatar w-7 h-7 text-xs">?</div>
+                            <span id="header-username" class="text-sm font-semibold hidden sm:inline" style="color:var(--text-primary)">player</span>
+                        </button>
+                        <button id="logout-button" class="glass-input p-2.5 rounded-xl hover:bg-red-500/10 hover:border-red-500/20 transition-all duration-200 hover:scale-105 active:scale-95" style="color:var(--text-muted)" title="Log out">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Incoming invites banner -->
+                <div id="invites-banner" class="hidden mb-4 space-y-2"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    <!-- LEFT: play + games -->
+                    <div class="lg:col-span-8 space-y-5">
+                        <!-- Quick actions -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 opacity-0 animate-dash-in-2">
+                            <div class="relative overflow-hidden rounded-2xl p-6 cursor-pointer group" onclick="openHostPicker()" style="background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#9333ea 100%)">
+                                <div class="absolute top-0 right-0 w-44 h-44 bg-white opacity-[0.07] rounded-full blur-3xl translate-x-1/3 -translate-y-1/3 group-hover:scale-110 transition-all duration-700"></div>
+                                <div class="relative z-10 text-white">
+                                    <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">🎮</div>
+                                    <h3 class="text-lg font-extrabold tracking-tight">Host a match</h3>
+                                    <p class="text-white/70 text-xs font-medium mt-0.5">Pick a game, get a room code, share it</p>
+                                </div>
+                            </div>
+                            <div class="glass-card rounded-2xl p-6">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-11 h-11 rounded-xl bg-indigo-500/15 flex items-center justify-center text-2xl">🔑</div>
+                                    <div>
+                                        <h3 class="text-lg font-extrabold tracking-tight" style="color:var(--text-heading)">Join a match</h3>
+                                        <p class="text-xs" style="color:var(--text-muted)">Enter a friend's room code</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <input type="text" id="join-code-input" maxlength="5" placeholder="CODE" class="flex-1 glass-input rounded-xl px-3 py-3 focus:outline-none uppercase tracking-[0.35em] font-mono text-center font-bold">
+                                    <button id="join-room-btn" class="bg-indigo-600 text-white font-bold px-4 rounded-xl hover:bg-indigo-500 transition-all btn-lift shadow-lg shadow-indigo-500/20">Join</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game library -->
+                        <div class="glass-panel rounded-2xl p-5 sm:p-6 opacity-0 animate-dash-in-3">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-base font-extrabold tracking-tight" style="color:var(--text-heading)">Game library</h3>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider" style="color:var(--text-muted)">Tap to host · all 1v1</span>
+                            </div>
+                            <div id="game-library" class="grid grid-cols-2 lg:grid-cols-2 gap-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: stats, friends, leaderboard -->
+                    <div class="lg:col-span-4 space-y-5">
+                        <!-- Stats -->
+                        <div class="glass-panel rounded-2xl p-5 opacity-0 animate-dash-in-2">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div id="stats-avatar" class="avatar w-12 h-12 text-lg">?</div>
+                                <div class="min-w-0">
+                                    <h3 id="stats-username" class="text-base font-extrabold tracking-tight truncate" style="color:var(--text-heading)">player</h3>
+                                    <p class="text-[11px]" style="color:var(--text-muted)">Your record</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 text-center">
+                                <div class="rounded-xl py-3" style="background:var(--bg-input)"><div id="stat-wins" class="text-xl font-extrabold" style="color:#34d399">0</div><div class="text-[10px] font-semibold uppercase tracking-wider" style="color:var(--text-muted)">Wins</div></div>
+                                <div class="rounded-xl py-3" style="background:var(--bg-input)"><div id="stat-losses" class="text-xl font-extrabold" style="color:#f87171">0</div><div class="text-[10px] font-semibold uppercase tracking-wider" style="color:var(--text-muted)">Losses</div></div>
+                                <div class="rounded-xl py-3" style="background:var(--bg-input)"><div id="stat-streak" class="text-xl font-extrabold" style="color:#fbbf24">0</div><div class="text-[10px] font-semibold uppercase tracking-wider" style="color:var(--text-muted)">Streak</div></div>
+                            </div>
+                        </div>
+
+                        <!-- Friends -->
+                        <div class="glass-panel rounded-2xl p-5 opacity-0 animate-dash-in-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-base font-extrabold tracking-tight" style="color:var(--text-heading)">Friends</h3>
+                                <button id="add-friend-btn" class="text-[11px] font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>Add
+                                </button>
+                            </div>
+                            <div id="friend-requests" class="space-y-2 mb-2"></div>
+                            <div id="friends-list" class="space-y-2 max-h-64 overflow-y-auto pr-1"></div>
+                        </div>
+
+                        <!-- Leaderboard -->
+                        <div class="glass-panel rounded-2xl p-5 opacity-0 animate-dash-in-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-base font-extrabold tracking-tight" style="color:var(--text-heading)">Leaderboard</h3>
+                                <button id="report-btn" class="text-[11px] font-semibold hover:text-red-400 transition-colors flex items-center gap-1" style="color:var(--text-muted)" title="Report a player">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 2H21l-3 6 3 6h-8.5l-1-2H5a2 2 0 00-2 2z"/></svg>Report
+                                </button>
+                            </div>
+                            <div class="flex gap-1.5 mb-3">
+                                <div class="lb-tab active" data-lb="daily" onclick="switchLeaderboard('daily')">Daily wins</div>
+                                <div class="lb-tab" data-lb="wins" onclick="switchLeaderboard('wins')">Most wins</div>
+                                <div class="lb-tab" data-lb="streak" onclick="switchLeaderboard('streak')">Streak</div>
+                            </div>
+                            <div id="leaderboard-list" class="space-y-1.5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ LOBBY VIEW ============ -->
+            <div id="lobby-view" class="view-hidden view-transition">
+                <div class="max-w-xl mx-auto mt-4 sm:mt-10">
+                    <div class="glass-panel rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div id="lobby-game-icon" class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl bg-indigo-500/15">🎮</div>
+                                <div>
+                                    <h2 id="lobby-game-name" class="text-xl font-extrabold tracking-tight" style="color:var(--text-heading)">Game</h2>
+                                    <p class="text-xs" style="color:var(--text-muted)">Match lobby</p>
+                                </div>
+                            </div>
+                            <button onclick="leaveRoom()" class="glass-input px-3 py-2 rounded-xl text-sm font-semibold hover:border-red-500/30" style="color:var(--text-secondary)">Leave</button>
+                        </div>
+
+                        <div class="rounded-2xl p-5 mb-6 text-center" style="background:var(--bg-input);border:1px solid var(--border-color)">
+                            <p class="text-[11px] font-bold uppercase tracking-widest mb-2" style="color:var(--text-muted)">Room code</p>
+                            <div class="flex items-center justify-center gap-3">
+                                <span id="lobby-code" class="text-4xl font-extrabold font-mono tracking-[0.3em]" style="color:var(--text-heading)">-----</span>
+                                <button onclick="copyRoomCode()" class="glass-input p-2.5 rounded-xl hover:border-indigo-500/30 transition-all" title="Copy code">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" style="color:var(--text-secondary)" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                </button>
+                            </div>
+                            <p class="text-xs mt-2" style="color:var(--text-muted)">Share this with your opponent to join</p>
+                        </div>
+
+                        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mb-6">
+                            <div id="lobby-host" class="rounded-2xl p-4 text-center" style="background:var(--bg-input);border:2px solid var(--border-color)">
+                                <div class="avatar w-14 h-14 text-xl mx-auto mb-2" id="lobby-host-avatar">?</div>
+                                <p id="lobby-host-name" class="font-bold text-sm truncate" style="color:var(--text-heading)">Host</p>
+                                <span id="lobby-host-status" class="pill bg-slate-500/20 text-slate-400 mt-1 inline-block">Not ready</span>
+                            </div>
+                            <div class="vs-pill">VS</div>
+                            <div id="lobby-guest" class="rounded-2xl p-4 text-center" style="background:var(--bg-input);border:2px solid var(--border-color)">
+                                <div class="avatar w-14 h-14 text-xl mx-auto mb-2" id="lobby-guest-avatar">?</div>
+                                <p id="lobby-guest-name" class="font-bold text-sm truncate" style="color:var(--text-muted)">Waiting…</p>
+                                <span id="lobby-guest-status" class="pill bg-slate-500/20 text-slate-400 mt-1 inline-block">—</span>
+                            </div>
+                        </div>
+
+                        <button id="ready-btn" class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-xl hover:bg-indigo-500 transition-all btn-lift shadow-lg shadow-indigo-500/20">I'm ready</button>
+                        <p id="lobby-hint" class="text-center text-xs mt-3" style="color:var(--text-muted)">Both players must be ready to start.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ GAME VIEW ============ -->
+            <div id="game-view" class="view-hidden view-transition">
+                <div class="max-w-2xl mx-auto mt-2 sm:mt-6">
+                    <div class="glass-panel rounded-2xl p-5 sm:p-7 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+                        <!-- Scoreboard -->
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-2.5 flex-1 min-w-0">
+                                <div class="avatar w-9 h-9 text-sm" id="game-p1-avatar">?</div>
+                                <div class="min-w-0">
+                                    <p id="game-p1-name" class="font-bold text-sm truncate" style="color:var(--text-heading)">You</p>
+                                    <p class="text-[10px]" style="color:var(--text-muted)">You</p>
+                                </div>
+                                <span id="game-p1-score" class="ml-auto text-2xl font-extrabold" style="color:#818cf8">0</span>
+                            </div>
+                            <div class="px-4 text-center">
+                                <div id="game-name-pill" class="text-[10px] font-bold uppercase tracking-widest" style="color:var(--text-muted)">Game</div>
+                                <div class="vs-pill mx-auto mt-1" style="width:32px;height:32px;font-size:11px">VS</div>
+                            </div>
+                            <div class="flex items-center gap-2.5 flex-1 min-w-0 justify-end">
+                                <span id="game-p2-score" class="mr-auto text-2xl font-extrabold" style="color:#f472b6">0</span>
+                                <div class="min-w-0 text-right">
+                                    <p id="game-p2-name" class="font-bold text-sm truncate" style="color:var(--text-heading)">Rival</p>
+                                    <p class="text-[10px]" style="color:var(--text-muted)">Opponent</p>
+                                </div>
+                                <div class="avatar w-9 h-9 text-sm" id="game-p2-avatar">?</div>
+                            </div>
+                        </div>
+
+                        <div id="game-status" class="text-center font-bold text-sm mb-4 min-h-[20px]" style="color:var(--text-secondary)"></div>
+                        <div id="game-board" class="min-h-[260px] flex items-center justify-center"></div>
+
+                        <!-- Emoji reactions bar -->
+                        <div class="flex items-center justify-center gap-2 mt-5 pt-4" style="border-top:1px solid var(--border-color)">
+                            <span class="text-[11px] font-semibold mr-1" style="color:var(--text-muted)">React:</span>
+                            <button onclick="sendReaction('😂')" class="text-xl hover:scale-125 transition-transform">😂</button>
+                            <button onclick="sendReaction('😎')" class="text-xl hover:scale-125 transition-transform">😎</button>
+                            <button onclick="sendReaction('😭')" class="text-xl hover:scale-125 transition-transform">😭</button>
+                            <button onclick="sendReaction('🔥')" class="text-xl hover:scale-125 transition-transform">🔥</button>
+                            <button onclick="sendReaction('🤝')" class="text-xl hover:scale-125 transition-transform">🤝</button>
+                            <button onclick="leaveRoom()" class="ml-auto glass-input px-3 py-1.5 rounded-lg text-xs font-semibold hover:border-red-500/30" style="color:var(--text-secondary)">Quit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============ RESULT VIEW ============ -->
+            <div id="result-view" class="view-hidden view-transition">
+                <div class="max-w-md mx-auto mt-6 sm:mt-16">
+                    <div class="glass-panel rounded-2xl p-8 text-center relative overflow-hidden">
+                        <div id="result-bar" class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
+                        <div id="result-emoji" class="text-7xl mb-4 animate-bounce-in">🏆</div>
+                        <h2 id="result-title" class="text-3xl font-extrabold tracking-tight mb-1" style="color:var(--text-heading)">Victory</h2>
+                        <p id="result-sub" class="text-sm mb-6" style="color:var(--text-muted)">You won the match</p>
+                        <div class="flex items-center justify-center gap-4 mb-7">
+                            <div class="text-center"><div id="result-p1-score" class="text-4xl font-extrabold" style="color:#818cf8">0</div><div id="result-p1-name" class="text-xs font-semibold mt-1" style="color:var(--text-muted)">You</div></div>
+                            <div class="text-2xl font-extrabold" style="color:var(--text-muted)">–</div>
+                            <div class="text-center"><div id="result-p2-score" class="text-4xl font-extrabold" style="color:#f472b6">0</div><div id="result-p2-name" class="text-xs font-semibold mt-1" style="color:var(--text-muted)">Rival</div></div>
+                        </div>
+                        <div class="flex gap-3">
+                            <button id="rematch-btn" class="flex-1 bg-indigo-600 text-white font-bold py-3 rounded-xl hover:bg-indigo-500 transition-all btn-lift shadow-lg shadow-indigo-500/20">Rematch</button>
+                            <button onclick="leaveRoom()" class="flex-1 glass-input font-bold py-3 rounded-xl hover:border-indigo-500/30 transition-all" style="color:var(--text-secondary)">Home</button>
+                        </div>
+                        <p id="rematch-hint" class="text-xs mt-3 min-h-[16px]" style="color:var(--text-muted)"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="text-center py-4 text-xs" style="color:var(--text-muted)">ArenaForge · built for friendly 1v1s</footer>
+    </div>
+
+    <!-- Firebase v8 compat -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <script>
+    /* ============================================================
+       THEME
+    ============================================================ */
+    function toggleTheme() {
+        const html = document.documentElement;
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('arenaforge-theme', next);
+    }
+    (function(){ const s = localStorage.getItem('arenaforge-theme'); if (s) document.documentElement.setAttribute('data-theme', s); })();
+
+    /* ============================================================
+       TOASTS + MODALS
+    ============================================================ */
+    const showToast = (message, type = 'success') => {
+        const container = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        let borderColor = 'border-l-emerald-500';
+        let iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+        if (type === 'error') { borderColor = 'border-l-red-500'; iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'; }
+        else if (type === 'info') { borderColor = 'border-l-blue-500'; iconSvg = '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'; }
+        toast.className = `glass-panel border-l-4 ${borderColor} p-3 rounded-xl shadow-xl flex items-center gap-2.5 transform translate-x-10 opacity-0 transition-all duration-300 pointer-events-auto min-w-[260px]`;
+        toast.innerHTML = `${iconSvg}<span class="font-medium text-sm" style="color:var(--text-primary)">${message}</span>`;
+        container.appendChild(toast);
+        requestAnimationFrame(() => toast.classList.remove('translate-x-10','opacity-0'));
+        setTimeout(() => { toast.classList.add('translate-x-10','opacity-0'); setTimeout(() => toast.remove(), 300); }, 3500);
+    };
+
+    const modalEl = document.getElementById('custom-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMsg = document.getElementById('modal-message');
+    const modalConfirmBtn = document.getElementById('modal-confirm');
+    const modalCancelBtn = document.getElementById('modal-cancel');
+    const modalIcon = document.getElementById('modal-icon');
+    const modalContent = document.getElementById('modal-content');
+    const toggleModal = (show) => {
+        if (show) { modalEl.classList.remove('hidden'); requestAnimationFrame(() => { modalEl.classList.remove('opacity-0'); modalContent.classList.remove('scale-95'); modalContent.classList.add('scale-100'); }); }
+        else { modalEl.classList.add('opacity-0'); modalContent.classList.remove('scale-100'); modalContent.classList.add('scale-95'); setTimeout(() => modalEl.classList.add('hidden'), 300); }
+    };
+    const showAlert = (title, message) => new Promise((resolve) => {
+        const old = document.getElementById('modal-input'); if (old) old.remove();
+        modalTitle.innerText = title; modalMsg.innerText = message;
+        modalCancelBtn.classList.add('hidden'); modalConfirmBtn.innerText = 'Okay';
+        modalConfirmBtn.className = 'px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all btn-lift';
+        modalIcon.className = 'w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 text-indigo-400';
+        toggleModal(true);
+        modalConfirmBtn.onclick = () => { toggleModal(false); resolve(true); };
+    });
+    const showConfirm = (title, message, isDanger = false) => new Promise((resolve) => {
+        const old = document.getElementById('modal-input'); if (old) old.remove();
+        modalTitle.innerText = title; modalMsg.innerText = message;
+        modalCancelBtn.classList.remove('hidden');
+        modalConfirmBtn.innerText = isDanger ? 'Yes, do it' : 'Confirm';
+        modalConfirmBtn.className = `px-5 py-2.5 rounded-xl ${isDanger ? 'bg-red-600 hover:bg-red-500 shadow-red-500/20' : 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-500/20'} text-white font-medium shadow-lg transition-all btn-lift`;
+        modalIcon.className = `w-12 h-12 rounded-full ${isDanger ? 'bg-red-500/20 text-red-400' : 'bg-indigo-500/20 text-indigo-400'} flex items-center justify-center mb-4`;
+        toggleModal(true);
+        modalConfirmBtn.onclick = () => { toggleModal(false); resolve(true); };
+        modalCancelBtn.onclick = () => { toggleModal(false); resolve(false); };
+    });
+    const showPrompt = (title, message, { placeholder = '', initialValue = '' } = {}) => new Promise((resolve) => {
+        modalTitle.innerText = title; modalMsg.innerText = message;
+        modalCancelBtn.classList.remove('hidden'); modalConfirmBtn.innerText = 'OK';
+        modalConfirmBtn.className = 'px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-500 shadow-lg shadow-indigo-500/20 transition-all btn-lift';
+        modalIcon.className = 'w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 text-indigo-400';
+        let existing = document.getElementById('modal-input'); if (existing) existing.remove();
+        const input = document.createElement('input'); input.type = 'text'; input.id = 'modal-input'; input.placeholder = placeholder; input.value = initialValue;
+        input.className = 'mt-3 w-full p-3 glass-input rounded-xl focus:outline-none';
+        modalMsg.insertAdjacentElement('afterend', input); toggleModal(true);
+        setTimeout(() => input.focus(), 50);
+        modalConfirmBtn.onclick = () => { const v = input.value.trim(); toggleModal(false); resolve(v || null); };
+        modalCancelBtn.onclick = () => { toggleModal(false); resolve(null); };
+        input.addEventListener('keydown', e => { if (e.key === 'Enter') modalConfirmBtn.click(); });
+    });
+
+    /* ============================================================
+       FIREBASE
+    ============================================================ */
+    const firebaseConfig = {
+        apiKey: "AIzaSyDsqX_TtN161hS2--egv4JDtduNc3LFbxY",
+        authDomain: "cjpl-4e142.firebaseapp.com",
+        projectId: "cjpl-4e142",
+        storageBucket: "cjpl-4e142.firebasestorage.app",
+        messagingSenderId: "677475680068",
+        appId: "1:677475680068:web:e5611efcadb2580e6c2111"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const FieldValue = firebase.firestore.FieldValue;
+
+    let currentUser = null;       // firebase user
+    let myProfile = null;         // users/{uid} doc data
+    let pendingSignupUsername = null;
+
+    /* ============================================================
+       VIEW NAVIGATION
+    ============================================================ */
+    const VIEWS = ['auth-view','dashboard-view','lobby-view','game-view','result-view'];
+    function showView(id) {
+        VIEWS.forEach(v => document.getElementById(v).classList.add('view-hidden'));
+        const el = document.getElementById(id);
+        el.classList.remove('view-hidden');
+        el.classList.remove('animate-fade-in'); void el.offsetWidth; el.classList.add('animate-fade-in');
+    }
+    function toggleAuthView(form) {
+        if (form === 'signup') { document.getElementById('login-form').classList.add('view-hidden'); document.getElementById('signup-form').classList.remove('view-hidden'); document.getElementById('signup-form').classList.add('animate-slide-up'); }
+        else { document.getElementById('login-form').classList.remove('view-hidden'); document.getElementById('signup-form').classList.add('view-hidden'); document.getElementById('login-form').classList.add('animate-slide-up'); }
+    }
+
+    function avatarHTML(name, photo) {
+        if (photo) return `<img src="${photo}" class="w-full h-full rounded-full object-cover" alt="">`;
+        return (name || '?').charAt(0).toUpperCase();
+    }
+    function setAvatar(el, name, photo) {
+        if (!el) return;
+        if (photo) { el.innerHTML = `<img src="${photo}" class="w-full h-full rounded-full object-cover" alt="">`; }
+        else { el.textContent = (name || '?').charAt(0).toUpperCase(); }
+    }
+
+    /* ============================================================
+       AUTH
+    ============================================================ */
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            currentUser = user;
+            await ensureProfile(user);
+            subscribeProfile();
+            subscribeFriendRequests();
+            subscribeInvites();
+            loadLeaderboard();
+            showView('dashboard-view');
+            renderGameLibrary();
+        } else {
+            currentUser = null; myProfile = null;
+            cleanupSubscriptions();
+            showView('auth-view'); toggleAuthView('login');
+        }
+    });
+
+    async function ensureProfile(user) {
+        const ref = db.collection('users').doc(user.uid);
+        const snap = await ref.get();
+        if (!snap.exists) {
+            let username = pendingSignupUsername;
+            if (!username) {
+                username = (user.displayName || (user.email||'player').split('@')[0] || 'player').replace(/\s+/g,'').slice(0,16);
+            }
+            username = await ensureUniqueUsername(username);
+            await ref.set({
+                username, usernameLower: username.toLowerCase(),
+                email: user.email || '', photoURL: user.photoURL || '',
+                wins: 0, losses: 0, streak: 0, dailyWins: 0, lastWinDate: '',
+                friends: [], createdAt: FieldValue.serverTimestamp()
+            });
+            pendingSignupUsername = null;
+        }
+    }
+    async function ensureUniqueUsername(base) {
+        let name = base || 'player'; let tries = 0;
+        while (tries < 5) {
+            const q = await db.collection('users').where('usernameLower','==',name.toLowerCase()).limit(1).get();
+            if (q.empty) return name;
+            name = base + Math.floor(Math.random()*900+100); tries++;
+        }
+        return base + Date.now().toString().slice(-4);
+    }
+
+    let profileUnsub = null;
+    function subscribeProfile() {
+        if (profileUnsub) profileUnsub();
+        profileUnsub = db.collection('users').doc(currentUser.uid).onSnapshot(snap => {
+            if (!snap.exists) return;
+            myProfile = snap.data();
+            paintProfile();
+            renderFriends();
+        });
+    }
+    function paintProfile() {
+        if (!myProfile) return;
+        const today = todayKey();
+        const daily = myProfile.lastWinDate === today ? (myProfile.dailyWins||0) : 0;
+        document.getElementById('header-username').textContent = myProfile.username;
+        document.getElementById('stats-username').textContent = myProfile.username;
+        setAvatar(document.getElementById('header-avatar'), myProfile.username, myProfile.photoURL);
+        setAvatar(document.getElementById('stats-avatar'), myProfile.username, myProfile.photoURL);
+        document.getElementById('stat-wins').textContent = myProfile.wins||0;
+        document.getElementById('stat-losses').textContent = myProfile.losses||0;
+        document.getElementById('stat-streak').textContent = myProfile.streak||0;
+    }
+
+    const handleLogin = async () => {
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+        const errEl = document.getElementById('login-error'); const btn = document.getElementById('login-button');
+        errEl.textContent = '';
+        if (!email || !password) { showToast('Enter email and password.', 'error'); return; }
+        btn.disabled = true; btn.innerHTML = '<span class="loader w-5 h-5 border-2 border-white/50 border-t-white inline-block my-0"></span>';
+        try { await auth.signInWithEmailAndPassword(email, password); showToast('Welcome back!'); }
+        catch (e) { errEl.textContent = 'Invalid email or password.'; showToast('Login failed.', 'error'); }
+        finally { btn.disabled = false; btn.innerHTML = '<span>Log in</span><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>'; }
+    };
+    const handleSignup = async () => {
+        const username = document.getElementById('signup-username').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value;
+        const errEl = document.getElementById('signup-error'); const btn = document.getElementById('signup-button');
+        errEl.textContent = '';
+        if (!username || username.length < 3) { showToast('Pick a username (3+ chars).', 'error'); return; }
+        if (!/^[a-zA-Z0-9_]+$/.test(username)) { showToast('Letters, numbers, underscore only.', 'error'); return; }
+        if (!email || !password) { showToast('Enter email and password.', 'error'); return; }
+        if (password.length < 6) { showToast('Password needs 6+ chars.', 'error'); return; }
+        btn.disabled = true; btn.textContent = 'Creating…';
+        try {
+            pendingSignupUsername = username;
+            await auth.createUserWithEmailAndPassword(email, password);
+            showToast('Account created!');
+        } catch (e) {
+            pendingSignupUsername = null;
+            if (e.code === 'auth/email-already-in-use') { errEl.textContent = 'Email already in use.'; showToast('Email already in use.', 'error'); }
+            else { errEl.textContent = 'Signup failed.'; showToast(e.message, 'error'); }
+        } finally { btn.disabled = false; btn.textContent = 'Create account'; }
+    };
+    const handleGoogle = async () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try { await auth.signInWithPopup(provider); showToast('Welcome!'); }
+        catch (e) { if (e.code !== 'auth/popup-closed-by-user') showToast('Google sign in failed.', 'error'); }
+    };
+    const logout = async () => { await leaveRoom(true); cleanupSubscriptions(); auth.signOut(); showToast('Logged out.'); };
+
+    /* ============================================================
+       GAMES REGISTRY
+    ============================================================ */
+    const GAMES = {
+        ttt:      { name: 'Tic-Tac-Toe',  emoji: '⭕', desc: '3 in a row. X vs O, take turns.', grad: 'linear-gradient(135deg,#6366f1,#8b5cf6)', target: 1 },
+        rps:      { name: 'Rock Paper Scissors', emoji: '✊', desc: 'Best of 5. Read your rival.', grad: 'linear-gradient(135deg,#ec4899,#f43f5e)', target: 3 },
+        reaction: { name: 'Reaction Duel', emoji: '⚡', desc: 'Tap the instant it turns green.', grad: 'linear-gradient(135deg,#10b981,#06b6d4)', target: 3 },
+        math:     { name: 'Math Sprint',  emoji: '🧮', desc: 'Most correct answers in 30s wins.', grad: 'linear-gradient(135deg,#f59e0b,#f97316)', target: 1 },
+    };
+
+    function renderGameLibrary() {
+        const wrap = document.getElementById('game-library');
+        wrap.innerHTML = '';
+        Object.entries(GAMES).forEach(([key, g]) => {
+            const tile = document.createElement('div');
+            tile.className = 'game-tile';
+            tile.onclick = () => hostGame(key);
+            tile.innerHTML = `
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-3" style="background:${g.grad}">${g.emoji}</div>
+                <h4 class="font-extrabold text-sm tracking-tight" style="color:var(--text-heading)">${g.name}</h4>
+                <p class="text-[11px] mt-1 leading-snug" style="color:var(--text-muted)">${g.desc}</p>
+                <div class="mt-3 flex items-center gap-1 text-[11px] font-bold text-indigo-400">Host <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></div>`;
+            wrap.appendChild(tile);
+        });
+    }
+
+    async function openHostPicker() {
+        // Quick inline picker via modal buttons
+        modalTitle.innerText = 'Host a match';
+        modalMsg.innerText = 'Choose a game to create a room:';
+        modalCancelBtn.classList.remove('hidden'); modalCancelBtn.innerText = 'Cancel';
+        modalIcon.className = 'w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 text-indigo-400';
+        modalConfirmBtn.classList.add('hidden');
+        const old = document.getElementById('modal-input'); if (old) old.remove();
+        const picker = document.createElement('div');
+        picker.id = 'modal-input';
+        picker.className = 'grid grid-cols-2 gap-2 mt-4';
+        picker.innerHTML = Object.entries(GAMES).map(([k,g]) =>
+            `<button data-g="${k}" class="rounded-xl p-3 text-left glass-input hover:border-indigo-500/40 transition-all">
+                <div class="text-xl">${g.emoji}</div>
+                <div class="font-bold text-xs mt-1" style="color:var(--text-heading)">${g.name}</div>
+            </button>`).join('');
+        modalMsg.insertAdjacentElement('afterend', picker);
+        picker.querySelectorAll('button').forEach(b => b.onclick = () => { toggleModal(false); picker.remove(); modalConfirmBtn.classList.remove('hidden'); hostGame(b.dataset.g); });
+        modalCancelBtn.onclick = () => { toggleModal(false); picker.remove(); modalConfirmBtn.classList.remove('hidden'); };
+        toggleModal(true);
+    }
+
+    /* ============================================================
+       ROOMS — host / join / lobby / sync
+    ============================================================ */
+    let roomCode = null, roomRef = null, roomUnsub = null, myRole = null, roomData = null;
+    let heartbeatInterval = null, hostTickInterval = null, gameLocalTimer = null;
+    let lastFinishedHandled = false;
+
+    function genCode() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let c = ''; for (let i=0;i<5;i++) c += chars[Math.floor(Math.random()*chars.length)];
+        return c;
+    }
+
+    async function hostGame(gameKey, inviteToUid) {
+        if (!GAMES[gameKey]) return;
+        let code, exists = true, tries = 0;
+        do { code = genCode(); const s = await db.collection('rooms').doc(code).get(); exists = s.exists; tries++; } while (exists && tries < 6);
+        const room = {
+            code, game: gameKey, status: 'waiting',
+            host: currentUser.uid, hostName: myProfile.username, hostPhoto: myProfile.photoURL || '',
+            guest: null, guestName: '', guestPhoto: '',
+            hostReady: false, guestReady: false,
+            scoreHost: 0, scoreGuest: 0, winner: null, statsRecorded: false,
+            rematchHost: false, rematchGuest: false,
+            state: {}, createdAt: FieldValue.serverTimestamp(),
+            lastSeenHost: Date.now(), lastSeenGuest: 0
+        };
+        await db.collection('rooms').doc(code).set(room);
+        if (inviteToUid) {
+            await db.collection('invites').add({ from: currentUser.uid, fromName: myProfile.username, to: inviteToUid, code, game: gameKey, createdAt: Date.now() });
+            showToast('Challenge sent!');
+        }
+        enterRoom(code, 'host');
+    }
+
+    async function joinRoomByCode(code) {
+        code = (code||'').toUpperCase().trim();
+        if (code.length !== 5) { showToast('Codes are 5 characters.', 'error'); return; }
+        const ref = db.collection('rooms').doc(code);
+        const snap = await ref.get();
+        if (!snap.exists) { showToast('No room with that code.', 'error'); return; }
+        const r = snap.data();
+        if (r.host === currentUser.uid) { enterRoom(code, 'host'); return; }
+        if (r.guest && r.guest !== currentUser.uid) { showToast('That room is full.', 'error'); return; }
+        await ref.update({ guest: currentUser.uid, guestName: myProfile.username, guestPhoto: myProfile.photoURL || '', lastSeenGuest: Date.now() });
+        enterRoom(code, 'guest');
+    }
+
+    function enterRoom(code, role) {
+        roomCode = code; myRole = role; roomRef = db.collection('rooms').doc(code);
+        lastFinishedHandled = false;
+        if (roomUnsub) roomUnsub();
+        roomUnsub = roomRef.onSnapshot(handleRoomSnapshot, err => { console.error(err); showToast('Lost connection to room.', 'error'); });
+        startHeartbeat();
+        if (role === 'host') startHostTick();
+        showView('lobby-view');
+    }
+
+    function startHeartbeat() {
+        stopHeartbeat();
+        const field = myRole === 'host' ? 'lastSeenHost' : 'lastSeenGuest';
+        heartbeatInterval = setInterval(() => { if (roomRef) roomRef.update({ [field]: Date.now() }).catch(()=>{}); }, 4000);
+    }
+    function stopHeartbeat() { if (heartbeatInterval) { clearInterval(heartbeatInterval); heartbeatInterval = null; } }
+    function startHostTick() { stopHostTick(); hostTickInterval = setInterval(() => { if (roomData) hostResolve(roomData); }, 600); }
+    function stopHostTick() { if (hostTickInterval) { clearInterval(hostTickInterval); hostTickInterval = null; } }
+
+    async function leaveRoom(silent) {
+        if (gameLocalTimer) { clearInterval(gameLocalTimer); gameLocalTimer = null; }
+        if (reactionTimeout) { clearTimeout(reactionTimeout); reactionTimeout = null; }
+        stopHeartbeat(); stopHostTick();
+        if (roomUnsub) { roomUnsub(); roomUnsub = null; }
+        const code = roomCode, role = myRole;
+        roomCode = null; roomRef = null; roomData = null; myRole = null;
+        if (code && !silent) {
+            try {
+                const ref = db.collection('rooms').doc(code);
+                const snap = await ref.get();
+                if (snap.exists) {
+                    const r = snap.data();
+                    if (role === 'host') await ref.delete();
+                    else if (r.guest === currentUser.uid) await ref.update({ guest: null, guestName: '', guestPhoto: '', guestReady: false, lastSeenGuest: 0 });
+                }
+            } catch(e) {}
+        }
+        if (!silent) { showView('dashboard-view'); loadLeaderboard(); }
+    }
+
+    function handleRoomSnapshot(snap) {
+        if (!snap.exists) {
+            if (roomCode) { showToast('The host closed the room.', 'info'); cleanupRoomLocal(); showView('dashboard-view'); }
+            return;
+        }
+        const prev = roomData; roomData = snap.data();
+
+        if (roomData.status === 'waiting') { showView('lobby-view'); renderLobby(roomData); }
+        else if (roomData.status === 'countdown') { renderLobby(roomData); if (!prev || prev.status !== 'countdown') runCountdown(); }
+        else if (roomData.status === 'playing') { if (!prev || prev.status !== 'playing') showView('game-view'); renderGame(roomData); }
+        else if (roomData.status === 'finished') { renderResult(roomData); }
+
+        // reactions
+        if (roomData.reaction && (!prev || JSON.stringify(prev.reaction) !== JSON.stringify(roomData.reaction))) {
+            if (roomData.reaction.by !== currentUser.uid) floatEmoji(roomData.reaction.emoji);
+        }
+        // opponent left detection during play
+        if (roomData.status === 'playing' || roomData.status === 'countdown') checkOpponentPresence(roomData);
+    }
+    function cleanupRoomLocal() {
+        if (gameLocalTimer) { clearInterval(gameLocalTimer); gameLocalTimer = null; }
+        stopHeartbeat(); stopHostTick();
+        if (roomUnsub) { roomUnsub(); roomUnsub = null; }
+        roomCode = null; roomRef = null; roomData = null; myRole = null;
+    }
+
+    let presenceWarned = false;
+    function checkOpponentPresence(r) {
+        const oppSeen = myRole === 'host' ? r.lastSeenGuest : r.lastSeenHost;
+        if (oppSeen && Date.now() - oppSeen > 16000 && !presenceWarned && r.status === 'playing') {
+            presenceWarned = true;
+            showToast('Opponent seems to have left.', 'info');
+        }
+    }
+
+    /* ---------------- LOBBY ---------------- */
+    function renderLobby(r) {
+        const g = GAMES[r.game];
+        document.getElementById('lobby-game-icon').textContent = g.emoji;
+        document.getElementById('lobby-game-name').textContent = g.name;
+        document.getElementById('lobby-code').textContent = r.code;
+        document.getElementById('lobby-host-name').textContent = r.hostName || 'Host';
+        setAvatar(document.getElementById('lobby-host-avatar'), r.hostName, r.hostPhoto);
+        const hs = document.getElementById('lobby-host-status');
+        hs.textContent = r.hostReady ? 'Ready' : 'Not ready';
+        hs.className = 'pill mt-1 inline-block ' + (r.hostReady ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-500/20 text-slate-400');
+
+        const guestNameEl = document.getElementById('lobby-guest-name');
+        const gst = document.getElementById('lobby-guest-status');
+        if (r.guest) {
+            guestNameEl.textContent = r.guestName || 'Guest'; guestNameEl.style.color = 'var(--text-heading)';
+            setAvatar(document.getElementById('lobby-guest-avatar'), r.guestName, r.guestPhoto);
+            gst.textContent = r.guestReady ? 'Ready' : 'Not ready';
+            gst.className = 'pill mt-1 inline-block ' + (r.guestReady ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-500/20 text-slate-400');
+        } else {
+            guestNameEl.textContent = 'Waiting…'; guestNameEl.style.color = 'var(--text-muted)';
+            document.getElementById('lobby-guest-avatar').textContent = '?';
+            gst.textContent = '—'; gst.className = 'pill mt-1 inline-block bg-slate-500/20 text-slate-400';
+        }
+        const myReady = myRole === 'host' ? r.hostReady : r.guestReady;
+        const btn = document.getElementById('ready-btn');
+        btn.textContent = myReady ? 'Ready ✓ (tap to cancel)' : "I'm ready";
+        btn.className = `w-full font-bold py-3.5 rounded-xl transition-all btn-lift shadow-lg ${myReady ? 'bg-emerald-600 hover:bg-emerald-500 shadow-emerald-500/20 text-white' : 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-500/20 text-white'}`;
+        document.getElementById('lobby-hint').textContent = !r.guest ? 'Waiting for an opponent to join…' : 'Both players ready = match starts.';
+    }
+    async function toggleReady() {
+        if (!roomRef || !roomData) return;
+        if (!roomData.guest && myRole === 'host') { showToast('Wait for an opponent first.', 'info'); return; }
+        const field = myRole === 'host' ? 'hostReady' : 'guestReady';
+        await roomRef.update({ [field]: !roomData[field] });
+    }
+    function copyRoomCode() { navigator.clipboard.writeText(roomCode).then(() => showToast('Code copied!')); }
+
+    function runCountdown() {
+        const overlay = document.getElementById('countdown-overlay');
+        const num = document.getElementById('countdown-number');
+        overlay.classList.remove('hidden'); overlay.classList.add('flex');
+        let n = 3;
+        const step = () => {
+            num.textContent = n > 0 ? n : 'GO';
+            num.classList.remove('countdown-number'); void num.offsetWidth; num.classList.add('countdown-number');
+            n--;
+            if (n >= -1) setTimeout(step, 850);
+            else { overlay.classList.add('hidden'); overlay.classList.remove('flex'); }
+        };
+        step();
+    }
+
+    /* ============================================================
+       HOST AUTHORITY — resolve game logic
+    ============================================================ */
+    async function hostResolve(r) {
+        if (myRole !== 'host' || !roomRef) return;
+        // Start countdown when both ready
+        if (r.status === 'waiting' && r.host && r.guest && r.hostReady && r.guestReady) {
+            await roomRef.update({ status: 'countdown', countdownAt: Date.now() });
+            return;
+        }
+        if (r.status === 'countdown') {
+            if (Date.now() - (r.countdownAt||0) > 3400) {
+                await roomRef.update({ status: 'playing', startedAt: Date.now(), state: initGameState(r.game), scoreHost: 0, scoreGuest: 0 });
+                presenceWarned = false;
+            }
+            return;
+        }
+        if (r.status === 'playing') {
+            if (r.game === 'rps') await resolveRPS(r);
+            else if (r.game === 'reaction') await resolveReaction(r);
+            else if (r.game === 'math') await resolveMath(r);
+            // ttt resolves inline on move
+        }
+        if (r.status === 'finished' && !r.statsRecorded && r.winner) {
+            await recordStats(r);
+        }
+    }
+
+    function initGameState(game) {
+        if (game === 'ttt') return { board: Array(9).fill(null), turn: 'host', winLine: null };
+        if (game === 'rps') return { round: 1, hostChoice: null, guestChoice: null, hostScore: 0, guestScore: 0, lastResult: null, resolvedRound: 0 };
+        if (game === 'reaction') return { round: 1, phase: 'arm', showAt: 0, hostTime: null, guestTime: null, hostScore: 0, guestScore: 0, hostArm: false, guestArm: false, lastWinner: null, resolvedRound: 0 };
+        if (game === 'math') {
+            const qs = [];
+            for (let i=0;i<14;i++) qs.push(genMathQ());
+            return { questions: qs, hostIdx: 0, guestIdx: 0, hostCorrect: 0, guestCorrect: 0, endsAt: Date.now()+30000, ended: false };
+        }
+        return {};
+    }
+    function genMathQ() {
+        const ops = ['+','-','×'];
+        const op = ops[Math.floor(Math.random()*ops.length)];
+        let a,b,ans;
+        if (op === '+') { a = rnd(2,30); b = rnd(2,30); ans = a+b; }
+        else if (op === '-') { a = rnd(10,40); b = rnd(1,a); ans = a-b; }
+        else { a = rnd(2,12); b = rnd(2,12); ans = a*b; }
+        const opts = new Set([ans]);
+        while (opts.size < 4) { opts.add(ans + rnd(-6,6) + (Math.random()<0.3?rnd(-3,3):0)); }
+        let arr = [...opts].map(Number).filter((v,i,s)=>s.indexOf(v)===i);
+        while (arr.length < 4) arr.push(ans + arr.length);
+        arr = arr.slice(0,4);
+        if (!arr.includes(ans)) arr[0] = ans;
+        return { a, b, op, ans, opts: shuffle(arr) };
+    }
+    const rnd = (lo,hi) => Math.floor(Math.random()*(hi-lo+1))+lo;
+    const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+
+    async function finishMatch(winnerRole, scoreHost, scoreGuest) {
+        const winner = winnerRole === 'draw' ? 'draw' : (winnerRole === 'host' ? roomData.host : roomData.guest);
+        await roomRef.update({ status: 'finished', winner, scoreHost, scoreGuest, rematchHost: false, rematchGuest: false });
+    }
+
+    /* ---- RPS resolution (host authority) ---- */
+    function rpsWinner(a, b) { // returns 'host'|'guest'|'draw'
+        if (a === b) return 'draw';
+        const beats = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
+        return beats[a] === b ? 'host' : 'guest';
+    }
+    async function resolveRPS(r) {
+        const s = r.state;
+        if (s.resolvedRound === s.round) {
+            // waiting to advance after showing result
+            if (s.lastResult && Date.now() - (s.lastResult.at||0) > 1600) {
+                const ns = { ...s };
+                if (s.hostScore >= GAMES.rps.target || s.guestScore >= GAMES.rps.target) {
+                    await finishMatch(s.hostScore > s.guestScore ? 'host':'guest', s.hostScore, s.guestScore); return;
+                }
+                ns.round = s.round + 1; ns.hostChoice = null; ns.guestChoice = null; ns.lastResult = null;
+                await roomRef.update({ state: ns });
+            }
+            return;
+        }
+        if (s.hostChoice && s.guestChoice) {
+            const w = rpsWinner(s.hostChoice, s.guestChoice);
+            const ns = { ...s };
+            if (w === 'host') ns.hostScore++; else if (w === 'guest') ns.guestScore++;
+            ns.lastResult = { w, host: s.hostChoice, guest: s.guestChoice, at: Date.now() };
+            ns.resolvedRound = s.round;
+            await roomRef.update({ state: ns, scoreHost: ns.hostScore, scoreGuest: ns.guestScore });
+        }
+    }
+
+    /* ---- Reaction resolution (host authority) ---- */
+    async function resolveReaction(r) {
+        const s = r.state;
+        if (s.phase === 'arm') {
+            if (s.hostArm && s.guestArm) {
+                const delay = rnd(1400, 4200);
+                await roomRef.update({ 'state.phase': 'set', 'state.showAt': Date.now() + delay, 'state.hostTime': null, 'state.guestTime': null });
+            }
+            return;
+        }
+        if (s.phase === 'set') {
+            const bothIn = s.hostTime !== null && s.guestTime !== null;
+            const someoneFalse = s.hostTime === -1 || s.guestTime === -1;
+            if (bothIn || (someoneFalse && (s.hostTime !== null || s.guestTime !== null) && Date.now() - s.showAt > 200)) {
+                // determine round winner
+                let w;
+                const ht = s.hostTime, gt = s.guestTime;
+                if (ht === -1 && gt === -1) w = 'draw';
+                else if (ht === -1) w = 'guest';
+                else if (gt === -1) w = 'host';
+                else if (ht === null) w = 'guest';
+                else if (gt === null) w = 'host';
+                else w = ht < gt ? 'host' : (gt < ht ? 'guest' : 'draw');
+                const ns = { ...s };
+                if (w === 'host') ns.hostScore++; else if (w === 'guest') ns.guestScore++;
+                ns.lastWinner = { w, host: ht, guest: gt };
+                ns.phase = 'result'; ns.resolvedRound = s.round;
+                await roomRef.update({ state: ns, scoreHost: ns.hostScore, scoreGuest: ns.guestScore });
+            }
+            return;
+        }
+        if (s.phase === 'result') {
+            if (s.hostScore >= GAMES.reaction.target || s.guestScore >= GAMES.reaction.target) {
+                await finishMatch(s.hostScore > s.guestScore ? 'host':'guest', s.hostScore, s.guestScore); return;
+            }
+            // advance after brief pause (use a timestamp on lastWinner)
+            if (!s._resultAt) { await roomRef.update({ 'state._resultAt': Date.now() }); return; }
+            if (Date.now() - s._resultAt > 1700) {
+                await roomRef.update({ state: { ...s, round: s.round+1, phase:'arm', hostArm:false, guestArm:false, hostTime:null, guestTime:null, showAt:0, _resultAt: null } });
+            }
+        }
+    }
+
+    /* ---- Math resolution (host authority) ---- */
+    async function resolveMath(r) {
+        const s = r.state;
+        if (s.ended) return;
+        const timeUp = Date.now() > s.endsAt;
+        const someoneDone = s.hostIdx >= s.questions.length || s.guestIdx >= s.questions.length;
+        if (timeUp || someoneDone) {
+            let w;
+            if (s.hostCorrect > s.guestCorrect) w = 'host';
+            else if (s.guestCorrect > s.hostCorrect) w = 'guest';
+            else w = 'draw';
+            await roomRef.update({ 'state.ended': true });
+            await finishMatch(w, s.hostCorrect, s.guestCorrect);
+        }
+    }
+
+    /* ============================================================
+       STATS RECORDING (host authority, once)
+    ============================================================ */
+    async function recordStats(r) {
+        try {
+            await roomRef.update({ statsRecorded: true }); // claim first to avoid double
+        } catch(e) { return; }
+        if (r.winner === 'draw') return;
+        const winnerUid = r.winner;
+        const loserUid = winnerUid === r.host ? r.guest : r.host;
+        const today = todayKey();
+        const winnerRef = db.collection('users').doc(winnerUid);
+        const loserRef = db.collection('users').doc(loserUid);
+        try {
+            await db.runTransaction(async tx => {
+                const wSnap = await tx.get(winnerRef);
+                if (wSnap.exists) {
+                    const w = wSnap.data();
+                    const daily = w.lastWinDate === today ? (w.dailyWins||0)+1 : 1;
+                    tx.update(winnerRef, { wins: (w.wins||0)+1, streak: (w.streak||0)+1, dailyWins: daily, lastWinDate: today });
+                }
+            });
+            await db.runTransaction(async tx => {
+                const lSnap = await tx.get(loserRef);
+                if (lSnap.exists) { const l = lSnap.data(); tx.update(loserRef, { losses: (l.losses||0)+1, streak: 0 }); }
+            });
+        } catch(e) { console.error('stats', e); }
+    }
+    function todayKey() { const d = new Date(); return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
+
+    /* ============================================================
+       GAME RENDERING
+    ============================================================ */
+    function paintScoreboard(r) {
+        const meHost = myRole === 'host';
+        const myName = meHost ? r.hostName : r.guestName;
+        const oppName = meHost ? r.guestName : r.hostName;
+        const myPhoto = meHost ? r.hostPhoto : r.guestPhoto;
+        const oppPhoto = meHost ? r.guestPhoto : r.hostPhoto;
+        const myScore = meHost ? r.scoreHost : r.scoreGuest;
+        const oppScore = meHost ? r.scoreGuest : r.scoreHost;
+        document.getElementById('game-p1-name').textContent = myName || 'You';
+        document.getElementById('game-p2-name').textContent = oppName || 'Rival';
+        setAvatar(document.getElementById('game-p1-avatar'), myName, myPhoto);
+        setAvatar(document.getElementById('game-p2-avatar'), oppName, oppPhoto);
+        document.getElementById('game-p1-score').textContent = myScore||0;
+        document.getElementById('game-p2-score').textContent = oppScore||0;
+        document.getElementById('game-name-pill').textContent = GAMES[r.game].name;
+    }
+
+    function renderGame(r) {
+        paintScoreboard(r);
+        if (r.game === 'ttt') renderTTT(r);
+        else if (r.game === 'rps') renderRPS(r);
+        else if (r.game === 'reaction') renderReaction(r);
+        else if (r.game === 'math') renderMath(r);
+    }
+
+    /* ---- Tic Tac Toe ---- */
+    const TTT_LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    function tttCheck(b) {
+        for (const [a,c,d] of TTT_LINES) if (b[a] && b[a]===b[c] && b[a]===b[d]) return { who: b[a], line: [a,c,d] };
+        if (b.every(x => x)) return { who: 'draw', line: null };
+        return null;
+    }
+    function renderTTT(r) {
+        const s = r.state; const board = s.board || Array(9).fill(null);
+        const mySym = myRole === 'host' ? 'host' : 'guest';
+        const myMark = myRole === 'host' ? 'X' : 'O';
+        const myTurn = s.turn === mySym;
+        document.getElementById('game-status').textContent = myTurn ? `Your move — you're ${myMark}` : "Opponent's move…";
+        document.getElementById('game-status').style.color = myTurn ? '#34d399' : 'var(--text-muted)';
+        const wrap = document.getElementById('game-board');
+        wrap.innerHTML = `<div class="ttt-grid"></div>`;
+        const grid = wrap.firstElementChild;
+        board.forEach((cell, i) => {
+            const div = document.createElement('div');
+            const isWin = s.winLine && s.winLine.includes(i);
+            div.className = 'ttt-cell' + (cell ? ' filled '+(cell==='host'?'x':'o') : '') + (isWin ? ' win' : '');
+            div.textContent = cell ? (cell==='host'?'X':'O') : '';
+            if (!cell && myTurn) div.onclick = () => tttMove(i);
+            grid.appendChild(div);
+        });
+    }
+    async function tttMove(i) {
+        if (!roomData || roomData.game !== 'ttt') return;
+        const s = roomData.state; const mySym = myRole==='host'?'host':'guest';
+        if (s.turn !== mySym || s.board[i]) return;
+        const board = s.board.slice(); board[i] = mySym;
+        const res = tttCheck(board);
+        const ns = { ...s, board, turn: mySym==='host'?'guest':'host' };
+        if (res) {
+            ns.winLine = res.line;
+            await roomRef.update({ state: ns });
+            // record win — only host writes finish to keep authority single
+            const winnerRole = res.who === 'draw' ? 'draw' : res.who;
+            const sh = winnerRole==='host'?1:0, sg = winnerRole==='guest'?1:0;
+            if (myRole === 'host') await finishMatch(winnerRole, sh, sg);
+            else { // guest made the winning move; ask host via flag
+                await roomRef.update({ pendingFinish: { winnerRole, sh, sg } });
+            }
+        } else {
+            await roomRef.update({ state: ns });
+        }
+    }
+
+    /* ---- Rock Paper Scissors ---- */
+    function renderRPS(r) {
+        const s = r.state;
+        const myChoice = myRole==='host' ? s.hostChoice : s.guestChoice;
+        const oppChoice = myRole==='host' ? s.guestChoice : s.hostChoice;
+        const status = document.getElementById('game-status');
+        const wrap = document.getElementById('game-board');
+        const opts = [['rock','✊'],['paper','✋'],['scissors','✌️']];
+        if (s.lastResult && s.resolvedRound === s.round) {
+            const lr = s.lastResult;
+            const myPick = myRole==='host'?lr.host:lr.guest;
+            const oppPick = myRole==='host'?lr.guest:lr.host;
+            const iWon = (lr.w !== 'draw') && ((myRole==='host'&&lr.w==='host')||(myRole==='guest'&&lr.w==='guest'));
+            const emo = { rock:'✊', paper:'✋', scissors:'✌️' };
+            status.textContent = lr.w==='draw' ? 'Round draw!' : (iWon ? 'You win the round!' : 'You lost the round');
+            status.style.color = lr.w==='draw' ? 'var(--text-secondary)' : (iWon ? '#34d399' : '#f87171');
+            wrap.innerHTML = `<div class="flex items-center gap-8">
+                <div class="text-center"><div class="text-5xl mb-2">${emo[myPick]}</div><div class="text-xs font-bold" style="color:var(--text-muted)">You</div></div>
+                <div class="vs-pill">VS</div>
+                <div class="text-center"><div class="text-5xl mb-2">${emo[oppPick]}</div><div class="text-xs font-bold" style="color:var(--text-muted)">Rival</div></div>
+            </div>`;
+            return;
+        }
+        status.textContent = myChoice ? (oppChoice ? 'Revealing…' : 'Locked in — waiting on rival…') : `Round ${s.round} of best-of-5 — make your move`;
+        status.style.color = myChoice ? 'var(--text-muted)' : '#34d399';
+        wrap.innerHTML = `<div class="flex gap-4"></div>`;
+        const row = wrap.firstElementChild;
+        opts.forEach(([k,e]) => {
+            const b = document.createElement('button');
+            b.className = 'rps-btn' + (myChoice===k?' picked':'');
+            b.textContent = e; b.disabled = !!myChoice;
+            b.onclick = () => rpsPick(k);
+            row.appendChild(b);
+        });
+    }
+    async function rpsPick(choice) {
+        if (!roomData || roomData.game!=='rps') return;
+        const field = myRole==='host' ? 'state.hostChoice' : 'state.guestChoice';
+        if ((myRole==='host'?roomData.state.hostChoice:roomData.state.guestChoice)) return;
+        await roomRef.update({ [field]: choice });
+    }
+
+    /* ---- Reaction Duel ---- */
+    let reactionTimeout = null;
+    function renderReaction(r) {
+        const s = r.state;
+        const status = document.getElementById('game-status');
+        const wrap = document.getElementById('game-board');
+        const myArm = myRole==='host'?s.hostArm:s.guestArm;
+        const myTime = myRole==='host'?s.hostTime:s.guestTime;
+
+        if (s.phase === 'arm') {
+            if (reactionTimeout) { clearTimeout(reactionTimeout); reactionTimeout = null; }
+            status.textContent = `Round ${s.round} of best-of-5`;
+            status.style.color = 'var(--text-secondary)';
+            wrap.innerHTML = `<div class="react-pad idle"><div class="text-4xl mb-2">⚡</div><div class="font-extrabold text-lg">${myArm?'Waiting for rival…':'Tap “Arm” when ready'}</div><div class="text-xs mt-1 opacity-70">Tap the pad the instant it turns green</div></div>`;
+            if (!myArm) wrap.firstElementChild.onclick = () => reactionArm();
+            return;
+        }
+        if (s.phase === 'set') {
+            const now = Date.now();
+            if (now < s.showAt) {
+                status.textContent = 'Wait for green…'; status.style.color = '#f87171';
+                wrap.innerHTML = `<div class="react-pad wait"><div class="font-extrabold text-xl">Wait…</div><div class="text-xs mt-1 opacity-80">Don't tap yet</div></div>`;
+                const pad = wrap.firstElementChild;
+                pad.onclick = () => { if (myTime===null) submitReaction(-1); }; // false start
+                if (reactionTimeout) clearTimeout(reactionTimeout);
+                reactionTimeout = setTimeout(() => { if (roomData && roomData.state.phase==='set') renderReaction(roomData); }, s.showAt - now + 30);
+            } else {
+                if (myTime === -1) {
+                    status.textContent = 'Too soon! False start.'; status.style.color = '#f87171';
+                    wrap.innerHTML = `<div class="react-pad idle"><div class="font-extrabold text-lg">False start ✗</div><div class="text-xs mt-1 opacity-70">Waiting for round result…</div></div>`;
+                } else if (myTime !== null) {
+                    status.textContent = `You: ${myTime} ms — waiting on rival…`; status.style.color = '#34d399';
+                    wrap.innerHTML = `<div class="react-pad idle"><div class="font-extrabold text-3xl">${myTime} ms</div><div class="text-xs mt-1 opacity-70">Nice. Waiting…</div></div>`;
+                } else {
+                    status.textContent = 'TAP NOW!'; status.style.color = '#34d399';
+                    wrap.innerHTML = `<div class="react-pad go"><div class="font-extrabold text-3xl">TAP!</div></div>`;
+                    wrap.firstElementChild.onclick = () => submitReaction(Date.now() - s.showAt);
+                }
+            }
+            return;
+        }
+        if (s.phase === 'result' || s.phase === 'arm') {
+            if (reactionTimeout) { clearTimeout(reactionTimeout); reactionTimeout = null; }
+            const lw = s.lastWinner || {};
+            const iWon = (lw.w==='host'&&myRole==='host')||(lw.w==='guest'&&myRole==='guest');
+            const ht = lw.host, gt = lw.guest;
+            const myT = myRole==='host'?ht:gt, opT = myRole==='host'?gt:ht;
+            const fmt = t => t===-1?'false start':(t===null?'—':t+' ms');
+            status.textContent = lw.w==='draw'?'Round draw':(iWon?'You won the round!':'Rival was faster');
+            status.style.color = lw.w==='draw'?'var(--text-secondary)':(iWon?'#34d399':'#f87171');
+            wrap.innerHTML = `<div class="text-center"><div class="text-5xl mb-3">${iWon?'⚡':'🐢'}</div>
+                <div class="flex items-center gap-6 justify-center">
+                  <div><div class="text-2xl font-extrabold" style="color:#818cf8">${fmt(myT)}</div><div class="text-xs" style="color:var(--text-muted)">You</div></div>
+                  <div class="vs-pill">VS</div>
+                  <div><div class="text-2xl font-extrabold" style="color:#f472b6">${fmt(opT)}</div><div class="text-xs" style="color:var(--text-muted)">Rival</div></div>
+                </div></div>`;
+        }
+    }
+    async function reactionArm() {
+        const field = myRole==='host'?'state.hostArm':'state.guestArm';
+        await roomRef.update({ [field]: true });
+    }
+    async function submitReaction(ms) {
+        const cur = myRole==='host'?roomData.state.hostTime:roomData.state.guestTime;
+        if (cur !== null) return;
+        const field = myRole==='host'?'state.hostTime':'state.guestTime';
+        await roomRef.update({ [field]: ms });
+    }
+
+    /* ---- Math Sprint ---- */
+    function renderMath(r) {
+        const s = r.state;
+        const myIdx = myRole==='host'?s.hostIdx:s.guestIdx;
+        const myCorrect = myRole==='host'?s.hostCorrect:s.guestCorrect;
+        const oppCorrect = myRole==='host'?s.guestCorrect:s.hostCorrect;
+        const remain = Math.max(0, Math.ceil((s.endsAt - Date.now())/1000));
+        const status = document.getElementById('game-status');
+        status.innerHTML = `⏱ <span style="color:#fbbf24">${remain}s</span> · You ${myCorrect} correct · Rival ${oppCorrect}`;
+        status.style.color = 'var(--text-secondary)';
+        const wrap = document.getElementById('game-board');
+        if (myIdx >= s.questions.length) {
+            wrap.innerHTML = `<div class="text-center"><div class="text-5xl mb-3">✅</div><div class="font-extrabold text-lg" style="color:var(--text-heading)">All ${s.questions.length} done!</div><div class="text-sm mt-1" style="color:var(--text-muted)">Waiting for the clock…</div></div>`;
+        } else {
+            const q = s.questions[myIdx];
+            wrap.innerHTML = `<div class="w-full max-w-sm">
+                <div class="text-center mb-5"><span class="text-4xl font-extrabold" style="color:var(--text-heading)">${q.a} ${q.op} ${q.b}</span></div>
+                <div class="grid grid-cols-2 gap-3" id="math-opts"></div>
+                <div class="text-center text-xs mt-4" style="color:var(--text-muted)">Question ${myIdx+1} of ${s.questions.length}</div>
+            </div>`;
+            const og = document.getElementById('math-opts');
+            q.opts.forEach(opt => {
+                const b = document.createElement('button'); b.className = 'math-opt'; b.textContent = opt;
+                b.onclick = () => mathAnswer(opt, q.ans, b);
+                og.appendChild(b);
+            });
+        }
+        // keep timer ticking locally
+        if (!gameLocalTimer) gameLocalTimer = setInterval(() => { if (roomData && roomData.game==='math' && roomData.status==='playing') renderMath(roomData); else { clearInterval(gameLocalTimer); gameLocalTimer=null; } }, 250);
+    }
+    let mathLock = false;
+    async function mathAnswer(opt, ans, btn) {
+        if (mathLock || !roomData || roomData.game!=='math') return;
+        mathLock = true;
+        const correct = opt === ans;
+        btn.classList.add(correct?'correct':'wrong');
+        const idxField = myRole==='host'?'state.hostIdx':'state.guestIdx';
+        const corField = myRole==='host'?'state.hostCorrect':'state.guestCorrect';
+        const update = { [idxField]: FieldValue.increment(1) };
+        if (correct) update[corField] = FieldValue.increment(1);
+        setTimeout(async () => { await roomRef.update(update); mathLock = false; }, correct?180:420);
+    }
+
+    /* ============================================================
+       RESULT + REMATCH
+    ============================================================ */
+    function renderResult(r) {
+        if (gameLocalTimer) { clearInterval(gameLocalTimer); gameLocalTimer = null; }
+        showView('result-view');
+        const meHost = myRole==='host';
+        const myScore = meHost?r.scoreHost:r.scoreGuest;
+        const oppScore = meHost?r.scoreGuest:r.scoreHost;
+        const iWon = r.winner !== 'draw' && r.winner === currentUser.uid;
+        const draw = r.winner === 'draw';
+        document.getElementById('result-emoji').textContent = draw?'🤝':(iWon?'🏆':'💥');
+        document.getElementById('result-title').textContent = draw?'Draw':(iWon?'Victory!':'Defeated');
+        document.getElementById('result-title').style.color = draw?'var(--text-heading)':(iWon?'#34d399':'#f87171');
+        document.getElementById('result-sub').textContent = draw?'Evenly matched.':(iWon?'You took the match.':'Better luck next round.');
+        document.getElementById('result-bar').className = `absolute top-0 left-0 w-full h-1 ${draw?'bg-gradient-to-r from-slate-400 to-slate-500':(iWon?'bg-gradient-to-r from-emerald-500 to-teal-500':'bg-gradient-to-r from-red-500 to-rose-500')}`;
+        document.getElementById('result-p1-score').textContent = myScore||0;
+        document.getElementById('result-p2-score').textContent = oppScore||0;
+        document.getElementById('result-p1-name').textContent = meHost?r.hostName:r.guestName;
+        document.getElementById('result-p2-name').textContent = meHost?r.guestName:r.hostName;
+        const myRematch = meHost?r.rematchHost:r.rematchGuest;
+        const oppRematch = meHost?r.rematchGuest:r.rematchHost;
+        const rb = document.getElementById('rematch-btn');
+        rb.textContent = myRematch?'Waiting…':'Rematch';
+        rb.disabled = myRematch;
+        document.getElementById('rematch-hint').textContent = oppRematch && !myRematch ? 'Rival wants a rematch!' : (myRematch ? 'Waiting for rival to accept…' : '');
+        // host triggers rematch reset when both agree
+        if (myRole==='host' && r.rematchHost && r.rematchGuest) {
+            roomRef.update({ status:'countdown', countdownAt: Date.now(), winner:null, statsRecorded:false, scoreHost:0, scoreGuest:0, hostReady:true, guestReady:true, rematchHost:false, rematchGuest:false, pendingFinish: FieldValue.delete() });
+        }
+    }
+    async function requestRematch() {
+        if (!roomRef) return;
+        const field = myRole==='host'?'rematchHost':'rematchGuest';
+        await roomRef.update({ [field]: true });
+    }
+
+    /* ============================================================
+       REACTIONS (emoji)
+    ============================================================ */
+    async function sendReaction(emoji) {
+        floatEmoji(emoji);
+        if (roomRef) await roomRef.update({ reaction: { emoji, by: currentUser.uid, at: Date.now() } });
+    }
+    function floatEmoji(emoji) {
+        const c = document.getElementById('emoji-container');
+        for (let i=0;i<3;i++) {
+            const el = document.createElement('div');
+            el.className = 'emoji-reaction'; el.textContent = emoji;
+            el.style.left = (40 + Math.random()*20) + '%';
+            el.style.bottom = '15%';
+            el.style.animationDelay = (i*0.12)+'s';
+            c.appendChild(el);
+            setTimeout(() => el.remove(), 3200);
+        }
+    }
+
+    /* ============================================================
+       FRIENDS
+    ============================================================ */
+    let friendReqUnsub = null, friendsCache = {};
+    function subscribeFriendRequests() {
+        if (friendReqUnsub) friendReqUnsub();
+        friendReqUnsub = db.collection('friendRequests').where('to','==',currentUser.uid).onSnapshot(snap => {
+            const reqs = []; snap.forEach(d => { const r = d.data(); if (r.status==='pending') reqs.push({ id:d.id, ...r }); });
+            renderFriendRequests(reqs);
+        });
+    }
+    function renderFriendRequests(reqs) {
+        const wrap = document.getElementById('friend-requests');
+        wrap.innerHTML = '';
+        reqs.forEach(r => {
+            const el = document.createElement('div');
+            el.className = 'flex items-center gap-2 rounded-xl p-2 animate-slide-down';
+            el.style.cssText += 'background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2)';
+            el.innerHTML = `<div class="avatar w-8 h-8 text-xs">${(r.fromName||'?').charAt(0).toUpperCase()}</div>
+                <div class="flex-1 min-w-0"><p class="text-xs font-bold truncate" style="color:var(--text-heading)">${r.fromName}</p><p class="text-[10px]" style="color:var(--text-muted)">wants to be friends</p></div>
+                <button class="px-2 py-1 rounded-lg bg-emerald-600 text-white text-[11px] font-bold hover:bg-emerald-500">Accept</button>
+                <button class="px-2 py-1 rounded-lg glass-input text-[11px] font-bold" style="color:var(--text-secondary)">✕</button>`;
+            const [accept, decline] = el.querySelectorAll('button');
+            accept.onclick = () => acceptFriend(r);
+            decline.onclick = () => declineFriend(r);
+            wrap.appendChild(el);
+        });
+    }
+    async function acceptFriend(r) {
+        try {
+            await db.collection('users').doc(currentUser.uid).update({ friends: FieldValue.arrayUnion(r.from) });
+            await db.collection('users').doc(r.from).update({ friends: FieldValue.arrayUnion(currentUser.uid) });
+            await db.collection('friendRequests').doc(r.id).delete();
+            showToast(`You and ${r.fromName} are now friends!`);
+        } catch(e) { showToast('Could not accept.', 'error'); }
+    }
+    async function declineFriend(r) { try { await db.collection('friendRequests').doc(r.id).delete(); } catch(e){} }
+
+    async function addFriend() {
+        const uname = await showPrompt('Add a friend', 'Enter their exact username:', { placeholder: 'username' });
+        if (!uname) return;
+        if (uname.toLowerCase() === (myProfile.username||'').toLowerCase()) { showToast("That's you!", 'error'); return; }
+        try {
+            const q = await db.collection('users').where('usernameLower','==',uname.toLowerCase()).limit(1).get();
+            if (q.empty) { showToast('No player with that username.', 'error'); return; }
+            const target = q.docs[0];
+            if ((myProfile.friends||[]).includes(target.id)) { showToast('Already friends.', 'info'); return; }
+            // avoid duplicate pending request
+            const existing = await db.collection('friendRequests').where('to','==',target.id).get();
+            let dup = false; existing.forEach(d => { if (d.data().from === currentUser.uid && d.data().status==='pending') dup = true; });
+            if (dup) { showToast('Request already sent.', 'info'); return; }
+            await db.collection('friendRequests').add({ from: currentUser.uid, fromName: myProfile.username, to: target.id, status: 'pending', createdAt: Date.now() });
+            showToast('Friend request sent!');
+        } catch(e) { showToast('Could not send request.', 'error'); }
+    }
+
+    async function renderFriends() {
+        const wrap = document.getElementById('friends-list');
+        const friends = (myProfile && myProfile.friends) || [];
+        if (!friends.length) { wrap.innerHTML = `<p class="text-xs text-center py-3" style="color:var(--text-muted)">No friends yet. Add one to challenge them.</p>`; return; }
+        // fetch any missing
+        const toFetch = friends.filter(uid => !friendsCache[uid]);
+        await Promise.all(toFetch.map(async uid => { try { const s = await db.collection('users').doc(uid).get(); if (s.exists) friendsCache[uid] = s.data(); } catch(e){} }));
+        wrap.innerHTML = '';
+        friends.forEach(uid => {
+            const f = friendsCache[uid]; if (!f) return;
+            const el = document.createElement('div');
+            el.className = 'flex items-center gap-2 rounded-xl p-2 hover:bg-white/5 transition-colors';
+            el.innerHTML = `<div class="avatar w-8 h-8 text-xs">${f.photoURL?`<img src="${f.photoURL}" class="w-full h-full rounded-full object-cover">`:(f.username||'?').charAt(0).toUpperCase()}</div>
+                <div class="flex-1 min-w-0"><p class="text-xs font-bold truncate" style="color:var(--text-heading)">${f.username}</p><p class="text-[10px]" style="color:var(--text-muted)">${f.wins||0}W · ${f.losses||0}L</p></div>
+                <button class="px-2.5 py-1 rounded-lg bg-indigo-600 text-white text-[11px] font-bold hover:bg-indigo-500 btn-lift">Challenge</button>`;
+            el.querySelector('button').onclick = () => challengeFriend(uid, f.username);
+            wrap.appendChild(el);
+        });
+    }
+    async function challengeFriend(uid, name) {
+        modalTitle.innerText = `Challenge ${name}`;
+        modalMsg.innerText = 'Pick a game — they get an invite to your room:';
+        modalCancelBtn.classList.remove('hidden'); modalCancelBtn.innerText = 'Cancel';
+        modalConfirmBtn.classList.add('hidden');
+        modalIcon.className = 'w-12 h-12 rounded-full bg-indigo-500/20 flex items-center justify-center mb-4 text-indigo-400';
+        const old = document.getElementById('modal-input'); if (old) old.remove();
+        const picker = document.createElement('div'); picker.id = 'modal-input'; picker.className = 'grid grid-cols-2 gap-2 mt-4';
+        picker.innerHTML = Object.entries(GAMES).map(([k,g]) => `<button data-g="${k}" class="rounded-xl p-3 text-left glass-input hover:border-indigo-500/40 transition-all"><div class="text-xl">${g.emoji}</div><div class="font-bold text-xs mt-1" style="color:var(--text-heading)">${g.name}</div></button>`).join('');
+        modalMsg.insertAdjacentElement('afterend', picker);
+        picker.querySelectorAll('button').forEach(b => b.onclick = () => { toggleModal(false); picker.remove(); modalConfirmBtn.classList.remove('hidden'); hostGame(b.dataset.g, uid); });
+        modalCancelBtn.onclick = () => { toggleModal(false); picker.remove(); modalConfirmBtn.classList.remove('hidden'); };
+        toggleModal(true);
+    }
+
+    /* ============================================================
+       INVITES
+    ============================================================ */
+    let invitesUnsub = null;
+    function subscribeInvites() {
+        if (invitesUnsub) invitesUnsub();
+        invitesUnsub = db.collection('invites').where('to','==',currentUser.uid).onSnapshot(snap => {
+            const invites = []; snap.forEach(d => invites.push({ id:d.id, ...d.data() }));
+            invites.sort((a,b)=> (b.createdAt||0)-(a.createdAt||0));
+            renderInvites(invites.slice(0,4));
+        });
+    }
+    function renderInvites(invites) {
+        const wrap = document.getElementById('invites-banner');
+        if (!invites.length) { wrap.classList.add('hidden'); wrap.innerHTML=''; return; }
+        wrap.classList.remove('hidden'); wrap.innerHTML = '';
+        invites.forEach(inv => {
+            const g = GAMES[inv.game] || { name:'a game', emoji:'🎮' };
+            const el = document.createElement('div');
+            el.className = 'glass-panel rounded-xl p-3 flex items-center gap-3 animate-slide-down';
+            el.innerHTML = `<div class="w-9 h-9 rounded-xl flex items-center justify-center text-lg bg-indigo-500/15">${g.emoji}</div>
+                <div class="flex-1 min-w-0"><p class="text-sm font-bold truncate" style="color:var(--text-heading)">${inv.fromName} challenged you</p><p class="text-[11px]" style="color:var(--text-muted)">${g.name} · room ${inv.code}</p></div>
+                <button class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-500 btn-lift">Join</button>
+                <button class="px-2 py-1.5 rounded-lg glass-input text-xs font-bold" style="color:var(--text-secondary)">✕</button>`;
+            const [join, dismiss] = el.querySelectorAll('button');
+            join.onclick = async () => { await db.collection('invites').doc(inv.id).delete().catch(()=>{}); joinRoomByCode(inv.code); };
+            dismiss.onclick = async () => { await db.collection('invites').doc(inv.id).delete().catch(()=>{}); };
+            wrap.appendChild(el);
+        });
+    }
+
+    /* ============================================================
+       LEADERBOARD
+    ============================================================ */
+    let currentLB = 'daily';
+    function switchLeaderboard(type) {
+        currentLB = type;
+        document.querySelectorAll('.lb-tab').forEach(t => t.classList.toggle('active', t.dataset.lb===type));
+        loadLeaderboard();
+    }
+    async function loadLeaderboard() {
+        const list = document.getElementById('leaderboard-list');
+        list.innerHTML = `<div class="loader" style="width:24px;height:24px;border-width:2px"></div>`;
+        try {
+            let rows = [];
+            if (currentLB === 'daily') {
+                const today = todayKey();
+                const snap = await db.collection('users').where('lastWinDate','==',today).orderBy('dailyWins','desc').limit(10).get().catch(async () => {
+                    // fallback if composite index missing: just order by dailyWins
+                    return await db.collection('users').orderBy('dailyWins','desc').limit(15).get();
+                });
+                snap.forEach(d => { const u = d.data(); if (u.lastWinDate===today && (u.dailyWins||0)>0) rows.push({ uid:d.id, name:u.username, val:u.dailyWins, photo:u.photoURL }); });
+                rows = rows.slice(0,10);
+            } else if (currentLB === 'wins') {
+                const snap = await db.collection('users').orderBy('wins','desc').limit(10).get();
+                snap.forEach(d => { const u = d.data(); if ((u.wins||0)>0) rows.push({ uid:d.id, name:u.username, val:u.wins, photo:u.photoURL }); });
+            } else {
+                const snap = await db.collection('users').orderBy('streak','desc').limit(10).get();
+                snap.forEach(d => { const u = d.data(); if ((u.streak||0)>0) rows.push({ uid:d.id, name:u.username, val:u.streak, photo:u.photoURL }); });
+            }
+            if (!rows.length) { list.innerHTML = `<p class="text-xs text-center py-4" style="color:var(--text-muted)">No entries yet. Win a match to appear here.</p>`; return; }
+            const unit = currentLB==='streak'?'🔥':(currentLB==='daily'?'today':'wins');
+            list.innerHTML = '';
+            rows.forEach((r, i) => {
+                const medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':`<span class="text-xs font-bold" style="color:var(--text-muted)">${i+1}</span>`;
+                const me = r.uid === currentUser.uid;
+                const el = document.createElement('div');
+                el.className = `flex items-center gap-2.5 rounded-xl px-2.5 py-2 ${me?'':''}`;
+                el.style.background = me ? 'rgba(99,102,241,0.1)' : 'var(--bg-input)';
+                if (me) el.style.border = '1px solid rgba(99,102,241,0.3)';
+                el.innerHTML = `<div class="w-6 text-center">${medal}</div>
+                    <div class="avatar w-7 h-7 text-[11px]">${r.photo?`<img src="${r.photo}" class="w-full h-full rounded-full object-cover">`:(r.name||'?').charAt(0).toUpperCase()}</div>
+                    <span class="flex-1 text-xs font-bold truncate" style="color:var(--text-heading)">${r.name}${me?' <span style=\"color:var(--text-muted);font-weight:600\">(you)</span>':''}</span>
+                    <span class="text-sm font-extrabold" style="color:#a5b4fc">${r.val}${currentLB==='streak'?' 🔥':''}</span>`;
+                list.appendChild(el);
+            });
+        } catch(e) {
+            console.error(e);
+            list.innerHTML = `<p class="text-xs text-center py-4" style="color:var(--text-muted)">Couldn't load the leaderboard.</p>`;
+        }
+    }
+
+    /* ============================================================
+       REPORTS
+    ============================================================ */
+    async function openReport() {
+        const uname = await showPrompt('Report a player', 'Enter the username of the player you want to report:', { placeholder: 'username' });
+        if (!uname) return;
+        const reason = await showPrompt('Reason', `Why are you reporting ${uname}? (e.g. cheating, abuse, leaving)`, { placeholder: 'Describe the issue' });
+        if (!reason) return;
+        try {
+            let reportedUid = null;
+            const q = await db.collection('users').where('usernameLower','==',uname.toLowerCase()).limit(1).get();
+            if (!q.empty) reportedUid = q.docs[0].id;
+            await db.collection('reports').add({
+                reporter: currentUser.uid, reporterName: myProfile.username,
+                reportedName: uname, reportedUid, reason,
+                roomCode: roomCode || null, createdAt: Date.now()
+            });
+            showToast('Report submitted. Thanks for keeping it fair.');
+        } catch(e) { showToast('Could not submit report.', 'error'); }
+    }
+
+    /* ============================================================
+       CLEANUP
+    ============================================================ */
+    function cleanupSubscriptions() {
+        if (profileUnsub) { profileUnsub(); profileUnsub = null; }
+        if (friendReqUnsub) { friendReqUnsub(); friendReqUnsub = null; }
+        if (invitesUnsub) { invitesUnsub(); invitesUnsub = null; }
+        if (roomUnsub) { roomUnsub(); roomUnsub = null; }
+        stopHeartbeat(); stopHostTick();
+        friendsCache = {};
+    }
+
+    /* ============================================================
+       WIRE UP EVENTS
+    ============================================================ */
+    window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('login-button').addEventListener('click', handleLogin);
+        document.getElementById('signup-button').addEventListener('click', handleSignup);
+        document.getElementById('google-login-btn').addEventListener('click', handleGoogle);
+        document.getElementById('google-signup-btn').addEventListener('click', handleGoogle);
+        document.getElementById('show-signup').addEventListener('click', () => toggleAuthView('signup'));
+        document.getElementById('show-login').addEventListener('click', () => toggleAuthView('login'));
+        document.getElementById('logout-button').addEventListener('click', logout);
+        document.getElementById('join-room-btn').addEventListener('click', () => joinRoomByCode(document.getElementById('join-code-input').value));
+        document.getElementById('join-code-input').addEventListener('keydown', e => { if (e.key==='Enter') joinRoomByCode(e.target.value); });
+        document.getElementById('ready-btn').addEventListener('click', toggleReady);
+        document.getElementById('rematch-btn').addEventListener('click', requestRematch);
+        document.getElementById('add-friend-btn').addEventListener('click', addFriend);
+        document.getElementById('report-btn').addEventListener('click', openReport);
+        document.getElementById('profile-button').addEventListener('click', () => {
+            if (!myProfile) return;
+            const daily = myProfile.lastWinDate===todayKey()?(myProfile.dailyWins||0):0;
+            showAlert(myProfile.username, `Wins: ${myProfile.wins||0}\nLosses: ${myProfile.losses||0}\nCurrent streak: ${myProfile.streak||0}\nWins today: ${daily}\nFriends: ${(myProfile.friends||[]).length}`);
+        });
+        document.getElementById('login-password').addEventListener('keydown', e => { if (e.key==='Enter') handleLogin(); });
+        document.getElementById('signup-password').addEventListener('keydown', e => { if (e.key==='Enter') handleSignup(); });
+    });
+
+    // Guest-triggered finish handoff (host watches pendingFinish)
+    setInterval(() => {
+        if (myRole === 'host' && roomData && roomData.pendingFinish && roomData.status === 'playing') {
+            const pf = roomData.pendingFinish;
+            roomRef.update({ pendingFinish: FieldValue.delete() });
+            finishMatch(pf.winnerRole, pf.sh, pf.sg);
+        }
+    }, 500);
+
+    // Leave room cleanly on tab close
+    window.addEventListener('beforeunload', () => {
+        if (roomCode && myRole === 'host' && roomRef) { try { roomRef.delete(); } catch(e){} }
+    });
+    </script>
+</body>
+</html>
