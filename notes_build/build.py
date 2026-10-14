@@ -191,7 +191,39 @@ def g_box(args):
     return fig("".join(out), cap)
 
 
-GENS = {"flow": g_flow, "plot": g_plot, "compare": g_compare, "timeline": g_timeline, "cross": g_cross, "gbox": g_box}
+def g_svgfile(args):
+    """svgfile:name|caption  -> inline figs/name.svg"""
+    svg = (ROOT / "figs" / f"{args[0]}.svg").read_text(encoding="utf-8")
+    return fig(svg, args[1] if len(args) > 1 else "")
+
+
+GENS = {"svgfile": g_svgfile, "flow": g_flow, "plot": g_plot, "compare": g_compare, "timeline": g_timeline, "cross": g_cross, "gbox": g_box}
+
+
+def expand_qa(text):
+    """<qa>ref || question || answer</qa> and <mcq>ref || question || ans || reason</mcq> blocks -> tables"""
+    def mk(kind):
+        def rep(m):
+            rows = []
+            for ln in m.group(1).strip().splitlines():
+                ln = ln.strip()
+                if not ln:
+                    continue
+                cells = [c.strip() for c in ln.split(" || ")]
+                if kind == "mcq":
+                    while len(cells) < 4:
+                        cells.append("")
+                    rows.append(f'<tr><td style="width:11%"><b>{cells[0]}</b></td><td>{cells[1]}</td><td class="c" style="width:7%"><span class="ans">{cells[2]}</span></td><td style="width:38%">{cells[3]}</td></tr>')
+                else:
+                    while len(cells) < 3:
+                        cells.append("")
+                    rows.append(f'<tr><td style="width:11%"><b>{cells[0]}</b></td><td style="width:34%">{cells[1]}</td><td>{cells[2]}</td></tr>')
+            head = '<tr><th>Ref</th><th>Question</th><th class="c">Ans</th><th>Why</th></tr>' if kind == "mcq" else '<tr><th>Ref</th><th>Question</th><th>Answer and working</th></tr>'
+            return f'<table>{head}{"".join(rows)}</table>'
+        return rep
+    text = re.sub(r"<mcq>(.*?)</mcq>", mk("mcq"), text, flags=re.S)
+    text = re.sub(r"<qa>(.*?)</qa>", mk("qa"), text, flags=re.S)
+    return text
 
 
 def expand(text):
@@ -260,10 +292,10 @@ def find_pages(pdf, titles):
 
 def main():
     key = sys.argv[1]
-    titles = {"e1": "BCSE Class X English I - Writing & Grammar Notes", "e2": "BCSE Class X English II - Literature Notes"}
+    titles = {"e1": "BCSE Class X English I - Writing & Grammar Notes", "e2": "BCSE Class X English II - Literature Notes", "p": "BCSE Class X Physics - Exam Notes"}
     parts = sorted((ROOT / "parts").glob(f"{key}_*.html"))
     body = "\n".join(p.read_text(encoding="utf-8") for p in parts)
-    body = count_essays(expand(body), key)
+    body = count_essays(expand(expand_qa(body)), key)
     ch = chapter_titles(body)
     pdf = render(key, titles[key], body, toc_html(ch, {}))
     pages = find_pages(pdf, ch)
