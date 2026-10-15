@@ -1,0 +1,104 @@
+{
+ "map_asia": {
+  "title": "File:Asia satellite orthographic.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Asia_satellite_orthographic.jpg",
+  "author": "Unknown",
+  "license": "Public domain"
+ },
+ "map_bhutan_places": {
+  "title": "File:BhutanOMC.png",
+  "url": "https://commons.wikimedia.org/wiki/File:BhutanOMC.png",
+  "author": "Kelisi at English Wikipedia",
+  "license": "CC BY-SA 3.0"
+ },
+ "map_bhutan_physical": {
+  "title": "File:Bhutan physical map.svg",
+  "url": "https://commons.wikimedia.org/wiki/File:Bhutan_physical_map.svg",
+  "author": "Urutseg",
+  "license": "CC0"
+ },
+ "map_bhutan_regions": {
+  "title": "File:Bhutan regions map.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Bhutan_regions_map.png",
+  "author": "Peter Fitzgerald",
+  "license": "CC BY 3.0"
+ },
+ "map_bhutan_relief": {
+  "title": "File:Bhutan topo en.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Bhutan_topo_en.jpg",
+  "author": "Unknown",
+  "license": "CC BY-SA 3.0"
+ },
+ "crane": {
+  "title": "File:Black necked crane at Hanle.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Black_necked_crane_at_Hanle.jpg",
+  "author": "Sumeetmoghe",
+  "license": "CC BY-SA 4.0"
+ },
+ "dunes": {
+  "title": "File:Dunas de Maspalomas.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Dunas_de_Maspalomas.jpg",
+  "author": "Himarerme",
+  "license": "Public domain"
+ },
+ "gangkhar": {
+  "title": "File:Gangkhar puensum summit.JPG",
+  "url": "https://commons.wikimedia.org/wiki/File:Gangkhar_puensum_summit.JPG",
+  "author": "Gradythebadger",
+  "license": "CC BY-SA 4.0"
+ },
+ "map_himalaya": {
+  "title": "File:Himalayas and allied ranges NASA Landsat showing the eight thousanders, annotated with major rivers.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders,_annotated_with_major_rivers.jpg",
+  "author": "NASA Landsat image",
+  "license": "Public domain"
+ },
+ "map_bhutan_climate": {
+  "title": "File:Koppen-Geiger Map BTN present.svg",
+  "url": "https://commons.wikimedia.org/wiki/File:Koppen-Geiger_Map_BTN_present.svg",
+  "author": "Beck, H.E., Zimmermann, N. E., McVicar, T. R., Vergopolan, N., Berg, A., & Wood, E. F.",
+  "license": "CC BY 4.0"
+ },
+ "speleothems": {
+  "title": "File:Labeled speleothems.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Labeled_speleothems.jpg",
+  "author": "Dave Bunnell / Under Earth Images",
+  "license": "CC BY-SA 2.5"
+ },
+ "nebula": {
+  "title": "File:Orion Nebula - Hubble 2006 mosaic.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Orion_Nebula_-_Hubble_2006_mosaic.jpg",
+  "author": "NASA, ESA, M. Robberto (Space Telescope Science Institute/ESA) and the Hubble Space Telescope Orion Treasury Project Team",
+  "license": "Public domain"
+ },
+ "map_plates": {
+  "title": "File:Tectonic plates (2022).svg",
+  "url": "https://commons.wikimedia.org/wiki/File:Tectonic_plates_(2022).svg",
+  "author": "M.Bitton",
+  "license": "CC BY-SA 3.0"
+ },
+ "earth": {
+  "title": "File:The Blue Marble (remastered).jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:The_Blue_Marble_(remastered).jpg",
+  "author": "NASA/Apollo 17 crew; taken by either Harrison Schmitt or Ron Evans",
+  "license": "Public domain"
+ },
+ "phobjikha": {
+  "title": "File:The Phobjikha Valley in Autumn.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:The_Phobjikha_Valley_in_Autumn.jpg",
+  "author": "Phuentsho",
+  "license": "CC BY-SA 4.0"
+ },
+ "takin": {
+  "title": "File:Thimphu-Takin-Reservat-06-2015-gje.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Thimphu-Takin-Reservat-06-2015-gje.jpg",
+  "author": "Gerd Eichmann",
+  "license": "CC BY-SA 4.0"
+ },
+ "map_timezones": {
+  "title": "File:World Time Zones Map.png",
+  "url": "https://commons.wikimedia.org/wiki/File:World_Time_Zones_Map.png",
+  "author": "UnaitxuGV, Heitordp and others",
+  "license": "Public domain"
+ }
+}

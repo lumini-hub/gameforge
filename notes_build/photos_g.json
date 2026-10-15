@@ -1,0 +1,53 @@
+{
+ "earth": {
+  "file": "File:The Blue Marble (remastered).jpg"
+ },
+ "nebula": {
+  "file": "File:Orion Nebula - Hubble 2006 mosaic.jpg"
+ },
+ "gangkhar": {
+  "file": "File:Gangkhar puensum summit.JPG"
+ },
+ "dunes": {
+  "file": "File:Dunas de Maspalomas.jpg"
+ },
+ "speleothems": {
+  "file": "File:Labeled speleothems.jpg"
+ },
+ "phobjikha": {
+  "file": "File:The Phobjikha Valley in Autumn.jpg"
+ },
+ "crane": {
+  "file": "File:Black necked crane at Hanle.jpg"
+ },
+ "takin": {
+  "file": "File:Thimphu-Takin-Reservat-06-2015-gje.jpg"
+ },
+ "map_bhutan_relief": {
+  "file": "File:Bhutan topo en.jpg"
+ },
+ "map_bhutan_places": {
+  "file": "File:BhutanOMC.png"
+ },
+ "map_bhutan_physical": {
+  "file": "File:Bhutan physical map.svg"
+ },
+ "map_bhutan_climate": {
+  "file": "File:Koppen-Geiger Map BTN present.svg"
+ },
+ "map_plates": {
+  "file": "File:Tectonic plates (2022).svg"
+ },
+ "map_timezones": {
+  "file": "File:World Time Zones Map.png"
+ },
+ "map_himalaya": {
+  "file": "File:Himalayas and allied ranges NASA Landsat showing the eight thousanders, annotated with major rivers.jpg"
+ },
+ "map_asia": {
+  "file": "File:Asia satellite orthographic.jpg"
+ },
+ "map_bhutan_regions": {
+  "file": "File:Bhutan regions map.png"
+ }
+}

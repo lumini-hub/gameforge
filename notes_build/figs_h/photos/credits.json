@@ -58,5 +58,65 @@
   "url": "https://commons.wikimedia.org/wiki/File:Jakar_tshechu,_Ging_Tsholing_Cham,_Ging_(15657676898).jpg",
   "author": "Arian Zwegers from Brussels, Belgium",
   "license": "CC BY 2.0"
+ },
+ "map_exploration": {
+  "title": "File:16th century Portuguese Spanish trade routes.png",
+  "url": "https://commons.wikimedia.org/wiki/File:16th_century_Portuguese_Spanish_trade_routes.png",
+  "author": "World_Topography.jpg: NASA/JPL/NIMA\nderivative work: Uxbona (talk)",
+  "license": "Public domain"
+ },
+ "map_slave_trade": {
+  "title": "File:African Slave Trade.png",
+  "url": "https://commons.wikimedia.org/wiki/File:African_Slave_Trade.png",
+  "author": "KuroNekoNiyah",
+  "license": "CC BY-SA 4.0"
+ },
+ "map_indus": {
+  "title": "File:Indus Valley Civilization, Mature Phase (2600-1900 BCE).png",
+  "url": "https://commons.wikimedia.org/wiki/File:Indus_Valley_Civilization,_Mature_Phase_(2600-1900_BCE).png",
+  "author": "Avantiputra7",
+  "license": "CC BY-SA 3.0"
+ },
+ "king4": {
+  "title": "File:Jigme Singye Wangchuck.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Jigme_Singye_Wangchuck.jpg",
+  "author": "U.S. Department of State",
+  "license": "Public domain"
+ },
+ "king5": {
+  "title": "File:King Jigme Khesar Namgyel Wangchuck (edit).jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:King_Jigme_Khesar_Namgyel_Wangchuck_(edit).jpg",
+  "author": "Royal Family of Bhutan",
+  "license": "CC BY-SA 3.0"
+ },
+ "map_triangle": {
+  "title": "File:Map of the Triangular trade.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Map_of_the_Triangular_trade.jpg",
+  "author": "Jefunky",
+  "license": "CC0"
+ },
+ "map_ashoka": {
+  "title": "File:Maurya Empire, c.250 BCE.png",
+  "url": "https://commons.wikimedia.org/wiki/File:Maurya_Empire,_c.250_BCE.png",
+  "author": "Avantiputra7",
+  "license": "CC BY-SA 3.0"
+ },
+ "ugyen_wangchuck": {
+  "title": "File:Sir Ugyen Wangchuck and his councillors at Punakha, Bhutan, 1905.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Sir_Ugyen_Wangchuck_and_his_councillors_at_Punakha,_Bhutan,_1905.jpg",
+  "author": "John Claude White",
+  "license": "Public domain"
+ },
+ "tashichho": {
+  "title": "File:Tashichho Dzong, Bhutan 03.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Tashichho_Dzong,_Bhutan_03.jpg",
+  "author": "Bernard Gagnon",
+  "license": "CC BY-SA 4.0"
+ },
+ "trongsa_dzong": {
+  "title": "File:Trongsa Dzong 2021-10-24a.jpg",
+  "url": "https://commons.wikimedia.org/wiki/File:Trongsa_Dzong_2021-10-24a.jpg",
+  "author": "Christopher J. Fynn",
+  "license": "CC BY-SA 4.0"
  }
 }

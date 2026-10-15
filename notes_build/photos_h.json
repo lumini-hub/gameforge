@@ -1,17 +1,77 @@
 {
- "indus_greatbath": {"file": "File:Great Bath of Mohenjo-daro.jpg", "w": 640},
- "buddha_gandhara": {"file": "File:Standing Buddha Gandhara. Musée des arts asiatiques Guimet.jpg", "w": 480},
- "dhamek_stupa": {"file": "File:The Dhamek Stupa , 500 CE ,Sarnath, Varanasi Uttar Pradesh.jpg", "w": 640},
- "ashoka_pillar": {"file": "File:Lauriya Nandangarh Ashoka Pillar front.jpg", "w": 480},
- "caravel": {"file": "File:Barcelona - Replica of Santa Maria Caravel.jpg", "w": 640},
- "slave_ship": {"file": "File:Brookes slave ship, British Library (cropped).jpg", "w": 640},
- "zhabdrung": {"file": "File:Portrait of Zhabdrung Ngawang Namgyal MET DP-21711-001.jpg", "w": 480},
- "punakha_dzong": {"file": "File:Punakha Dzong, Bhutan 05.jpg", "w": 640},
- "taktsang": {"file": "File:Taktsang Monastery, Bhutan 01.jpg", "w": 640},
- "mask_dance": {"file": "File:Jakar tshechu, Ging Tsholing Cham, Ging (15657676898).jpg", "w": 640},
- "ugyen_wangchuck": {"file": "File:Sir Ugyen Wangchuck and his councillors at Punakha, Bhutan, 1905.jpg", "w": 640},
- "trongsa_dzong": {"file": "File:Trongsa Dzong 2021-10-24a.jpg", "w": 640},
- "king4": {"file": "File:Jigme Singye Wangchuck.jpg", "w": 332},
- "king5": {"file": "File:King Jigme Khesar Namgyel Wangchuck (edit).jpg", "w": 480},
- "tashichho": {"file": "File:Tashichho Dzong, Bhutan 03.jpg", "w": 640}
+ "indus_greatbath": {
+  "file": "File:Great Bath of Mohenjo-daro.jpg",
+  "w": 640
+ },
+ "buddha_gandhara": {
+  "file": "File:Standing Buddha Gandhara. Musée des arts asiatiques Guimet.jpg",
+  "w": 480
+ },
+ "dhamek_stupa": {
+  "file": "File:The Dhamek Stupa , 500 CE ,Sarnath, Varanasi Uttar Pradesh.jpg",
+  "w": 640
+ },
+ "ashoka_pillar": {
+  "file": "File:Lauriya Nandangarh Ashoka Pillar front.jpg",
+  "w": 480
+ },
+ "caravel": {
+  "file": "File:Barcelona - Replica of Santa Maria Caravel.jpg",
+  "w": 640
+ },
+ "slave_ship": {
+  "file": "File:Brookes slave ship, British Library (cropped).jpg",
+  "w": 640
+ },
+ "zhabdrung": {
+  "file": "File:Portrait of Zhabdrung Ngawang Namgyal MET DP-21711-001.jpg",
+  "w": 480
+ },
+ "punakha_dzong": {
+  "file": "File:Punakha Dzong, Bhutan 05.jpg",
+  "w": 640
+ },
+ "taktsang": {
+  "file": "File:Taktsang Monastery, Bhutan 01.jpg",
+  "w": 640
+ },
+ "mask_dance": {
+  "file": "File:Jakar tshechu, Ging Tsholing Cham, Ging (15657676898).jpg",
+  "w": 640
+ },
+ "ugyen_wangchuck": {
+  "file": "File:Sir Ugyen Wangchuck and his councillors at Punakha, Bhutan, 1905.jpg",
+  "w": 640
+ },
+ "trongsa_dzong": {
+  "file": "File:Trongsa Dzong 2021-10-24a.jpg",
+  "w": 640
+ },
+ "king4": {
+  "file": "File:Jigme Singye Wangchuck.jpg",
+  "w": 332
+ },
+ "king5": {
+  "file": "File:King Jigme Khesar Namgyel Wangchuck (edit).jpg",
+  "w": 480
+ },
+ "tashichho": {
+  "file": "File:Tashichho Dzong, Bhutan 03.jpg",
+  "w": 640
+ },
+ "map_indus": {
+  "file": "File:Indus Valley Civilization, Mature Phase (2600-1900 BCE).png"
+ },
+ "map_ashoka": {
+  "file": "File:Maurya Empire, c.250 BCE.png"
+ },
+ "map_exploration": {
+  "file": "File:16th century Portuguese Spanish trade routes.png"
+ },
+ "map_triangle": {
+  "file": "File:Map of the Triangular trade.jpg"
+ },
+ "map_slave_trade": {
+  "file": "File:African Slave Trade.png"
+ }
 }

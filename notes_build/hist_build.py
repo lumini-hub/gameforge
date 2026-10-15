@@ -23,6 +23,8 @@ def photo(key, cap):
     from PIL import Image
     w, h = Image.open(d / f"{key}.jpg").size
     cls = "photo tall" if h > w * 1.1 else "photo"
+    if key.startswith("map_"):
+        cls += " map"
     return (f'<figure class="{cls}"><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
             f'<figcaption>{cap} <span class="cr">Photo: {html.escape(who)}, {html.escape(c["license"])}, Wikimedia Commons.</span></figcaption></figure>')
 
