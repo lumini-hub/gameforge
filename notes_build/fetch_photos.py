@@ -33,28 +33,31 @@ def main(which):
     spec = json.loads((ROOT / f"photos_{which}.json").read_text())
     out = ROOT / f"figs_{which}" / "photos"
     out.mkdir(parents=True, exist_ok=True)
-    credits = {}
     cpath = out / "credits.json"
-    if cpath.exists():
-        credits = json.loads(cpath.read_text())
-    todo = {k: v for k, v in spec.items() if not (out / f"{k}.jpg").exists() or k not in credits}
-    for k, v in todo.items():
-        q = urllib.parse.urlencode({"action": "query", "format": "json", "titles": v["file"], "prop": "imageinfo",
-                                    "iiprop": "url|extmetadata", "iiurlwidth": v.get("w", 700)})
-        r = http(API + "?" + q, True)
-        page = next(iter(r["query"]["pages"].values()))
-        ii = page["imageinfo"][0]
-        md = ii["extmetadata"]
+    credits = json.loads(cpath.read_text()) if cpath.exists() else {}
+    todo = {k: v for k, v in spec.items() if k not in credits or not (out / f"{k}.jpg").exists()}
+    if not todo:
+        return
+    # one batched API call for every missing image (the per-image loop is what got rate-limited)
+    by_title = {v["file"]: k for k, v in todo.items()}
+    width = max(v.get("w", 700) for v in todo.values())
+    q = urllib.parse.urlencode({"action": "query", "format": "json", "titles": "|".join(by_title), "prop": "imageinfo",
+                                "iiprop": "url|extmetadata", "iiurlwidth": width})
+    r = http(API + "?" + q, True)
+    norm = {n["to"]: n["from"] for n in r["query"].get("normalized", [])}
+    for page in r["query"]["pages"].values():
+        k = by_title.get(norm.get(page["title"], page["title"]))
+        if k is None or "imageinfo" not in page:
+            print("MISSING", page["title"]); continue
+        ii = page["imageinfo"][0]; md = ii["extmetadata"]
         credits[k] = {"title": page["title"], "url": ii["descriptionurl"],
                       "author": clean(md.get("Artist", {}).get("value")) or "Unknown",
                       "license": clean(md.get("LicenseShortName", {}).get("value"))}
-        time.sleep(2)
         if not (out / f"{k}.jpg").exists():
             (out / f"{k}.jpg").write_bytes(http(ii["thumburl"]))
+            time.sleep(1)
+        print(k, credits[k]["license"], flush=True)
         cpath.write_text(json.dumps(credits, indent=1, ensure_ascii=False))
-        print(k, credits[k]["license"], "|", credits[k]["author"][:40], flush=True)
-        time.sleep(2)
-    cpath.write_text(json.dumps(credits, indent=1, ensure_ascii=False))
 
 
 if __name__ == "__main__":

@@ -12,9 +12,18 @@ PHOTO_DIR = "figs_g/photos"
 def photo(key, cap):
     """Photo figure (Wikimedia Commons image stored locally) with a credit line."""
     d = ROOT / PHOTO_DIR
-    c = json.loads((d / "credits.json").read_text(encoding="utf-8"))[key]
+    try:
+        c = json.loads((d / "credits.json").read_text(encoding="utf-8"))[key]
+    except (OSError, KeyError):
+        c = None
+    if c is None or not (d / f"{key}.jpg").exists():
+        print("photo not downloaded yet, skipped:", key, file=sys.stderr)
+        return ""
     who = c["author"] if len(c["author"]) <= 42 else c["author"][:40].rstrip() + "…"
-    return (f'<figure class="photo"><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
+    from PIL import Image
+    w, h = Image.open(d / f"{key}.jpg").size
+    cls = "photo tall" if h > w * 1.1 else "photo"
+    return (f'<figure class="{cls}"><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
             f'<figcaption>{cap} <span class="cr">Photo: {html.escape(who)}, {html.escape(c["license"])}, Wikimedia Commons.</span></figcaption></figure>')
 
 
