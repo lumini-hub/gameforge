@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
 """Build the Class X History notes PDF from parts/g_*.html (two-column exam-notes layout)."""
-import re, subprocess, pathlib, sys
+import re, json, html, subprocess, pathlib, sys
 
 ROOT = pathlib.Path(__file__).parent
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 TITLE = "BCSE Class X Geography - Exam Revision Notes"
+
+PHOTO_DIR = "figs_g/photos"
+
+
+def photo(key, cap):
+    """Photo figure (Wikimedia Commons image stored locally) with a credit line."""
+    d = ROOT / PHOTO_DIR
+    c = json.loads((d / "credits.json").read_text(encoding="utf-8"))[key]
+    who = c["author"] if len(c["author"]) <= 42 else c["author"][:40].rstrip() + "…"
+    return (f'<figure class="photo"><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
+            f'<figcaption>{cap} <span class="cr">Photo: {html.escape(who)}, {html.escape(c["license"])}, Wikimedia Commons.</span></figcaption></figure>')
 
 
 def expand(s):
@@ -12,6 +23,7 @@ def expand(s):
     s = re.sub(r"\[\[IMG ([^\]]+)\]\]", r'<span class="t d">\1</span>', s)
     s = re.sub(r"\[\[fig:([a-z0-9_]+)\|([^\]]*)\]\]",
                lambda m: f'<figure>{(ROOT / "figs_g" / (m.group(1) + ".svg")).read_text(encoding="utf-8")}<figcaption>{m.group(2)}</figcaption></figure>', s)
+    s = re.sub(r"\[\[photo:([a-z0-9_]+)\|([^\]]*)\]\]", lambda m: photo(m.group(1), m.group(2)), s)
     s = re.sub(r"\[\[([^\]]+)\]\]", r'<span class="t">\1</span>', s)
     s = re.sub(r"@@(.+?)@@", r'<span class="r">\1</span>', s, flags=re.S)
     # solved box:  <sol L="P25 Q2a [5]"> ... </sol>
