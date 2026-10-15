@@ -43,7 +43,19 @@ figcaption { font-size: 7pt; color: #555; margin-top: .6mm; line-height: 1.25; }
 .check li::before { content: "\2610"; font-size: 8pt; top: .1em; }
 .check ul { padding-left: 4.6mm; } .check ul li::before { left: -4.4mm; }
 .cover-mini { column-count: 1; }
-</style></head><body><section class="chapter">
+/* continuous flow: no forced page break between chapters, balanced columns */
+.chapter { break-before: auto; }
+.chapter.pb { break-before: page; }
+.cols { column-fill: balance; }
+.banner { break-inside: avoid; margin-top: 3mm; }
+.chapter:first-of-type .banner { margin-top: 0; }
+.check .cols { column-fill: balance; }
+/* single continuous 2-column flow for the whole document; banners and the front matter span both columns */
+.wrap { column-count: 2; column-gap: 6.5mm; column-fill: balance; }
+.wrap .chapter, .wrap .cols { display: contents; }
+.wrap .banner, .wrap .chapter > .title, .wrap .chapter > .subt, .wrap .chapter > .subt2, .wrap .chapter > .howto, .wrap .chapter > .warn { column-span: all; }
+.wrap .banner { break-after: avoid; }
+</style></head><body><div class="wrap"><section class="chapter">
 <div class="title">CLASS X GEOGRAPHY — EXAM REVISION NOTES</div>
 <div class="subt">All 12 chapters · formulas &amp; worked calculations · diagrams · model answers · past-paper pointers</div>
 <div class="subt2">Built from the <b>BCSE 2025</b> and <b>2023</b> Geography papers. Every question in both papers is solved inside.</div>
@@ -560,4 +572,4 @@ figcaption { font-size: 7pt; color: #555; margin-top: .6mm; line-height: 1.25; }
 </ul>
 </div>
 </section>
-</body></html>
+</div></body></html>

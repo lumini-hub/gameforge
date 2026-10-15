@@ -25,7 +25,7 @@ def main():
     body = "\n".join(p.read_text(encoding="utf-8") for p in parts)
     body = expand(body)
     css = (ROOT / "hist_style.css").read_text()
-    doc = f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>{TITLE}</title><style>{css}</style></head><body>{body}</body></html>'
+    doc = f'<!doctype html><html lang="en"><head><meta charset="utf-8"><title>{TITLE}</title><style>{css}</style></head><body><div class="wrap">{body}</div></body></html>'
     out = ROOT / "hist.html"
     out.write_text(doc, encoding="utf-8")
     pdf = ROOT / "BCSE_Class_X_History_-_Exam_Notes.pdf"
