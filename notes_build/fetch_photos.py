@@ -49,7 +49,9 @@ def main(which):
                       "author": clean(md.get("Artist", {}).get("value")) or "Unknown",
                       "license": clean(md.get("LicenseShortName", {}).get("value"))}
         time.sleep(2)
-        (out / f"{k}.jpg").write_bytes(http(ii["thumburl"]))
+        if not (out / f"{k}.jpg").exists():
+            (out / f"{k}.jpg").write_bytes(http(ii["thumburl"]))
+        cpath.write_text(json.dumps(credits, indent=1, ensure_ascii=False))
         print(k, credits[k]["license"], "|", credits[k]["author"][:40], flush=True)
         time.sleep(2)
     cpath.write_text(json.dumps(credits, indent=1, ensure_ascii=False))
