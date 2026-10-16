@@ -28,7 +28,7 @@ def photo(key, cap):
     style = ""
     if key.startswith("map_"):
         cls += " wide"
-        style = f' style="--mh:{WIDE.get(key, 100)}mm"' if "WIDE" in globals() else ""
+        style = f' style="--mh:{WIDE.get(key, 80)}mm"' if "WIDE" in globals() else ""
     return (f'<figure class="{cls}"{style}><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
             f'<figcaption>{cap} <span class="cr">Photo: {html.escape(who)}, {html.escape(c["license"])}, Wikimedia Commons.</span></figcaption></figure>')
 

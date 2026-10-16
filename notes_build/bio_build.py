@@ -7,7 +7,7 @@ CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 TITLE = "BCSE Class X Biology - Exam Revision Notes"
 
 PHOTO_DIR = "figs_b/photos"
-WIDE = {"d_prokaryote": 105, "d_cell_membrane": 125, "d_chloroplast": 100, "d_digestive": 150, "d_nephron": 135, "d_mitosis": 135, "d_hotspot": 100}
+WIDE = {"d_prokaryote": 85, "d_cell_membrane": 105, "d_chloroplast": 80, "d_digestive": 120, "d_nephron": 110, "d_mitosis": 105, "d_hotspot": 80}
 SMALL = {"d_prokaryote", "d_neuron", "d_blood", "d_girdle", "d_hpylori", "d_lantana", "d_villus", "d_xylem_phloem", "d_photosynthesis", "d_cell_membrane", "d_tonicity", "d_biogas", "d_hotspot"}
 
 
