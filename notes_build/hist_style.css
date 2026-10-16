@@ -47,3 +47,8 @@ figcaption { font-size: 7pt; color: #555; margin-top: .6mm; line-height: 1.25; }
 .check li::before { content: "\2610"; font-size: 8pt; top: .1em; }
 .check ul { padding-left: 4.6mm; } .check ul li::before { left: -4.4mm; }
 .cover-mini { column-count: 1; }
+.pair { display: flex; gap: 2mm; break-inside: avoid; margin: 0 0 2mm; }
+.pair figure.photo { flex: 1; margin: 0; min-width: 0; }
+.pair figure.photo img { max-height: 34mm; }
+figure.photo.small img { max-height: 36mm; }
+figure.photo.small.tall img { max-width: 48%; max-height: 40mm; }
