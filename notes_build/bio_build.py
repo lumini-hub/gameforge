@@ -7,6 +7,7 @@ CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 TITLE = "BCSE Class X Biology - Exam Revision Notes"
 
 PHOTO_DIR = "figs_b/photos"
+WIDE = {"d_prokaryote": 105, "d_cell_membrane": 125, "d_chloroplast": 100, "d_digestive": 150, "d_nephron": 135, "d_mitosis": 135, "d_hotspot": 100}
 SMALL = {"d_prokaryote", "d_neuron", "d_blood", "d_girdle", "d_hpylori", "d_lantana", "d_villus", "d_xylem_phloem", "d_photosynthesis", "d_cell_membrane", "d_tonicity", "d_biogas", "d_hotspot"}
 
 
@@ -28,7 +29,11 @@ def photo(key, cap):
         cls += " map"
     if key in SMALL:
         cls += " small"
-    return (f'<figure class="{cls}"><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
+    style = ""
+    if key in WIDE:
+        cls += " wide"
+        style = f' style="--mh:{WIDE.get(key, 100)}mm"' if "WIDE" in globals() else ""
+    return (f'<figure class="{cls}"{style}><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
             f'<figcaption>{cap} <span class="cr">Image: {html.escape(who)}, {html.escape(c["license"])}, Wikimedia Commons.</span></figcaption></figure>')
 
 
@@ -37,7 +42,7 @@ def expand(s):
     s = re.sub(r"\[\[IMG ([^\]]+)\]\]", r'<span class="t d">\1</span>', s)
     s = re.sub(r"\[\[pair:([a-z0-9_]+)\|([^|\]]*)\|([a-z0-9_]+)\|([^\]]*)\]\]", lambda m: '<div class="pair">' + photo(m.group(1), m.group(2)) + photo(m.group(3), m.group(4)) + "</div>", s)
     s = re.sub(r"\[\[fig:([a-z0-9_]+)\|([^\]]*)\]\]",
-               lambda m: f'<figure>{(ROOT / "figs_b" / (m.group(1) + ".svg")).read_text(encoding="utf-8")}<figcaption>{m.group(2)}</figcaption></figure>', s)
+               lambda m: f'<figure class="wide">{(ROOT / "figs_b" / (m.group(1) + ".svg")).read_text(encoding="utf-8")}<figcaption>{m.group(2)}</figcaption></figure>', s)
     s = re.sub(r"\[\[photo:([a-z0-9_]+)\|([^\]]*)\]\]", lambda m: photo(m.group(1), m.group(2)), s)
     s = re.sub(r"\[\[([^\]]+)\]\]", r'<span class="t">\1</span>', s)
     s = re.sub(r"@@(.+?)@@", r'<span class="r">\1</span>', s, flags=re.S)

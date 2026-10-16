@@ -25,7 +25,11 @@ def photo(key, cap):
     cls = "photo tall" if h > w * 1.1 else "photo"
     if key.startswith("map_"):
         cls += " map"
-    return (f'<figure class="{cls}"><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
+    style = ""
+    if key.startswith("map_"):
+        cls += " wide"
+        style = f' style="--mh:{WIDE.get(key, 100)}mm"' if "WIDE" in globals() else ""
+    return (f'<figure class="{cls}"{style}><img src="{PHOTO_DIR}/{key}.jpg" alt="{html.escape(cap, quote=True)}">'
             f'<figcaption>{cap} <span class="cr">Photo: {html.escape(who)}, {html.escape(c["license"])}, Wikimedia Commons.</span></figcaption></figure>')
 
 
@@ -33,7 +37,7 @@ def expand(s):
     # paper tags  [[P25 Q2a]]  ;  diagram note tag  [[IMG text]]
     s = re.sub(r"\[\[IMG ([^\]]+)\]\]", r'<span class="t d">\1</span>', s)
     s = re.sub(r"\[\[fig:([a-z0-9_]+)\|([^\]]*)\]\]",
-               lambda m: f'<figure>{(ROOT / "figs_g" / (m.group(1) + ".svg")).read_text(encoding="utf-8")}<figcaption>{m.group(2)}</figcaption></figure>', s)
+               lambda m: f'<figure class="wide">{(ROOT / "figs_g" / (m.group(1) + ".svg")).read_text(encoding="utf-8")}<figcaption>{m.group(2)}</figcaption></figure>', s)
     s = re.sub(r"\[\[photo:([a-z0-9_]+)\|([^\]]*)\]\]", lambda m: photo(m.group(1), m.group(2)), s)
     s = re.sub(r"\[\[([^\]]+)\]\]", r'<span class="t">\1</span>', s)
     s = re.sub(r"@@(.+?)@@", r'<span class="r">\1</span>', s, flags=re.S)
