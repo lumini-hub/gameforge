@@ -1,0 +1,59 @@
+<section class="chapter">
+<div class="banner"><div class="n">7 &middot; Functions &amp; Recursion</div><div class="rf">P25 Q1a(vii),b(ii),Q5b&ndash;e &middot; P24 Q1a(xiv),b(v),Q2c,Q6c</div></div>
+<div class="cols">
+<h3>Functions</h3>
+[[fig:i_function|Anatomy of a function: keyword, name, parameters, return value, call and arguments.]]
+<ul>
+<li>A <b>function</b> is a <b>reusable block of code that performs a specific task</b> and can be called many times [[P25 Q1b(ii): function]] [[P24 Q1b(v): function]].</li>
+<li><b>Parameter</b> = the variable in the definition (<code>def hello(f_name)</code>); <b>argument</b> = the value passed when calling (<code>hello("Sonam")</code>).</li>
+<li><b><code>return</code></b> sends a value back to the caller; <code>print</code> only displays.</li>
+<li><b>Default argument:</b> <code>def add(a, b=10)</code> &mdash; if the caller leaves out <code>b</code>, it is 10. <code>add(5)</code> &rarr; 15 is valid; <code>add()</code> fails (a is required); passing 3 arguments fails (only 2 parameters) &rarr; <b>D</b> [[P25 Q1a(vii)]].</li>
+<li><b>Local variable:</b> created inside a function and usable only there; <b>global variable:</b> created outside.</li>
+</ul>
+<pre class="code">def add(a, b=10):
+    return a + b
+
+print(add(5))        # 15
+print(add(5, 20))    # 25</pre>
+<h3>Reading code (traces)</h3>
+<pre class="code">def mystery_function(a):
+    return a*2 + 3
+result = mystery_function(5)
+print(result)          # 5*2 + 3 = 13
+
+def addition(x, y):    # 1 = parameters (x, y)
+    add = x + y
+    return add
+cal = addition(10, 5)  # 2 = function call, arguments 10 and 5
+print(f'Addition:{cal}')   # Addition:15</pre>
+<h3>Recursion</h3>
+<ul>
+<li>A <b>recursive function calls itself</b> on a smaller problem until it reaches a <b>base case</b> that stops the calls. It needs (1) a base case and (2) a recursive case that moves toward it.</li>
+</ul>
+[[fig:i_recursion|The recursion for countConsonants(&ldquo;Bhutan&rdquo;).]]
+<pre class="code">def countConsonants(text):
+    if text == "":                       # base case (paper shows " ")
+        return 0
+    elif text[0].isalpha() and text[0].lower() not in "aeiou":
+        return 1 + countConsonants(text[1:])
+    else:
+        return countConsonants(text[1:])
+
+print(countConsonants("Bhutan"))         # 4</pre>
+<h3>Solved questions</h3>
+<sol L="P25 Q5b [2]">Parameter: <b>f_name</b> (in <code>def hello(f_name)</code>). Local variable: <b>message</b> (created inside the function). (<code>first_name</code> is a global variable outside the function.)</sol>
+<sol L="P25 Q5c [1]">Python does not support two functions with the same name: the <b>second definition replaces the first</b>. So only <code>greet(name)</code> exists; <code>greet("Tashi")</code> prints &ldquo;Hello Tashi&rdquo;, but calling <code>greet()</code> gives a <b>TypeError</b> (missing argument).</sol>
+<sol L="P25 Q5d [2]"><pre class="code">def square(n=5):          # default argument
+    return n * n
+
+print(square(4))          # called with a number -> 16
+print(square())           # called without -> uses 5 -> 25</pre></sol>
+<sol L="P25 Q5e [4]">(i) <b>Base case:</b> when the text is empty (no characters left) the function returns <b>0</b> and stops the recursion. <b>(check)</b> the paper prints <code>" "</code>; with a space the empty string would not match and the function would fail. (ii) <b>Consonant check:</b> <code>text[0]</code> is the first letter; it must be a letter (<code>isalpha()</code>) <b>and</b> its lowercase must <b>not</b> be in &ldquo;aeiou&rdquo;. (iii) <b>Recursion:</b> if the first letter is a consonant it returns <b>1 + countConsonants(rest of the text)</b> (<code>text[1:]</code>), otherwise it returns the count of the rest without adding 1; each call handles one letter and passes the shorter text on until the base case; the 1s are added when the calls return. (iv) &ldquo;Bhutan&rdquo; has <b>4 consonants</b> (B, h, t, n); u and a are vowels.</sol>
+<sol L="P24 Q2c [4]">(i) The call <code>add_numbers(5)</code> gives only <b>one argument</b> but the function needs two (<b>TypeError</b>). Corrected: <pre class="code">def add_numbers(a, b):
+    return a + b
+print(add_numbers(5, 3))     # 8   (or give b a default value: def add_numbers(a, b=0))</pre> (ii) <b>13</b>: <code>mystery_function(5)</code> returns 5 &times; 2 + 3 = 13, which is stored in <code>result</code> and printed.</sol>
+<sol L="P24 Q6c [3]">(i) <b>1 = parameters</b> (x, y) of the function definition; <b>2 = function call</b> (with the arguments 10 and 5) <b>(check labels in your paper)</b>. (ii) Keyword: <b>def</b> (and <b>return</b>); function name: <b>addition</b>; return value: <b>add (= 15)</b>. Output: <b>Addition:15</b>.</sol>
+<sol L="P24 Q1a(xiv) / P25 Q1a(vii)">Profit function with <code>sp - cp</code> &rarr; <b>D</b> (profit 20). <code>add(5)</code> with <code>b=10</code> default &rarr; valid call <b>D</b>.</sol>
+<div class="quick"><b>Quick:</b> P25 vii <b>D</b>; b(ii) <b>function</b>. P24 xiv <b>D</b>; b(v) <b>function</b>.</div>
+</div>
+</section>

@@ -1,0 +1,44 @@
+<section class="chapter">
+<div class="banner"><div class="n">3 &middot; Spreadsheets (MS Excel / Google Sheets)</div><div class="rf">P25 Q1a(ix,x,xv),b(v),c(ii),Q2a &middot; P24 Q1a(i,iii,vi,xv),Q2a,Q4b</div></div>
+<div class="cols">
+<h3>Key ideas</h3>
+<ul>
+<li>A formula starts with <b>=</b>. <b>Cell reference</b> = column letter + row number (B2). <b>Range</b> = A1:A6 (from A1 to A6). Formulas <b>update automatically</b> when the data changes.</li>
+<li><b>Relative</b> reference (B2) changes when copied; <b>absolute</b> reference ($B$2) stays fixed.</li>
+</ul>
+[[fig:i_excel_funcs|The Excel functions asked in the papers.]]
+<h3>Functions you must know</h3>
+<table class="tbl"><tr><th>Function</th><th>Use / example</th></tr>
+<tr><td><b>SUM, AVERAGE, MAX, MIN, COUNT</b></td><td>=SUM(B2:B6); <b>highest ICT score</b> &rarr; <code>=MAX(E2:E5)</code>; <b>average of all subjects for Mr Pema (row 2)</b> &rarr; <code>=AVERAGE(B2:E2)</code> [[P24 Q2a]]</td></tr>
+<tr><td><b>IF</b></td><td>=IF(B2&gt;=50,"Pass","Fail")</td></tr>
+<tr><td><b>AND, OR, NOT</b></td><td><b>NOT reverses</b> TRUE&harr;FALSE [[P24 Q1a(vi): B]] [[P25 Q1b(v): NOT]]</td></tr>
+<tr><td><b>SUMIF</b></td><td>=SUMIF(<i>range to test</i>, <i>criteria</i>, <i>sum range</i>). Total salary of IT: <code>=SUMIF(B2:B6,"IT",C2:C6)</code> [[P24 Q1a(xv): D]] (department is column B, salary column C)</td></tr>
+<tr><td><b>COUNTIF / AVERAGEIF</b></td><td>=COUNTIF(A1:A6,"&gt;60"); =AVERAGEIF(A1:A6,"&gt;60")</td></tr>
+<tr><td><b>VLOOKUP</b></td><td>look up a value in the <b>first column</b> of a table and return a value from another column</td></tr>
+<tr><td><b>RANK</b></td><td>gives the <b>position</b> of a number in a list (1st, 2nd&hellip;); it does <b>not</b> sort alphabetically &rarr; &ldquo;RANK arranges data alphabetically&rdquo; is <b>FALSE</b> [[P25 Q1c(ii)]]</td></tr></table>
+<h3>VLOOKUP</h3>
+[[fig:i_vlookup|VLOOKUP: the lookup value must be in the first column of the table range.]]
+<ul>
+<li>Tashi Dendup&rsquo;s score: the names are in column <b>B</b> and the marks in <b>C</b>, so the table is <b>B2:C5</b> and the marks are in column <b>2</b> of that table &rarr; <code>=VLOOKUP("Tashi Dendup", B2:C5, 2, FALSE)</code> = <b>78</b> &rarr; <b>A</b> [[P25 Q1a(x)]]. The lookup value must be in the <b>first column</b> of the table range, so the range must start at column B, not A.</li>
+</ul>
+<h3>Other features</h3>
+<ul>
+<li><b>Data Validation:</b> restricts what can be typed, e.g. <b>whole numbers between 1 and 100</b> for test scores &rarr; <b>C</b> [[P24 Q1a(i)]]. <b>Conditional formatting</b> colours cells by a rule; <b>Filter</b> shows rows that match a condition; <b>Pivot table</b> summarises data.</li>
+<li><b>Total sales</b> = units sold &times; unit price. In the table (C = Units Sold, D = Unit Price) the formula in E2 is <code>=C2*D2</code> &rarr; <b>B</b> [[P24 Q1a(iii)]].</li>
+</ul>
+<h3>Choosing a chart</h3>
+[[fig:i_chart_choice|Column, line, pie and scatter charts and when to use them.]]
+<ul>
+<li><b>Sales trend over five months</b> &rarr; <b>line chart</b> (option D) because the line joins the points in time order and shows the rise and fall [[P25 Q1a(ix)]]. A pie chart shows parts of a whole; a column chart compares categories; a scatter plot shows the relationship between two numbers.</li>
+<li>To make a chart: select the data &rarr; <b>Insert &rarr; Chart</b> &rarr; choose the type &rarr; add title and axis labels [[P24 Q4b]].</li>
+</ul>
+<h3>Reading a column graph (P25 Q2a)</h3>
+<table class="tbl"><tr><th>Mode</th><th>Cycle</th><th>Car</th><th>Taxi</th><th>Walking</th><th>School bus</th></tr><tr><td>Students</td><td>4</td><td>8</td><td>6</td><td>12</td><td>10</td></tr></table>
+<h3>Solved questions</h3>
+<sol L="P25 Q2a [4]">(i) <span class="r">Walking</span> (the tallest bar, 12). (ii) The <b>height of each bar shows the number of students</b> using that mode of transport. (iii) Students not taking the bus = total &minus; bus users = 40 &minus; 10 = <span class="r">30 students</span> (4 + 8 + 6 + 12 = 30).</sol>
+<sol L="P24 Q2a [2]">(i) <span class="r">=MAX(E2:E5)</span> (ICT marks are in column E). (ii) <span class="r">=AVERAGE(B2:E2)</span> (Pema&rsquo;s marks are in row 2, columns B to E).</sol>
+<sol L="P24 Q4b [2]">Mr Dorji should use the <b>chart (Insert &rarr; Chart; a line chart)</b> feature. It turns the figures into a <b>picture</b>, so <b>trends and patterns</b> such as rising or falling months and the best/worst month are seen at once, and comparisons are easier than reading numbers.</sol>
+<sol L="P25 Q1a(xv) &mdash; (check)"><b>=AVERAGE(A1:A6,"&gt;60")</b> is not a valid conditional average: a text argument is not a criteria test (Excel gives <b>#VALUE!</b>), and the plain average of 45, 70, 55, 80, 40 is <b>58</b>. None of the options is correct. The right formula is <b>=AVERAGEIF(A1:A6,"&gt;60")</b> = (70 + 80) &divide; 2 = <b>75</b>. Ask your teacher; in the exam circle the option your key says.</sol>
+<div class="quick"><b>Quick:</b> P25 ix <b>D</b> (line); x <b>A</b>; b(v) <b>NOT</b>; c(ii) <b>FALSE</b>. P24 i <b>C</b>; iii <b>B</b>; vi <b>B</b>; xv <b>D</b>.</div>
+</div>
+</section>

@@ -57,3 +57,6 @@ figure.wide { column-span: all; margin: 2mm 0 2.5mm; }
 figure.wide svg { display: block; width: 74%; margin: 0 auto; height: auto; max-height: 95mm; }
 figure.photo.wide { column-span: all; }
 figure.photo.wide img { width: auto; max-width: 100%; max-height: var(--mh, 80mm); object-fit: contain; margin: 0 auto; }
+pre.code { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 6.9pt; line-height: 1.28; background: #f4f5f7; border: .5px solid #b8bcc4; border-left: 2px solid #0e3a66; padding: 1mm 1.6mm; margin: 0 0 1.8mm; white-space: pre-wrap; break-inside: avoid; }
+code { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 7.4pt; background: #eef0f3; padding: 0 .6mm; }
+.sol pre.code { background: #fff; }

@@ -1,0 +1,90 @@
+<section class="chapter">
+<div class="banner"><div class="n">5 &middot; Loops &amp; Python Turtle</div><div class="rf">P25 Q1a(ii),b(iv),Q3e,Q6b,c &middot; P24 Q1a(iv,vii,ix),c(iv),Q3c,Q4c,Q5a,b</div></div>
+<div class="cols">
+<h3>for loop and range()</h3>
+[[fig:i_loops|How a while loop and a for loop run.]]
+<ul>
+<li>Use a <b>for loop</b> when you know <b>how many times</b> to repeat [[P24 Q1a(vii): D]]; use a <b>while loop</b> when you repeat <b>as long as a condition is true</b> [[P24 Q1c(iv): TRUE]].</li>
+<li><code>range(stop)</code> = 0 to stop&minus;1; <code>range(start, stop)</code>; <code>range(start, stop, step)</code>. <b>The stop value is never included.</b></li>
+</ul>
+[[fig:i_range|range() on a number line.]]
+<pre class="code">for i in range(1, 4):      # 1 2 3
+    print(i)
+for j in range(3, 0, -1):  # 3 2 1
+    print(j)
+for i in range(2, 10, 3):  # 2 5 8
+    print(i, end=" ")      # end=" " keeps output on one line</pre>
+<ul>
+<li>Output of <code>for i in range(1,4)</code> followed by <code>for j in range(3,0,-1)</code> [[P25 Q3e]]: <b>1 2 3 3 2 1</b> (each on its own line, six lines). <code>range(2,10,3)</code> with <code>end=" "</code> prints <b>2 5 8</b> [[P25 Q6c]].</li>
+<li><b>Even numbers 1 to 15:</b> <code>for i in range(1,15): if i % 2 == 0: print(i)</code> prints 2, 4, 6, 8, 10, 12, 14 &rarr; <b>A</b> [[P24 Q1a(iv)]] (option C misses 14; D prints 0).</li>
+</ul>
+<h3>break, continue, pass</h3>
+<table class="tbl"><tr><th>Keyword</th><th>Effect</th></tr>
+<tr><td><b>break</b></td><td><b>stops the whole loop</b> immediately</td></tr>
+<tr><td><b>continue</b></td><td><b>skips the rest of this iteration</b> and moves to the next one [[P25 Q1b(iv): continue]]</td></tr>
+<tr><td><b>pass</b></td><td>does nothing; a placeholder where a statement is needed</td></tr></table>
+<pre class="code">for i in range(8):
+    if i == 1:
+        pass          # does nothing
+    elif i == 3:
+        continue      # skip 3
+    elif i == 5:
+        break         # stop the loop
+    else:
+        print(i)      # prints 0, 2, 4</pre>
+<h3>while loop</h3>
+<pre class="code">i = 0
+while i < 5:
+    if i == 3:
+        break
+    i += 1
+    print(i)      # prints 1 2 3</pre>
+<ul>
+<li>Trace [[P25 Q1a(ii)]]: i = 0 &rarr; i becomes 1, print 1; &rarr; 2, print 2; &rarr; 3, print 3; now i == 3 so <b>break</b> before printing 4. Output <b>1, 2, 3</b> &rarr; <b>C</b>.</li>
+<li>Remember to <b>update the variable</b> (<code>i += 1</code>); otherwise the loop never stops (infinite loop).</li>
+</ul>
+<h3>Python Turtle graphics</h3>
+[[fig:i_turtle|The turtle draws a regular polygon: turn = 360 &divide; number of sides.]]
+<pre class="code">import turtle
+t = turtle.Turtle()
+
+def draw_square():
+    for _ in range(4):
+        t.forward(100)
+        t.right(90)
+
+draw_square()       # calling the function runs the drawing
+turtle.done()</pre>
+<ul>
+<li>Six sides with 60&deg; turns draw a <b>hexagon</b> [[P24 Q1a(ix): D]].</li>
+</ul>
+<h3>Solved questions</h3>
+<sol L="P25 Q3e [2]">Output: <pre class="code">1
+2
+3
+3
+2
+1</pre></sol>
+<sol L="P25 Q6b [2]">The <b>for loop</b> is more efficient for printing 1 to 5: (1) the number of repetitions is <b>known</b>, and <code>range(1,6)</code> controls the counter automatically; (2) it needs <b>fewer lines</b> and there is <b>no risk of forgetting to increment</b> (an infinite loop) as in a while loop.
+<pre class="code">for i in range(1, 6):      i = 1
+    print(i)               while i <= 5:
+                               print(i)
+                               i += 1</pre></sol>
+<sol L="P24 Q3c [4]">(i) <pre class="code">total = 0
+for i in range(1, 51):
+    total += i
+print("Sum =", total)     # 1275</pre> (ii) <pre class="code">i = 0
+while i <= 10:
+    print(i)
+    i += 1</pre></sol>
+<sol L="P24 Q4c [3]">(i)&ndash;(ii) Code above: <code>def draw_square():</code> with <code>for _ in range(4): t.forward(100); t.right(90)</code>. (iii) Call it by writing the function name with brackets: <b><code>draw_square()</code></b>.</sol>
+<sol L="P24 Q5a [3]">(i) Output <b>0, 2, 4</b> (each on a new line): i = 0 prints 0; i = 1 &rarr; pass; i = 2 prints 2; i = 3 &rarr; continue; i = 4 prints 4; i = 5 &rarr; break. (ii) <b>pass</b> does nothing and the loop carries on (placeholder); <b>break</b> ends the loop when i = 5, so 6 and 7 are never reached. <b>(check)</b> the paper prints <code>Pass</code>/<code>Continue</code> with capitals &mdash; the correct Python keywords are lowercase.</sol>
+<sol L="P24 Q5b [5]">(i) <code>while num &lt;= 5:</code> (ii) <code>num += 1</code> (or <code>num = num + 1</code>). Result of the product loop: 1&times;2&times;3&times;4&times;5 = 120. (iii) Sum 1 to 10: <pre class="code">total = 0
+num = 1
+while num <= 10:
+    total += num
+    num += 1
+print("The sum of the first 10 numbers is:", total)   # 55</pre></sol>
+<div class="quick"><b>Quick:</b> P25 ii <b>C</b>; b(iv) <b>continue</b>. P24 iv <b>A</b>; vii <b>D</b>; ix <b>D</b>; c(iv) <b>TRUE</b>.</div>
+</div>
+</section>

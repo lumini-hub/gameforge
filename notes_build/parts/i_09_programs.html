@@ -1,0 +1,89 @@
+<section class="chapter">
+<div class="banner"><div class="n">9 &middot; Long Programs (Q7 every year)</div><div class="rf">P25 Q7 mobile banking &middot; P24 Q7 school mess system</div></div>
+<div class="cols">
+<h3>How to score full marks in Q7</h3>
+<ul>
+<li>Read the numbered steps (i)&ndash;(vii) and write <b>one block of code for each</b>, in order. Each step is worth the marks shown.</li>
+<li>Use <code>while True:</code> for a <b>menu that repeats until the user exits</b> and <code>break</code> to leave it. Use <code>if / elif / else</code> for the choices and <b>validate</b> inputs (amount &gt; 0, amount &le; balance).</li>
+<li>Convert input with <code>int()</code> or <code>float()</code>. Keep the <b>indentation</b> correct.</li>
+</ul>
+[[fig:i_bank_flow|Logic of the mobile banking program.]]
+<h3>2025 Q7: Mobile banking simulation [10]</h3>
+<pre class="code">balance = 1000                                   # (i) [1]
+
+while True:                                      # (ii) [2] menu repeats
+    print("===== Menu =====")
+    print("1. Check Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Money")
+    print("4. Exit")
+    choice = int(input("Enter your choice (1-4): "))
+
+    if choice == 1:                              # (iii) [1]
+        print("Current balance: Nu.", balance)
+
+    elif choice == 2:                            # (iv) [2]
+        amount = float(input("Enter amount to deposit: "))
+        if amount > 0:
+            balance += amount
+            print("New balance: Nu.", balance)
+        else:
+            print("Error: amount must be greater than zero.")
+
+    elif choice == 3:                            # (v) [2]
+        amount = float(input("Enter amount to withdraw: "))
+        if amount > 0 and amount <= balance:
+            balance -= amount
+            print("Updated balance: Nu.", balance)
+        else:
+            print("Error: invalid amount or insufficient balance.")
+
+    elif choice == 4:                            # (vi) [1]
+        print("Thank you for banking with us!")
+        break
+
+    else:                                        # (vii) [1]
+        print("Invalid selection. Please choose a valid option.")</pre>
+<ul>
+<li><b>Marking points:</b> balance variable (1); loop + menu + input (2); choice 1 (1); deposit with validation and update (2); withdraw with both conditions and update (2); exit message and break (1); invalid choice (1).</li>
+</ul>
+<h3>2024 Q7: School mess management [10]</h3>
+<pre class="code">def mess_system():
+    print("School Mess Management Program")            # (i)
+
+    items = ["rice", "pulses", "meat", "potato"]
+    mess_qty = []                                       # (iii) list
+    for item in items:                                  # (ii) ask 4 quantities
+        qty = float(input("Enter quantity of " + item + " (kg): "))
+        mess_qty.append(qty)
+
+    if mess_qty[0] >= 1200:                             # (iv) rice check
+        print("You have enough rice")
+    else:
+        mess_qty[0] = float(input("Enter new quantity of rice: "))
+        print(mess_qty)                                 # updated list
+
+    cost = [40, 50, 250, 30]                            # (v) cost per kg
+    total = 0
+    for i in range(4):
+        total = total + mess_qty[i] * cost[i]
+    print("Total expenditure: Nu.", total)
+
+    if total <= 50000:                                  # (vi) budget
+        print("You have enough budget")
+    else:
+        print("You don't have enough budget")
+
+mess_system()                                           # call the function</pre>
+<ul>
+<li>Total expenditure = quantity &times; cost for each item, added together. Example: rice 1300, pulses 200, meat 100, potato 500 &rarr; 52 000 + 10 000 + 25 000 + 15 000 = <b>Nu. 102 000</b> &rarr; &ldquo;You don&rsquo;t have enough budget&rdquo;.</li>
+</ul>
+<h3>Common mistakes to avoid</h3>
+<ul>
+<li>Missing <b>colon</b> after <code>if</code>, <code>while</code>, <code>def</code>; wrong <b>indentation</b>; using <code>=</code> instead of <code>==</code> in a condition.</li>
+<li>Forgetting <code>int()</code>/<code>float()</code> around <code>input()</code>; forgetting to <b>update</b> the balance; forgetting <code>break</code> for the Exit option; forgetting to <b>call</b> the function.</li>
+<li>Case: <code>True</code>, <code>False</code> start with capitals; <code>pass</code>, <code>continue</code>, <code>break</code> are lowercase.</li>
+</ul>
+<div class="warn"><b class="h">Practice:</b> without looking, rewrite (a) the banking menu, (b) the mess system, (c) the star triangle, (d) a function with a default argument, (e) sum 1&ndash;50 with <code>for</code> and <code>while</code>.</div>
+</div>
+</section>

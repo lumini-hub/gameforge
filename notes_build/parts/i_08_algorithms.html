@@ -1,0 +1,45 @@
+<section class="chapter">
+<div class="banner"><div class="n">8 &middot; Algorithms &amp; Flowcharts</div><div class="rf">P25 Q1a(xii),c(v),Q3d,Q6e &middot; P24 Q6a</div></div>
+<div class="cols">
+<h3>Algorithm vs flowchart</h3>
+<ul>
+<li>An <b>algorithm</b> is a <b>step-by-step set of instructions to solve a problem</b> (written in words or pseudocode) [[P25 Q1a(xii): D]]. A <b>flowchart</b> is a <b>diagram of the algorithm</b> using standard symbols and arrows.</li>
+</ul>
+<table class="tbl"><tr><th></th><th>Algorithm</th><th>Flowchart</th></tr>
+<tr><td>Form</td><td>written <b>steps</b> in words / pseudocode</td><td><b>diagram</b> with symbols and arrows</td></tr>
+<tr><td>Easy to</td><td>write quickly</td><td>see the flow and decisions at a glance</td></tr>
+<tr><td>Uses</td><td>plan the logic before coding</td><td>explain the logic visually, find errors in the flow</td></tr></table>
+[[fig:i_flow_symbols|Standard flowchart symbols.]]
+<ul>
+<li><b>Process</b> is a <b>rectangle</b>, not a parallelogram; the parallelogram is for input/output. &ldquo;In a flowchart, process is represented by a parallelogram&rdquo; is <b>FALSE</b> [[P25 Q1c(v)]].</li>
+</ul>
+<h3>Flowchart to code</h3>
+<ul>
+<li>Convert each symbol: <b>input</b> &rarr; <code>input()</code>; <b>process</b> &rarr; assignment or calculation; <b>decision</b> &rarr; <code>if</code> (or <code>while</code> when the arrow goes back); <b>print</b> &rarr; <code>print()</code>; <b>start/stop</b> &rarr; begin/end.</li>
+</ul>
+[[fig:i_flow_triangle|The 2025 flowchart (Q6e) and its Python program.]]
+<h3>Solved questions</h3>
+<sol L="P25 Q3d [2]">Algorithm vs flowchart (any two differences): (1) an algorithm is a <b>written list of steps</b>, a flowchart is a <b>diagram</b>; (2) an algorithm uses <b>words or pseudocode</b>, a flowchart uses <b>symbols and arrows</b>; (3) a flowchart shows <b>decisions and loops visually</b>, which is easier for beginners; an algorithm is faster to write.</sol>
+<sol L="P25 Q6e [4]">The flowchart sets row = 1; <b>while row &lt;= 5</b>: set col = 1, <b>while col &lt;= row</b> print &ldquo;*&rdquo; (same line) and add 1 to col; then print a newline and add 1 to row. Program (right-angled triangle of stars):
+<pre class="code">row = 1
+while row <= 5:
+    col = 1
+    while col <= row:
+        print("*", end="")
+        col += 1
+    print()          # newline
+    row += 1</pre>Output: <pre class="code">*
+**
+***
+****
+*****</pre></sol>
+<sol L="P24 Q6a [4]">Smaller of two numbers (flowchart: input num1, input num2, decision <code>num1 &lt; num2</code>: yes &rarr; print num1, no &rarr; print num2):
+<pre class="code">num1 = int(input("Enter value of num1: "))
+num2 = int(input("Enter value of num2: "))
+if num1 < num2:
+    print("Smallest is", num1)
+else:
+    print("Smallest is", num2)</pre></sol>
+<div class="quick"><b>Quick:</b> P25 xii <b>D</b>; c(v) <b>FALSE</b>.</div>
+</div>
+</section>

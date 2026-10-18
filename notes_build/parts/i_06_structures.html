@@ -1,0 +1,67 @@
+<section class="chapter">
+<div class="banner"><div class="n">6 &middot; Strings &amp; Data Structures: List, Tuple, Set, Dictionary</div><div class="rf">P25 Q1a(v,viii),Q4a&ndash;g &middot; P24 Q1a(xi,xiii),b(i,iv),c(ii),Q4d,Q5c</div></div>
+<div class="cols">
+<h3>Overview</h3>
+[[fig:i_structures|The four data structures: brackets, order, changeability.]]
+<table class="tbl"><tr><th></th><th>List</th><th>Tuple</th><th>Set</th><th>Dictionary</th></tr>
+<tr><td>Brackets</td><td>[ ]</td><td>( )</td><td>{ }</td><td>{key: value}</td></tr>
+<tr><td>Ordered?</td><td>yes</td><td>yes</td><td>no</td><td>yes (3.7+)</td></tr>
+<tr><td>Changeable?</td><td><b>yes</b></td><td><b>no</b> (immutable)</td><td>yes</td><td>yes</td></tr>
+<tr><td>Duplicates</td><td>allowed</td><td>allowed</td><td><b>not allowed</b></td><td>keys unique</td></tr></table>
+<ul>
+<li>An <b>ordered, changeable collection that allows duplicates</b> is a <b>list</b> [[P24 Q1b(i)]]. The structure that stores <b>key-value pairs with unique keys</b> is a <b>dictionary</b> [[P24 Q1b(iv)]]. <b>Lists change; tuples stay fixed</b> &rarr; <b>C</b> [[P25 Q1a(v)]].</li>
+<li>To keep a collection with <b>no duplicates where order does not matter</b> use a <b>set</b> [[P24 Q1c(ii): TRUE]].</li>
+</ul>
+<h3>Strings</h3>
+<ul>
+<li>A string is a sequence of characters; it is <b>immutable</b>: <b>once created, its characters cannot be changed in place</b> [[P25 Q4a]]. To &ldquo;change&rdquo; it you create a <b>new string</b>.</li>
+</ul>
+<pre class="code">car = "Alto"
+car[0] = "B"          # TypeError: strings are immutable
+car = "B" + car[1:]   # new string "Balto" (the old one is replaced)
+print(car)</pre>
+<ul><li><b>P25 Q4b:</b> modifying <code>car</code> shows immutability &mdash; direct item assignment fails, so a new string must be made (e.g. <code>car = car + " 800"</code> or <code>"B" + car[1:]</code>).</li></ul>
+<h3>Lists: index, slice, methods</h3>
+[[fig:i_list_index|Positive and negative indexes, and slicing.]]
+<pre class="code">data = [10, 20, 30, 40, 50]
+print(data[1:4])      # [20, 30, 40]  -> C
+colors = ["red", "green", "blue"]
+print(colors[-1])     # blue (last item)
+my_list = ["Range", "function", "inbuilt", "variable"]
+my_list.pop(2)        # removes index 2 ("inbuilt")
+print(my_list)        # ['Range', 'function', 'variable']</pre>
+<ul>
+<li>Slice <code>data[1:4]</code> gives <b>[20, 30, 40]</b> (start included, stop not) &rarr; <b>C</b> [[P25 Q1a(viii)]]. <code>colors[-1]</code> counts from the end, so the output is <b>blue</b> [[P25 Q4c]]. After <code>pop(2)</code> the list is <b>[&lsquo;Range&rsquo;, &lsquo;function&rsquo;, &lsquo;variable&rsquo;]</b> &rarr; <b>D</b> [[P24 Q1a(xi)]].</li>
+<li>Methods: <code>append(x)</code>, <code>insert(i,x)</code>, <code>remove(x)</code>, <code>pop(i)</code>, <code>sort()</code>, <code>len(list)</code>.</li>
+</ul>
+<h3>Tuples</h3>
+<pre class="code">my_tuple = (10, 20, 30, 40)
+print(my_tuple[1])    # 20 -> B</pre>
+<ul><li>Index starts at 0, so <code>my_tuple[1]</code> is <b>20</b> [[P24 Q1a(xiii)]]. Tuples use <b>( )</b> and cannot be changed; dictionaries use <b>{ }</b> with key:value pairs and can be changed [[P25 Q4f]].</li></ul>
+<h3>Sets</h3>
+<pre class="code">attended  = {"Rina", "Karma", "Sonam", "Tashi"}
+submitted = {"Rina", "Sonam"}
+not_submitted = attended - submitted      # or attended.difference(submitted)
+print(not_submitted)                      # {'Karma', 'Tashi'}</pre>
+<ul><li>Set operations: union <code>|</code>, intersection <code>&amp;</code>, difference <code>-</code>. A set <b>has no duplicates and no order</b> [[P24 Q4d]].</li></ul>
+<h3>Dictionaries</h3>
+<pre class="code">student = {"name": "Jampel", "age": 20}
+student["grade"] = "A"          # add a new key
+print(student)
+vehicle = {'brand': 'Toyota', 'model': 'VigoHilux', 'year': 2021}
+print(vehicle['model'])         # VigoHilux  (or vehicle.get('model'))</pre>
+<ul>
+<li><code>vehicle</code> is a <b>dictionary</b> (keys and values) [[P24 Q5c(i)]]; read a value with its key: <code>vehicle['model']</code> [[P24 Q5c(ii)]].</li>
+<li><b>Student names with scores:</b> a <b>dictionary is better than a list</b>: each name (key) is linked to a score (value) and the score is found instantly by name, while a list would need index positions or two parallel lists [[P25 Q4e]].</li>
+</ul>
+<h3>Solved questions</h3>
+<sol L="P25 Q4a,b [3]">Immutability: <b>a string cannot be changed after it is created</b> (you cannot replace one letter). Example: <code>car = "Alto"; car[0] = "B"</code> gives a <b>TypeError</b>; the only way is to build a new string, <code>car = "B" + car[1:]</code>.</sol>
+<sol L="P25 Q4d [2]">Code A &minus; code B using sets: <code>print(attended - submitted)</code> (or <code>attended.difference(submitted)</code>). The names displayed are <b>Karma</b> and <b>Tashi</b>.</sol>
+<sol L="P25 Q4e,f [2]">(e) <b>Yes</b>, a dictionary is better: names are keys and scores are values, so a score is found directly by name. (f) A <b>tuple</b> is an ordered collection in <b>( )</b> that <b>cannot be changed</b>; a <b>dictionary</b> stores <b>key:value pairs</b> in <b>{ }</b> and <b>can be changed</b>.</sol>
+<sol L="P25 Q4g [2]"><pre class="code">student = {"name": "Jampel", "age": 20}
+student["grade"] = "A"
+print(student)     # {'name': 'Jampel', 'age': 20, 'grade': 'A'}</pre></sol>
+<sol L="P24 Q4d [3]">(i) A <b>set</b> is an <b>unordered collection of unique items</b> written in { }. (ii) <b>(check &mdash; scenario not in my copy)</b> If the data must have <b>no repeated items</b> and the order does not matter (e.g. student IDs or names who attended), recommend a <b>set</b>: (1) it <b>removes duplicates automatically</b>; (2) membership checks and operations (union, difference) are <b>fast and simple</b>. If order or duplicates matter, a list is better.</sol>
+<div class="quick"><b>Quick:</b> P25 v <b>C</b>; viii <b>C</b>. P24 xi <b>D</b>; xiii <b>B</b>; b(i) <b>list</b>, (iv) <b>dictionary</b>; c(ii) <b>TRUE</b>.</div>
+</div>
+</section>

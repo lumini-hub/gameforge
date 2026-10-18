@@ -1,0 +1,721 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>BCSE Class X ICT - Exam Revision Notes</title><style>@page { size: A4; margin: 8mm 7mm 9mm 7mm; }
+* { box-sizing: border-box; }
+html { font-family: "DejaVu Sans", "Liberation Sans", Arial, sans-serif; font-size: 8.55pt; line-height: 1.3; color: #111; }
+body { margin: 0; }
+.title { text-align: center; color: #0e3a66; font-size: 21pt; font-weight: 800; margin: 3mm 0 1.5mm; letter-spacing: .2px; }
+.subt { text-align: center; font-size: 8.6pt; margin: 0 0 1mm; }
+.subt2 { text-align: center; font-size: 8.2pt; color: #444; margin: 0 0 3mm; }
+.howto { border: 1px solid #5a8dc0; background: #eef5fc; padding: 2mm 3mm; margin: 0 0 2.5mm; font-size: 8.3pt; }
+.warn { border: 1px solid #d49a2b; background: #fdf6dc; padding: 2mm 3mm; margin: 0 0 2.5mm; font-size: 7.9pt; }
+.warn b.h, .howto b.h { color: #111; }
+.chapter { break-before: page; }
+.chapter:first-of-type { break-before: auto; }
+.banner { background: #0e3a66; color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 4mm; padding: 2.2mm 3mm; margin: 0 0 2.2mm; }
+.banner .n { font-size: 12.5pt; font-weight: 800; letter-spacing: .2px; text-transform: uppercase; flex: 1.1; line-height: 1.15; }
+.banner .rf { font-size: 6.9pt; flex: 1; line-height: 1.3; opacity: .95; }
+.cols { column-count: 2; column-gap: 6.5mm; column-fill: auto; }
+h3 { font-size: 9.3pt; color: #0e3a66; margin: 2.2mm 0 1.2mm; padding-bottom: .5mm; border-bottom: 1px solid #0e3a66; break-after: avoid; }
+h3:first-child { margin-top: 0; }
+ul { margin: 0 0 1.6mm; padding-left: 3.6mm; list-style: none; }
+ul li { position: relative; margin: 0 0 1.1mm; }
+ul li::before { content: "\25B8"; position: absolute; left: -3.4mm; font-size: 6.5pt; top: .35em; color: #333; }
+ol { margin: 0 0 1.6mm; padding-left: 4.2mm; }
+ol li { margin: 0 0 .9mm; }
+p { margin: 0 0 1.5mm; }
+.t { display: inline-block; background: #fbd9a1; color: #8a3a00; border: .4px solid #e0a95a; border-radius: 1.2mm; font-size: 6.2pt; font-weight: 800; padding: 0 1.1mm; line-height: 1.5; white-space: nowrap; vertical-align: .08em; }
+.t.d { background: #ead4f3; border-color: #bb8fd0; color: #4a1a69; }
+table.tbl { width: 100%; border-collapse: collapse; margin: 0 0 2mm; font-size: 7.9pt; break-inside: auto; }
+table.tbl th { background: #d6e5f4; text-align: left; padding: 1mm 1.5mm; border: .6px solid #444; }
+table.tbl td { padding: 1mm 1.5mm; border: .6px solid #444; vertical-align: top; }
+table.tbl tr { break-inside: avoid; }
+.sol { border-left: 2px solid #2a7a3a; background: #eef7ef; padding: 1.1mm 1.8mm; margin: 0 0 1.1mm; break-inside: avoid; }
+.sol .l { color: #1a6a2a; font-weight: 800; }
+.sol ol { margin: .6mm 0 0; padding-left: 4mm; }
+.sol ol li { margin: 0 0 .5mm; }
+.r { color: #b3211b; font-weight: 800; }
+.q { font-size: 7.7pt; color: #444; }
+.quick { font-size: 7.7pt; color: #444; margin: 1mm 0 2mm; }
+.quick b { color: #222; }
+figure { margin: 0 0 2mm; text-align: center; break-inside: avoid; }
+figure svg { width: 100%; height: auto; }
+figure.photo img { width: 100%; max-height: 52mm; object-fit: cover; border: .5px solid #999; display: block; }
+figure.photo.tall img { width: auto; max-width: 62%; max-height: 62mm; object-fit: contain; margin: 0 auto; }
+figure.photo.map img { object-fit: contain; max-height: 70mm; border: .5px solid #bbb; }
+figcaption .cr { display: block; font-size: 5.8pt; color: #777; }
+figcaption { font-size: 7pt; color: #555; margin-top: .6mm; line-height: 1.25; }
+.check .banner { background: #7c1f1f; }
+.check li::before { content: "\2610"; font-size: 8pt; top: .1em; }
+.check ul { padding-left: 4.6mm; } .check ul li::before { left: -4.4mm; }
+.cover-mini { column-count: 1; }
+.pair { display: flex; gap: 2mm; break-inside: avoid; margin: 0 0 2mm; }
+.pair figure.photo { flex: 1; margin: 0; min-width: 0; }
+.pair figure.photo img { max-height: 34mm; }
+figure.photo.small:not(.wide) img { max-height: 36mm; }
+figure.photo.small.tall:not(.wide) img { max-width: 48%; max-height: 40mm; }
+/* A4 legibility: diagrams span both columns at ~75% page width (labels print at ~7pt) */
+figure.wide { column-span: all; margin: 2mm 0 2.5mm; }
+figure.wide svg { display: block; width: 74%; margin: 0 auto; height: auto; max-height: 95mm; }
+figure.photo.wide { column-span: all; }
+figure.photo.wide img { width: auto; max-width: 100%; max-height: var(--mh, 80mm); object-fit: contain; margin: 0 auto; }
+pre.code { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 6.9pt; line-height: 1.28; background: #f4f5f7; border: .5px solid #b8bcc4; border-left: 2px solid #0e3a66; padding: 1mm 1.6mm; margin: 0 0 1.8mm; white-space: pre-wrap; break-inside: avoid; }
+code { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 7.4pt; background: #eef0f3; padding: 0 .6mm; }
+.sol pre.code { background: #fff; }
+</style></head><body><section class="chapter">
+<div class="title">CLASS X ICT &mdash; EXAM REVISION NOTES</div>
+<div class="subt">9 chapters &middot; Python programs &middot; flowcharts &middot; Excel &middot; cloud &amp; copyright &middot; every past-paper question solved</div>
+<div class="subt2">Built from the <b>BCSE 2025</b> and <b>2024</b> Information &amp; Communication Technology question papers (Final I). Every Section A item and every Section B part in both papers is answered inside.</div>
+
+<div class="howto"><b class="h">How to use:</b> Orange tags show where a topic appeared: <span class="t">P25 Q7</span> = 2025 paper question 7; <span class="t">P24 Q5a</span> = 2024 paper question 5(a). &ldquo;Sec A&rdquo; = Q1 (MCQ, blanks, true/false). Green boxes are <b>solved questions</b> with the mark value in brackets and the key answer in <span class="r">red</span>. Grey boxes are <b>Python code</b> you can type and run. Every program in the notes is the kind the exam asks you to <b>write by hand</b>, so practise writing them without looking.</div>
+
+<div class="warn"><b class="h">&#9888; Read this first &mdash; limits of these notes</b> I had the 2025 and 2024 papers only (no marking schemes, no textbook), so answers are the standard Class X ICT answers. Some questions in the papers are faulty or unclear; they are marked <b>(check)</b>: <b>(a) 2025 Q1a(xv)</b> &mdash; <code>=AVERAGE(A1:A6,"&gt;60")</code> is not a valid way to average values above 60 and none of the options is correct (the right function is <code>AVERAGEIF</code>, giving 75); <b>(b) 2025 Q5e</b> &mdash; the base case is printed as <code>text == " "</code> (a space); it should be the empty string <code>""</code>, otherwise the recursion would fail at the end; <b>(c) 2024 Q5a</b> &mdash; <code>Pass</code> and <code>Continue</code> are printed with capital letters; in Python they are <code>pass</code> and <code>continue</code>; <b>(d) 2024 Q1c(v)</b> and <b>Q6c</b> depend on how your textbook words the point; <b>(e) 2024 Q4d</b> &mdash; the scenario for the list-vs-set question was missing from my copy, so the answer is general. In the exam, answer the question as printed and add the correct term.</div>
+
+<div class="cols">
+<h3>How marks are given (both papers)</h3>
+<ul>
+<li><b>Section A (40 marks):</b> Q1(a) = <b>15 MCQs worth 2 marks each (30)</b>, Q1(b) 5 blanks (5), Q1(c) 5 true/false (5). Circle only <b>ONE</b> letter.</li>
+<li><b>Section B (60 marks):</b> attempt <b>ALL</b> of Q2&ndash;Q7, <b>10 marks each</b>. Q2&ndash;Q4 are mostly short theory (cloud, citation, Excel, data structures); Q5&ndash;Q7 are <b>programming</b>; the last question (Q7) is always a long program.</li>
+<li><b>Code answers:</b> write correct <b>indentation</b> and colons; one mark per correct step (variable, loop, condition, print). Use meaningful names; comments are optional but help.</li>
+<li><b>&ldquo;Explain / justify / analyse&rdquo;:</b> give the point <i>and</i> the reason (&ldquo;because&hellip;&rdquo;). <b>&ldquo;Write the output&rdquo;:</b> write exactly what is printed, one value per line unless <code>end=" "</code>.</li>
+</ul>
+<h3>Paper pattern (2024 &amp; 2025)</h3>
+<table class="tbl"><tr><th>Part</th><th>Content</th><th>Marks</th></tr>
+<tr><td>Q1(a)</td><td>15 MCQ (code reading, Excel, cloud, copyright, APA)</td><td>30</td></tr>
+<tr><td>Q1(b)</td><td>Fill in the blanks</td><td>5</td></tr>
+<tr><td>Q1(c)</td><td>True / False</td><td>5</td></tr>
+<tr><td><b>Sec B</b> Q2</td><td>Cloud, Google Workspace, Excel (graph or data table)</td><td>10</td></tr>
+<tr><td>Q3</td><td>Digital citizenship + loops / data types</td><td>10</td></tr>
+<tr><td>Q4</td><td>Strings, lists, tuples, sets, dictionaries (2024: licences, charts, Turtle, sets)</td><td>10</td></tr>
+<tr><td>Q5</td><td>Functions, parameters, recursion (2024: loops, while, dictionary)</td><td>10</td></tr>
+<tr><td>Q6</td><td>Conditions, loops, flowchart to code, Boolean logic</td><td>10</td></tr>
+<tr><td>Q7</td><td>Long program (2025: mobile banking; 2024: school mess system)</td><td>10</td></tr></table>
+<h3>Topic map: where each chapter appeared</h3>
+<table class="tbl"><tr><th>Chapter</th><th>2024</th><th>2025</th></tr>
+<tr><td>1 Cloud &amp; Google Workspace</td><td>Q1a(ii,viii),c(i),Q2b,Q3a</td><td>Q1a(iii,vi),b(i),c(iii),Q2b,c,d</td></tr>
+<tr><td>2 Copyright, licences, APA</td><td>Q1a(v,x),b(ii,iii),c(v),Q3b,Q4a</td><td>Q1a(i,iv,xiii),b(iii),c(iv),Q3a,b,c</td></tr>
+<tr><td>3 Spreadsheets</td><td>Q1a(i,iii,vi,xv),Q2a,Q4b</td><td>Q1a(ix,x,xv),b(v),c(ii),Q2a</td></tr>
+<tr><td>4 Python basics</td><td>Q1a(xii,xiv),Q2c</td><td>Q1a(xi,xiv),c(i),Q3f,Q5a,Q6a,d</td></tr>
+<tr><td>5 Loops &amp; Turtle</td><td>Q1a(iv,vii,ix),c(iv),Q3c,Q4c,Q5a,b</td><td>Q1a(ii),b(iv),Q3e,Q6b,c</td></tr>
+<tr><td>6 Strings &amp; data structures</td><td>Q1a(xi,xiii),b(i,iv),c(ii),Q4d,Q5c</td><td>Q1a(v,viii),Q4a&ndash;g</td></tr>
+<tr><td>7 Functions &amp; recursion</td><td>Q1a(xiv),b(v),Q2c,Q6c</td><td>Q1a(vii),b(ii),Q5b&ndash;e</td></tr>
+<tr><td>8 Algorithms &amp; flowcharts</td><td>Q6a</td><td>Q1a(xii),c(v),Q3d,Q6e</td></tr>
+<tr><td>9 Long programs</td><td>Q7</td><td>Q7</td></tr></table>
+<div class="warn"><b class="h">Repeated every year:</b> cloud service models &amp; benefits &bull; Google Docs/Slides collaboration &bull; copyright, Creative Commons, citing sources &bull; Excel formulas (SUMIF, VLOOKUP, MAX, AVERAGE) &bull; for/while loops with break/continue/pass &bull; list/tuple/set/dictionary &bull; function with parameters and return &bull; flowchart &rarr; Python &bull; one long menu/validation program.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">1 &middot; Cloud Computing &amp; Google Workspace</div><div class="rf">P25 Q1a(iii,vi),b(i),c(iii),Q2b,c,d &middot; P24 Q1a(ii,viii),c(i),Q2b,Q3a</div></div>
+<div class="cols">
+<h3>Key ideas</h3>
+<ul>
+<li><b>Cloud computing</b> = using servers, storage and software <b>over the internet</b> instead of on your own computer; you pay for what you use. <b>Cloud services provide services over the internet</b> &rarr; <b>TRUE</b> <span class="t">P25 Q1c(iii)</span>.</li>
+<li><b>Cloud storage</b> (e.g. Google Drive) keeps files on <b>remote servers</b> instead of a local device <span class="t">P25 Q1b(i): servers</span>. You can open them from any device with internet.</li>
+</ul>
+<h3>Benefits of cloud storage</h3>
+<ul>
+<li><b>Lower upfront cost:</b> no need to buy servers and hard disks; pay a small monthly fee (pay-as-you-go) <span class="t">P24 Q2b(i)</span>.</li>
+<li><b>Scalability:</b> add or remove storage when the business grows or in busy seasons, instantly <span class="t">P24 Q2b(ii)</span>.</li>
+<li><b>Backup and recovery:</b> copies are kept in several data centres, so data can be restored after hardware failure, fire or theft <span class="t">P24 Q2b(iii)</span>.</li>
+<li><b>Access and sharing:</b> work from anywhere, share links, edit together; <b>automatic updates</b> and <b>reduced maintenance</b>.</li>
+<li><b>Risks:</b> needs internet, security/privacy concerns, monthly cost, depends on the provider.</li>
+</ul>
+<h3>Cloud service models</h3>
+<figure class="wide"><svg viewBox="0 0 470 212" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Who manages what? (cloud service models)</text><rect x="130" y="22" width="80" height="22" rx="4" fill="#fff" stroke="#555" stroke-width="1.6"/><text x="170" y="37" font-size="8.6" text-anchor="middle" fill="#555" font-weight="bold" font-style="normal">On-premises</text><rect x="130" y="50" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="170" y="64" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="130" y="76" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="170" y="90" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="130" y="102" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="170" y="116" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="130" y="128" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="170" y="142" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="130" y="154" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="170" y="168" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="216" y="22" width="80" height="22" rx="4" fill="#fff" stroke="#a05a00" stroke-width="1.6"/><text x="256" y="37" font-size="8.6" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">IaaS</text><rect x="216" y="50" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="256" y="64" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="216" y="76" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="256" y="90" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="216" y="102" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="256" y="116" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="216" y="128" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="256" y="142" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="216" y="154" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="256" y="168" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="302" y="22" width="80" height="22" rx="4" fill="#fff" stroke="#1f5fa8" stroke-width="1.6"/><text x="342" y="37" font-size="8.6" text-anchor="middle" fill="#1f5fa8" font-weight="bold" font-style="normal">PaaS</text><rect x="302" y="50" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="342" y="64" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="302" y="76" width="80" height="22" rx="0" fill="#ffe3a8" stroke="#666" stroke-width="0.8"/><text x="342" y="90" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">you manage</text><rect x="302" y="102" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="342" y="116" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="302" y="128" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="342" y="142" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="302" y="154" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="342" y="168" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="388" y="22" width="80" height="22" rx="4" fill="#fff" stroke="#2a7a3a" stroke-width="1.6"/><text x="428" y="37" font-size="8.6" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">SaaS</text><rect x="388" y="50" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="428" y="64" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="388" y="76" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="428" y="90" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="388" y="102" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="428" y="116" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="388" y="128" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="428" y="142" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><rect x="388" y="154" width="80" height="22" rx="0" fill="#cfe3ff" stroke="#666" stroke-width="0.8"/><text x="428" y="168" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">provider</text><text x="124" y="64" font-size="8.82" text-anchor="end" fill="#111" font-weight="normal" font-style="normal">Applications</text><text x="124" y="90" font-size="8.82" text-anchor="end" fill="#111" font-weight="normal" font-style="normal">Data</text><text x="124" y="116" font-size="8.82" text-anchor="end" fill="#111" font-weight="normal" font-style="normal">Runtime / middleware</text><text x="124" y="142" font-size="8.82" text-anchor="end" fill="#111" font-weight="normal" font-style="normal">Operating system</text><text x="124" y="168" font-size="8.82" text-anchor="end" fill="#111" font-weight="normal" font-style="normal">Servers, storage, network</text><text x="235" y="190" font-size="7.66" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">Examples: IaaS = virtual servers;  PaaS = app platform;  SaaS = Google Docs, Gmail.</text><text x="235" y="201" font-size="7.66" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">SaaS = least work for the user;  IaaS = most control;  PaaS = developers manage only the app and data.</text></svg><figcaption>Who manages what in IaaS, PaaS and SaaS (shaded orange = you manage).</figcaption></figure>
+<table class="tbl"><tr><th>Model</th><th>You get</th><th>Example / user</th></tr>
+<tr><td><b>IaaS</b> Infrastructure as a Service</td><td>virtual servers, storage, networks (you install the OS and apps)</td><td>Amazon EC2; IT team needing full control</td></tr>
+<tr><td><b>PaaS</b> Platform as a Service</td><td>a ready platform to <b>develop and run applications</b>; provider handles hardware, OS and updates</td><td>Google App Engine; <b>software developers</b> <span class="t">P24 Q1a(ii): D</span></td></tr>
+<tr><td><b>SaaS</b> Software as a Service</td><td>finished software used through a browser</td><td>Google Docs, Gmail, Zoom; <b>ordinary users</b></td></tr></table>
+<h3>Types of cloud</h3>
+<figure class="wide"><svg viewBox="0 0 470 168" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Types of cloud (deployment models)</text><rect x="6" y="24" width="110" height="112" rx="6" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.6"/><text x="61" y="42" font-size="9.0" text-anchor="middle" fill="#7a3b9b" font-weight="bold" font-style="normal">PRIVATE</text><text x="61" y="62.0" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">one organisation only;</text><text x="61" y="71.5" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">most control and security</text><text x="61" y="100" font-size="7.66" text-anchor="middle" fill="#555" font-weight="bold" font-style="normal">Example:</text><text x="61" y="111" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">school or bank</text><text x="61" y="120" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">data</text><rect x="122" y="24" width="110" height="112" rx="6" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="177" y="42" font-size="9.0" text-anchor="middle" fill="#1f5fa8" font-weight="bold" font-style="normal">PUBLIC</text><text x="177" y="62.0" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">shared; provider owns it;</text><text x="177" y="71.5" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">cheap, pay as you go</text><text x="177" y="100" font-size="7.66" text-anchor="middle" fill="#555" font-weight="bold" font-style="normal">Example:</text><text x="177" y="111" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">Google Drive,</text><text x="177" y="120" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">Dropbox</text><rect x="238" y="24" width="110" height="112" rx="6" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.6"/><text x="293" y="42" font-size="9.0" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">HYBRID</text><text x="293" y="62.0" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">private + public mixed;</text><text x="293" y="71.5" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">sensitive data kept private</text><text x="293" y="100" font-size="7.66" text-anchor="middle" fill="#555" font-weight="bold" font-style="normal">Example:</text><text x="293" y="111" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">secure records +</text><text x="293" y="120" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">public website</text><rect x="354" y="24" width="110" height="112" rx="6" fill="#fff4e0" stroke="#a05a00" stroke-width="1.6"/><text x="409" y="42" font-size="9.0" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">COMMUNITY</text><text x="409" y="62.0" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">shared by several groups</text><text x="409" y="71.5" font-size="7.89" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">with the same needs</text><text x="409" y="100" font-size="7.66" text-anchor="middle" fill="#555" font-weight="bold" font-style="normal">Example:</text><text x="409" y="111" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">several colleges /</text><text x="409" y="120" font-size="7.42" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">hospitals</text><text x="235" y="152.0" font-size="7.89" text-anchor="middle" fill="#b3211b" font-weight="bold" font-style="normal">A school that wants high control and security of its own data should choose a</text><text x="235" y="160.296" font-size="7.89" text-anchor="middle" fill="#b3211b" font-weight="bold" font-style="normal">PRIVATE cloud (P25 Q1a(vi)).</text></svg><figcaption>Private, public, hybrid and community cloud.</figcaption></figure>
+<ul>
+<li>A school that wants to <b>control its data and have high security</b> chooses a <b>private cloud</b> <span class="t">P25 Q1a(vi): A</span>.</li>
+</ul>
+<h3>Google Workspace tools</h3>
+<table class="tbl"><tr><th>Tool</th><th>Use</th></tr>
+<tr><td><b>Google Docs</b></td><td>word processing; <b>many people edit the same document at the same time</b> with live updates, comments, suggestions and version history <span class="t">P25 Q1a(iii): B</span> <span class="t">P24 Q1c(i): TRUE</span></td></tr>
+<tr><td><b>Google Slides</b></td><td>presentations; share the deck and give each student different slides to work on at the same time <span class="t">P24 Q1a(viii): D</span></td></tr>
+<tr><td><b>Google Sheets</b></td><td>spreadsheets with formulas and charts</td></tr>
+<tr><td><b>Google Forms</b></td><td>surveys and quizzes; responses collected automatically</td></tr>
+<tr><td><b>Google Drive</b></td><td>cloud storage to save, organise and share files</td></tr>
+<tr><td><b>Google Meet</b></td><td>video meetings (not for editing a document)</td></tr>
+<tr><td><b>Google Sites</b></td><td>building simple websites</td></tr></table>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q2b [2]</span> Two reasons to advise cloud storage: (1) <b>no costly servers</b> to buy and maintain &mdash; the provider does it and the company pays only for what it uses; (2) data is <b>backed up and accessible from anywhere</b>, so staff can work remotely and data is safe if a computer is damaged.</div>
+<div class="sol"><span class="l">P25 Q2c [2]</span> Choose <b>SaaS</b> (or <b>IaaS</b> to remove servers): for <b>increased efficiency and reduced on-site server maintenance</b> a school IT team should use <b>SaaS</b> because the provider manages the servers, software and updates and the school just uses the applications. (IaaS removes the hardware but the team still has to manage the OS and software, so it does not reduce work as much.)</div>
+<div class="sol"><span class="l">P25 Q2d [2]</span> Two features of Google Forms: (1) <b>different question types</b> (multiple choice, short answer, scale) so the feedback is organised and easy to answer; (2) <b>automatic collection of responses into a Google Sheet with summary charts</b>, so data is gathered and analysed without manual typing. (Also: sharing by link, required questions, response validation.)</div>
+<div class="sol"><span class="l">P24 Q2b [4]</span> (i) The business <b>does not need to buy servers, disks or build a server room</b>; it rents storage and pays monthly. (ii) <b>Scalability</b>: storage can be increased or decreased quickly as inventory grows or in seasonal periods, paying only for what is used. (iii) <b>Backups are stored off-site in several data centres</b>, so after hardware failure, fire or theft the data can be <b>restored quickly</b> and business continues.</div>
+<div class="sol"><span class="l">P24 Q3a [3]</span> (i) Create a <b>Google Doc</b>, click <b>Share</b>, add classmates&rsquo; emails with <b>Editor</b> access; everyone edits at the same time, uses <b>comments and suggestions</b> and the <b>version history</b> records changes. (ii) <b>Google Drive</b> is the <b>cloud storage</b> to store, organise, share and sync files from any device. (iii) Slides: <b>real-time collaboration</b>, ready templates, themes, animations and transitions; can be presented or shared online (any two).</div>
+<div class="sol"><span class="l">P24 Q1a(ii) / P25 Q1a(vi)</span> P24: a company that wants to <b>develop and run applications without managing hardware or software updates</b> &rarr; <b>PaaS (D)</b>. P25: a school wanting control and high security &rarr; <b>private cloud (A)</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">2 &middot; Digital Citizenship: Copyright, Licences &amp; Citation</div><div class="rf">P25 Q1a(i,iv,xiii),b(iii),c(iv),Q3a,b,c &middot; P24 Q1a(v,x),b(ii,iii),c(v),Q3b,Q4a</div></div>
+<div class="cols">
+<h3>Key ideas</h3>
+<ul>
+<li><b>Copyright</b> = the <b>exclusive legal right</b> given to the creator to print, publish, perform, film or record a work and to authorise others to do so <span class="t">P24 Q1b(iii): copyright</span>. It applies automatically to books, music, photos, software and websites.</li>
+<li><b>Plagiarism</b> = using someone else&rsquo;s work or ideas as your own. Acknowledging the source by <b>citing</b> it avoids plagiarism <span class="t">P24 Q1b(ii): plagiarism</span>.</li>
+<li><b>Using copyrighted work legally:</b> get <b>permission/consent</b> from the owner, use work with a suitable <b>licence</b> (e.g. Creative Commons), use it under <b>fair use/educational use</b> with credit, or use public-domain material. So a physics project may use a journal&rsquo;s work <b>with the author&rsquo;s consent</b> &rarr; <b>TRUE</b> <span class="t">P25 Q1c(iv)</span>.</li>
+<li>To use an online <b>song in a video</b> follow the rules by <b>making sure the use matches the licence</b> (credit alone is not enough) &rarr; <b>D</b> <span class="t">P25 Q1a(i)</span>.</li>
+</ul>
+<h3>Creative Commons (CC) licences</h3>
+<figure class="wide"><svg viewBox="0 0 470 196" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Creative Commons licences: from most open to most restricted</text><rect x="8" y="22" width="92" height="20" rx="4" fill="#2a7a3a" stroke="#2a7a3a" stroke-width="1"/><text x="54" y="36" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC0</text><rect x="104" y="22" width="358" height="20" rx="4" fill="#fff" stroke="#2a7a3a" stroke-width="1.2"/><text x="112" y="36" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">no rights reserved (public domain)</text><rect x="8" y="46" width="92" height="20" rx="4" fill="#3a9a4a" stroke="#3a9a4a" stroke-width="1"/><text x="54" y="60" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC BY</text><rect x="104" y="46" width="358" height="20" rx="4" fill="#fff" stroke="#3a9a4a" stroke-width="1.2"/><text x="112" y="60" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">use, share, change, even for money, but give credit</text><rect x="8" y="70" width="92" height="20" rx="4" fill="#6aa02a" stroke="#6aa02a" stroke-width="1"/><text x="54" y="84" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC BY-SA</text><rect x="104" y="70" width="358" height="20" rx="4" fill="#fff" stroke="#6aa02a" stroke-width="1.2"/><text x="112" y="84" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">like BY, but share your changes under the same licence</text><rect x="8" y="94" width="92" height="20" rx="4" fill="#c9a000" stroke="#c9a000" stroke-width="1"/><text x="54" y="108" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC BY-NC</text><rect x="104" y="94" width="358" height="20" rx="4" fill="#fff" stroke="#c9a000" stroke-width="1.2"/><text x="112" y="108" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">remix and share, NOT for commercial use (credit needed)</text><rect x="8" y="118" width="92" height="20" rx="4" fill="#e08a00" stroke="#e08a00" stroke-width="1"/><text x="54" y="132" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC BY-ND</text><rect x="104" y="118" width="358" height="20" rx="4" fill="#fff" stroke="#e08a00" stroke-width="1.2"/><text x="112" y="132" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">share only, NO changes (credit needed)</text><rect x="8" y="142" width="92" height="20" rx="4" fill="#d06a00" stroke="#d06a00" stroke-width="1"/><text x="54" y="156" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC BY-NC-SA</text><rect x="104" y="142" width="358" height="20" rx="4" fill="#fff" stroke="#d06a00" stroke-width="1.2"/><text x="112" y="156" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">non-commercial; changes must use the same licence</text><rect x="8" y="166" width="92" height="20" rx="4" fill="#b3211b" stroke="#b3211b" stroke-width="1"/><text x="54" y="180" font-size="8.6" text-anchor="middle" fill="#fff" font-weight="bold" font-style="normal">CC BY-NC-ND</text><rect x="104" y="166" width="358" height="20" rx="4" fill="#fff" stroke="#b3211b" stroke-width="1.2"/><text x="112" y="180" font-size="8.58" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">most restrictive: share only, no changes, non-commercial</text></svg><figcaption>The CC licences from most open to most restricted.</figcaption></figure>
+<ul>
+<li><b>Creative Commons</b> licences let others <b>use, share and adapt</b> a work <b>under conditions chosen by the creator</b> <span class="t">P24 Q1a(x): B</span>. The creator <b>keeps the copyright</b>; CC does <b>not</b> transfer ownership to the public domain, so &ldquo;CC lets creators waive their copyright completely&rdquo; is <b>FALSE</b> <span class="t">P24 Q1c(v)</span> <b>(check)</b> (only CC0 waives rights).</li>
+<li><b>BY</b> = give credit (attribution). <b>NC</b> = non-commercial only. <b>SA</b> = share alike. <b>ND</b> = no derivatives.</li>
+<li><b>CC BY-NC:</b> others can <b>remix/share the song but not for profit</b> <span class="t">P25 Q1a(xiii): B</span>.</li>
+</ul>
+<h3>Copyright vs Creative Commons</h3>
+<table class="tbl"><tr><th></th><th>Copyright</th><th>Creative Commons</th></tr>
+<tr><td>Rule</td><td><b>All rights reserved</b>; you need permission for every use</td><td><b>Some rights reserved</b>; permission is given in advance with conditions</td></tr>
+<tr><td>Effect</td><td>protects the creator&rsquo;s income and control, but limits sharing</td><td>encourages <b>sharing, remixing and education</b> while still crediting the creator</td></tr></table>
+<h3>Citing sources (APA 7th edition)</h3>
+<ul>
+<li><b>In-text citation:</b> placed <b>inside the text</b>, e.g. (Dorji, 2020) <span class="t">P25 Q1b(iii): in-text</span>. <b>Reference list:</b> full details at the end.</li>
+<li><b>Book format:</b> <b>Author, A. A. (Year). <i>Title in sentence case, in italics</i>. Publisher.</b> Only the first word and proper names are capitalised; <b>no city</b> in the most recent (7th) edition.</li>
+</ul>
+<pre class="code">Dorji, T. (2020). Public health challenges in Bhutan. Bhutan Health Trust Fund.
+         (title in italics)        -> P25 Q1a(iv): C
+Smith, J. (2021). The digital age: Psychological impacts of social media.
+         HarperCollins Publishers. -> P24 Q1a(v): B (no place of publication)</pre>
+<h3>Ethical online behaviour</h3>
+<ul>
+<li><b>Cyberbullying / fake accounts</b> (Pema&rsquo;s fake profile): can lead to <b>school discipline</b> (warning, suspension), <b>legal action</b> under the cyber/ICT laws, <b>deleting the account</b>, and harm to the victim <span class="t">P25 Q3a</span>.</li>
+<li>Good digital citizens: respect privacy, think before posting, give credit, report abuse, use strong passwords, and do not copy files without permission.</li>
+</ul>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q3a [1]</span> Consequences for Pema: the <b>school can punish him</b> (warning, suspension or counselling) and <b>the account can be reported and removed; legal action</b> may follow because impersonation and harassment are against the law; his classmate suffers emotional harm.</div>
+<div class="sol"><span class="l">P25 Q3b [1]</span> Proper citation shows <b>honesty and respect for the creator&rsquo;s work</b>, avoids plagiarism and lets readers check the source.</div>
+<div class="sol"><span class="l">P25 Q3c [2]</span> To use a picture legally and ethically: (1) <b>check its licence</b> (use images marked Creative Commons or public domain, or ask permission); (2) <b>follow the licence conditions and give credit</b> (author, title, source link) in the project.</div>
+<div class="sol"><span class="l">P24 Q3b [3]</span> (i) Reasons to cite images: <b>gives credit to the creator</b> and respects <b>copyright</b>; <b>avoids plagiarism</b> and lets others <b>verify the source</b>. (ii) Ethical points: respect <b>copyright and licences</b>, get <b>permission</b>, ensure the content is <b>accurate and appropriate</b>, and give <b>credit</b>. (iii) The team should <b>use Creative Commons or royalty-free images (or their own) and cite every source</b> in a reference slide, explaining to the teammate why this keeps the presentation honest and educational.</div>
+<div class="sol"><span class="l">P24 Q4a [2]</span> Copyright gives the creator <b>all rights reserved</b>: others must <b>ask permission</b>. Creative Commons lets the creator <b>allow certain uses in advance</b> (share, adapt) <b>with conditions</b> such as credit or non-commercial. Copyright <b>restricts</b> distribution; CC <b>promotes sharing</b> of creative works while protecting the creator&rsquo;s credit.</div>
+<div class="quick"><b>Quick:</b> P25 i <b>D</b>; iv <b>C</b>; xiii <b>B</b>; blank iii <b>in-text</b>; c(iv) <b>TRUE</b>. P24 v <b>B</b>; x <b>B</b>; blanks ii <b>plagiarism</b>, iii <b>copyright</b>; c(v) <b>FALSE</b> (check).</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">3 &middot; Spreadsheets (MS Excel / Google Sheets)</div><div class="rf">P25 Q1a(ix,x,xv),b(v),c(ii),Q2a &middot; P24 Q1a(i,iii,vi,xv),Q2a,Q4b</div></div>
+<div class="cols">
+<h3>Key ideas</h3>
+<ul>
+<li>A formula starts with <b>=</b>. <b>Cell reference</b> = column letter + row number (B2). <b>Range</b> = A1:A6 (from A1 to A6). Formulas <b>update automatically</b> when the data changes.</li>
+<li><b>Relative</b> reference (B2) changes when copied; <b>absolute</b> reference ($B$2) stays fixed.</li>
+</ul>
+<figure class="wide"><svg viewBox="0 0 470 182" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Common Excel functions</text><rect x="6" y="22" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="35" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">SUM / AVERAGE / MAX / MIN / COUNT</text><rect x="196" y="22" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="35" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=MAX(E2:E5), =AVERAGE(B2:E2)</text><rect x="6" y="44" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="57" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">IF</text><rect x="196" y="44" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="57" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=IF(B2&gt;=50,"Pass","Fail")</text><rect x="6" y="66" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="79" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">AND / OR / NOT</text><rect x="196" y="66" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="79" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=NOT(A1&gt;5)  reverses TRUE/FALSE</text><rect x="6" y="88" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="101" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">SUMIF</text><rect x="196" y="88" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="101" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=SUMIF(B2:B6,"IT",C2:C6)  range, criteria, sum range</text><rect x="6" y="110" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="123" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">COUNTIF / AVERAGEIF</text><rect x="196" y="110" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="123" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=COUNTIF(A1:A6,"&gt;60")</text><rect x="6" y="132" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="145" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">VLOOKUP</text><rect x="196" y="132" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="145" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=VLOOKUP(value, table, col, FALSE)</text><rect x="6" y="154" width="190" height="19" rx="0" fill="#d6e5f4" stroke="#555" stroke-width="0.8"/><text x="12" y="167" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">RANK</text><rect x="196" y="154" width="264" height="19" rx="0" fill="#fff" stroke="#555" stroke-width="0.8"/><text x="202" y="167" font-size="7.42" font-family="DejaVu Sans Mono, monospace">=RANK(B2,B2:B10)  position in a list (not alphabetical)</text></svg><figcaption>The Excel functions asked in the papers.</figcaption></figure>
+<h3>Functions you must know</h3>
+<table class="tbl"><tr><th>Function</th><th>Use / example</th></tr>
+<tr><td><b>SUM, AVERAGE, MAX, MIN, COUNT</b></td><td>=SUM(B2:B6); <b>highest ICT score</b> &rarr; <code>=MAX(E2:E5)</code>; <b>average of all subjects for Mr Pema (row 2)</b> &rarr; <code>=AVERAGE(B2:E2)</code> <span class="t">P24 Q2a</span></td></tr>
+<tr><td><b>IF</b></td><td>=IF(B2&gt;=50,"Pass","Fail")</td></tr>
+<tr><td><b>AND, OR, NOT</b></td><td><b>NOT reverses</b> TRUE&harr;FALSE <span class="t">P24 Q1a(vi): B</span> <span class="t">P25 Q1b(v): NOT</span></td></tr>
+<tr><td><b>SUMIF</b></td><td>=SUMIF(<i>range to test</i>, <i>criteria</i>, <i>sum range</i>). Total salary of IT: <code>=SUMIF(B2:B6,"IT",C2:C6)</code> <span class="t">P24 Q1a(xv): D</span> (department is column B, salary column C)</td></tr>
+<tr><td><b>COUNTIF / AVERAGEIF</b></td><td>=COUNTIF(A1:A6,"&gt;60"); =AVERAGEIF(A1:A6,"&gt;60")</td></tr>
+<tr><td><b>VLOOKUP</b></td><td>look up a value in the <b>first column</b> of a table and return a value from another column</td></tr>
+<tr><td><b>RANK</b></td><td>gives the <b>position</b> of a number in a list (1st, 2nd&hellip;); it does <b>not</b> sort alphabetically &rarr; &ldquo;RANK arranges data alphabetically&rdquo; is <b>FALSE</b> <span class="t">P25 Q1c(ii)</span></td></tr></table>
+<h3>VLOOKUP</h3>
+<figure class="wide"><svg viewBox="0 0 470 160" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.0" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">VLOOKUP anatomy: =VLOOKUP(lookup_value, table_array, col_index, FALSE)</text><rect x="10" y="24" width="28" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="24.0" y="36" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal"></text><rect x="38" y="24" width="70" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="73.0" y="36" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">A</text><rect x="108" y="24" width="100" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="158.0" y="36" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">B</text><rect x="208" y="24" width="70" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="243.0" y="36" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">C</text><rect x="10" y="42" width="28" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="24.0" y="54" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">1</text><rect x="38" y="42" width="70" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="73.0" y="54" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Student ID</text><rect x="108" y="42" width="100" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="158.0" y="54" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Name</text><rect x="208" y="42" width="70" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="243.0" y="54" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">ICT Marks</text><rect x="10" y="60" width="28" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="24.0" y="72" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">2</text><rect x="38" y="60" width="70" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="73.0" y="72" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">101</text><rect x="108" y="60" width="100" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="158.0" y="72" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Karma Wangmo</text><rect x="208" y="60" width="70" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="243.0" y="72" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">85</text><rect x="10" y="78" width="28" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="24.0" y="90" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">3</text><rect x="38" y="78" width="70" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="73.0" y="90" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">102</text><rect x="108" y="78" width="100" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="158.0" y="90" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Dorji Wangchuk</text><rect x="208" y="78" width="70" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="243.0" y="90" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">90</text><rect x="10" y="96" width="28" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="24.0" y="108" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">4</text><rect x="38" y="96" width="70" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="73.0" y="108" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">103</text><rect x="108" y="96" width="100" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="158.0" y="108" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Tashi Dendup</text><rect x="208" y="96" width="70" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="243.0" y="108" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">78</text><rect x="10" y="114" width="28" height="18" rx="0" fill="#e6e6e6" stroke="#888" stroke-width="0.8"/><text x="24.0" y="126" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">5</text><rect x="38" y="114" width="70" height="18" rx="0" fill="#fff" stroke="#888" stroke-width="0.8"/><text x="73.0" y="126" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">104</text><rect x="108" y="114" width="100" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="158.0" y="126" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Kelzang Lethro</text><rect x="208" y="114" width="70" height="18" rx="0" fill="#ffe8a0" stroke="#888" stroke-width="0.8"/><text x="243.0" y="126" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">88</text><path d="M108,42 L208,42 L208,132 L108,132 Z" fill="none" stroke="#b3211b" stroke-width="1.8" stroke-dasharray="4 3"/><text x="158" y="144" font-size="7.89" text-anchor="middle" fill="#b3211b" font-weight="normal" font-style="normal">table_array B2:C5 (lookup column B first)</text><text x="375" y="40" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">=VLOOKUP("Tashi Dendup",</text><text x="375" y="52" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">B2:C5, 2, FALSE)</text><text x="375" y="84" font-size="7.19" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">1) value to find</text><text x="375" y="94" font-size="7.19" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">(first column of the table)</text><text x="375" y="104" font-size="7.19" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">2) table range, starting at that column</text><text x="375" y="114" font-size="7.19" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">3) column number inside the table</text><text x="375" y="124" font-size="7.19" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">4) FALSE = exact match</text><text x="375" y="64" font-size="8.0" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">result: 78</text></svg><figcaption>VLOOKUP: the lookup value must be in the first column of the table range.</figcaption></figure>
+<ul>
+<li>Tashi Dendup&rsquo;s score: the names are in column <b>B</b> and the marks in <b>C</b>, so the table is <b>B2:C5</b> and the marks are in column <b>2</b> of that table &rarr; <code>=VLOOKUP("Tashi Dendup", B2:C5, 2, FALSE)</code> = <b>78</b> &rarr; <b>A</b> <span class="t">P25 Q1a(x)</span>. The lookup value must be in the <b>first column</b> of the table range, so the range must start at column B, not A.</li>
+</ul>
+<h3>Other features</h3>
+<ul>
+<li><b>Data Validation:</b> restricts what can be typed, e.g. <b>whole numbers between 1 and 100</b> for test scores &rarr; <b>C</b> <span class="t">P24 Q1a(i)</span>. <b>Conditional formatting</b> colours cells by a rule; <b>Filter</b> shows rows that match a condition; <b>Pivot table</b> summarises data.</li>
+<li><b>Total sales</b> = units sold &times; unit price. In the table (C = Units Sold, D = Unit Price) the formula in E2 is <code>=C2*D2</code> &rarr; <b>B</b> <span class="t">P24 Q1a(iii)</span>.</li>
+</ul>
+<h3>Choosing a chart</h3>
+<figure class="wide"><svg viewBox="0 0 470 174" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Which chart?</text><rect x="6" y="20" width="110" height="130" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><text x="61" y="33" font-size="8.4" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Column / bar</text><rect x="22" y="82" width="14" height="30" rx="0" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><rect x="42" y="54" width="14" height="58" rx="0" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><rect x="62" y="72" width="14" height="40" rx="0" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><rect x="82" y="42" width="14" height="70" rx="0" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><line x1="18" y1="112" x2="102" y2="112" stroke="#333" stroke-width="1"/><text x="61" y="128" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">compare amounts</text><text x="61" y="137" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">(modes of transport)</text><rect x="122" y="20" width="110" height="130" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><text x="177" y="33" font-size="8.4" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Line</text><path d="M138,92 L158,76 L178,58 L198,66 L218,40" fill="none" stroke="#4472c4" stroke-width="2"/><circle cx="138" cy="92" r="2.6" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="158" cy="76" r="2.6" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="178" cy="58" r="2.6" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="198" cy="66" r="2.6" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="218" cy="40" r="2.6" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><line x1="134" y1="112" x2="222" y2="112" stroke="#333" stroke-width="1"/><text x="177" y="128" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">TREND over time</text><text x="177" y="137" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">(monthly sales)</text><rect x="238" y="20" width="110" height="130" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><text x="293" y="33" font-size="8.4" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Pie</text><circle cx="293" cy="80" r="30" fill="#4472c4" stroke="#fff" stroke-width="1"/><line x1="293" y1="80" x2="323.0" y2="80.0" stroke="#fff" stroke-width="1.4"/><line x1="293" y1="80" x2="273.7163717094038" y2="57.018666706430665" stroke="#fff" stroke-width="1.4"/><line x1="293" y1="80" x2="273.7163717094038" y2="102.98133329356934" stroke="#fff" stroke-width="1.4"/><path d="M293,80 L323,80 A30,30 0 0 0 273.7,57.0 Z" fill="#ed7d31" stroke="#fff" stroke-width="1.2"/><text x="293" y="128" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">parts of a whole</text><text x="293" y="137" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">(budget share)</text><rect x="354" y="20" width="110" height="130" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><text x="409" y="33" font-size="8.4" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Scatter</text><circle cx="376" cy="98" r="2.8" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="390" cy="82" r="2.8" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="404" cy="76" r="2.8" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="416" cy="54" r="2.8" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="430" cy="50" r="2.8" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><circle cx="442" cy="28" r="2.8" fill="#4472c4" stroke="#4472c4" stroke-width="0"/><line x1="366" y1="112" x2="454" y2="112" stroke="#333" stroke-width="1"/><line x1="366" y1="112" x2="366" y2="28" stroke="#333" stroke-width="1"/><text x="409" y="128" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">relationship between</text><text x="409" y="137" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">two numbers</text><text x="235" y="166" font-size="8.12" text-anchor="middle" fill="#b3211b" font-weight="bold" font-style="normal">Sales trend over five months → LINE chart (P25 Q1a(ix): D)</text></svg><figcaption>Column, line, pie and scatter charts and when to use them.</figcaption></figure>
+<ul>
+<li><b>Sales trend over five months</b> &rarr; <b>line chart</b> (option D) because the line joins the points in time order and shows the rise and fall <span class="t">P25 Q1a(ix)</span>. A pie chart shows parts of a whole; a column chart compares categories; a scatter plot shows the relationship between two numbers.</li>
+<li>To make a chart: select the data &rarr; <b>Insert &rarr; Chart</b> &rarr; choose the type &rarr; add title and axis labels <span class="t">P24 Q4b</span>.</li>
+</ul>
+<h3>Reading a column graph (P25 Q2a)</h3>
+<table class="tbl"><tr><th>Mode</th><th>Cycle</th><th>Car</th><th>Taxi</th><th>Walking</th><th>School bus</th></tr><tr><td>Students</td><td>4</td><td>8</td><td>6</td><td>12</td><td>10</td></tr></table>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q2a [4]</span> (i) <span class="r">Walking</span> (the tallest bar, 12). (ii) The <b>height of each bar shows the number of students</b> using that mode of transport. (iii) Students not taking the bus = total &minus; bus users = 40 &minus; 10 = <span class="r">30 students</span> (4 + 8 + 6 + 12 = 30).</div>
+<div class="sol"><span class="l">P24 Q2a [2]</span> (i) <span class="r">=MAX(E2:E5)</span> (ICT marks are in column E). (ii) <span class="r">=AVERAGE(B2:E2)</span> (Pema&rsquo;s marks are in row 2, columns B to E).</div>
+<div class="sol"><span class="l">P24 Q4b [2]</span> Mr Dorji should use the <b>chart (Insert &rarr; Chart; a line chart)</b> feature. It turns the figures into a <b>picture</b>, so <b>trends and patterns</b> such as rising or falling months and the best/worst month are seen at once, and comparisons are easier than reading numbers.</div>
+<div class="sol"><span class="l">P25 Q1a(xv) &mdash; (check)</span> <b>=AVERAGE(A1:A6,"&gt;60")</b> is not a valid conditional average: a text argument is not a criteria test (Excel gives <b>#VALUE!</b>), and the plain average of 45, 70, 55, 80, 40 is <b>58</b>. None of the options is correct. The right formula is <b>=AVERAGEIF(A1:A6,"&gt;60")</b> = (70 + 80) &divide; 2 = <b>75</b>. Ask your teacher; in the exam circle the option your key says.</div>
+<div class="quick"><b>Quick:</b> P25 ix <b>D</b> (line); x <b>A</b>; b(v) <b>NOT</b>; c(ii) <b>FALSE</b>. P24 i <b>C</b>; iii <b>B</b>; vi <b>B</b>; xv <b>D</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">4 &middot; Python Basics: Variables, Data Types, Operators &amp; Decisions</div><div class="rf">P25 Q1a(xi,xiv),c(i),Q3f,Q5a,Q6a,d &middot; P24 Q1a(xii,xiv),Q2c,Q6b</div></div>
+<div class="cols">
+<h3>Variables &amp; data types</h3>
+<ul>
+<li>A <b>variable</b> stores a value: <code>age = 15</code>. Python is <b>case sensitive</b>: <code>Fruit</code> and <code>fruit</code> are <b>different</b> variables &rarr; <b>TRUE</b> <span class="t">P25 Q1c(i)</span>; <code>"Apple" == "apple"</code> is <b>False</b> <span class="t">P25 Q1a(xi): C</span>.</li>
+<li><b>Valid variable names:</b> letters, digits and underscore; <b>cannot start with a digit; no spaces or hyphens</b>; cannot be a keyword. <code>school_1</code> is valid; <code>school-1</code>, <code>school 1</code> and <code>1school</code> are not &rarr; <b>B</b> <span class="t">P24 Q1a(xii)</span>.</li>
+</ul>
+<table class="tbl"><tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><b>int</b></td><td>whole number</td><td>books = 120 &mdash; <b>number of books</b> <span class="t">P25 Q1a(xiv): D</span></td></tr>
+<tr><td><b>float</b></td><td>decimal number</td><td>price = 7.5</td></tr>
+<tr><td><b>str</b></td><td>text in quotes</td><td>name = "Karma"</td></tr>
+<tr><td><b>bool</b></td><td>True or False</td><td>passed = True</td></tr></table>
+<ul>
+<li><b>Election simulation <span class="t">P25 Q3f</span>:</b> candidate name &rarr; <b>str</b> (text); number of votes &rarr; <b>int</b> (a whole number you can add and compare).</li>
+<li>Convert input: <code>n = int(input("Enter: "))</code> (<code>input()</code> always gives a string). Use <code>float()</code> for decimals.</li>
+</ul>
+<h3>Operators</h3>
+<table class="tbl"><tr><th>Kind</th><th>Operators</th></tr>
+<tr><td>Arithmetic</td><td><code>+ - * /</code> (divide), <code>//</code> (floor), <code>%</code> (remainder), <code>**</code> (power)</td></tr>
+<tr><td>Comparison</td><td><code>== != &lt; &gt; &lt;= &gt;=</code> &rarr; give True/False</td></tr>
+<tr><td>Logical</td><td><code>and</code>, <code>or</code>, <code>not</code></td></tr>
+<tr><td>Assignment</td><td><code>= += -= *=</code></td></tr></table>
+<h3>Boolean logic table (P24 Q6b)</h3>
+<table class="tbl"><tr><th>X</th><th>Y</th><th>NOT Y</th><th>X AND Y</th><th>X OR Y</th></tr>
+<tr><td>True</td><td>4 &gt;= 7 = <b>False</b></td><td><b>True</b></td><td><b>False</b></td><td><b>True</b></td></tr>
+<tr><td>False</td><td>5 != 9 = <b>True</b></td><td><b>False</b></td><td><b>False</b></td><td><b>True</b></td></tr></table>
+<ul><li><b>AND</b> is True only if both are True; <b>OR</b> is True if at least one is True; <b>NOT</b> flips the value.</li></ul>
+<h3>Decisions (if / elif / else)</h3>
+<pre class="code">num_1 = 7
+if num_1 > 0:
+    print("positive")
+elif num_1 == 0:
+    print("zero")
+else:
+    print("negative")</pre>
+<ul>
+<li>Indentation (4 spaces) shows which lines belong to the block; each condition line ends with a colon.</li>
+<li><b>Team A <code>num_1 &gt; 0</code> vs Team B <code>num_1 &gt;= 1</code> <span class="t">P25 Q6a</span>:</b> a positive number is any number <b>greater than zero</b>, including decimals like 0.5 and 0.01. <code>&gt;= 1</code> wrongly rejects these, so <b>Team A is more appropriate</b> (it works for all real numbers and says exactly what &ldquo;positive&rdquo; means).</li>
+</ul>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q3f [2]</span> Name: <b>string (str)</b> because a name is text. Votes: <b>integer (int)</b> because votes are counted in whole numbers and must be added and compared.</div>
+<div class="sol"><span class="l">P25 Q6d [2]</span> Circumference of a circle with r = 20:
+<pre class="code">r = 20
+c = 2 * 3.14 * r
+print("Circumference =", c)    # 125.6</pre></div>
+<div class="sol"><span class="l">P25 Q5a [1]</span> Store the price returned by the function: <pre class="code">laptop_cost = get_price("laptop")</pre></div>
+<div class="sol"><span class="l">P24 Q1a(xiv) [2]</span> Profit = selling price &minus; cost price, so the function that <b>returns sp &minus; cp</b> is correct (option D): <code>profit = sp - cp</code>; <code>calculate_profit(50, 70)</code> gives <b>20</b>.</div>
+<div class="sol"><span class="l">P24 Q6b [3]</span> See the Boolean table above: row 1 &rarr; False, True, False, True; row 2 &rarr; True, False, False, True (Y, NOT Y, X AND Y, X OR Y) &mdash; for row 1 Y = False (4 &gt;= 7), NOT Y = True, X AND Y = False, X OR Y = True; row 2 Y = True (5 != 9), NOT Y = False, X AND Y = False, X OR Y = True.</div>
+<div class="quick"><b>Quick:</b> P25 xi <b>C</b>; xiv <b>D</b>; c(i) <b>TRUE</b>. P24 xii <b>B</b>; xiv <b>D</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">5 &middot; Loops &amp; Python Turtle</div><div class="rf">P25 Q1a(ii),b(iv),Q3e,Q6b,c &middot; P24 Q1a(iv,vii,ix),c(iv),Q3c,Q4c,Q5a,b</div></div>
+<div class="cols">
+<h3>for loop and range()</h3>
+<figure class="wide"><svg viewBox="0 0 470 194" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">How loops work</text><rect x="6" y="18" width="228" height="168" rx="3" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><text x="120.0" y="29" font-size="8.4" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">while loop (condition first)</text><rect x="60" y="38" width="120" height="22" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="120" y="53" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">i = 0   (start)</text><line x1="120" y1="60" x2="120" y2="72" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><path d="M120,72 L176,92 L120,112 L64,92 Z" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.4"/><text x="120" y="95" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">i &lt; 5 ?</text><line x1="120" y1="112" x2="120" y2="128" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><text x="128" y="122" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">True</text><rect x="60" y="128" width="120" height="22" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="120" y="143" font-size="8.35" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">print(i);  i += 1</text><line x1="180" y1="139" x2="208" y2="139" stroke="#333" stroke-width="1.4"/><line x1="208" y1="139" x2="208" y2="92" stroke="#333" stroke-width="1.4"/><line x1="208" y1="92" x2="176" y2="92" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><line x1="64" y1="92" x2="24" y2="92" stroke="#333" stroke-width="1.4"/><text x="34" y="88" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">False</text><line x1="24" y1="92" x2="24" y2="170" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><text x="24" y="180" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">exit loop</text><rect x="238" y="18" width="226" height="168" rx="3" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><text x="351.0" y="29" font-size="8.4" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">for loop with range()</text><rect x="262" y="38" width="178" height="22" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="351" y="53" font-size="8.82" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">for i in range(1, 4):</text><line x1="351" y1="60" x2="351" y2="76" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><rect x="262" y="76" width="178" height="22" rx="0" fill="#fff4e0" stroke="#a05a00" stroke-width="1.4"/><text x="351" y="91" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">i takes 1, then 2, then 3</text><line x1="351" y1="98" x2="351" y2="114" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><rect x="262" y="114" width="178" height="22" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="351" y="129" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">run the loop body</text><line x1="351" y1="136" x2="351" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><text x="351" y="164" font-size="8.12" text-anchor="middle" fill="#b3211b" font-weight="normal" font-style="normal">repeat until the sequence ends</text></svg><figcaption>How a while loop and a for loop run.</figcaption></figure>
+<ul>
+<li>Use a <b>for loop</b> when you know <b>how many times</b> to repeat <span class="t">P24 Q1a(vii): D</span>; use a <b>while loop</b> when you repeat <b>as long as a condition is true</b> <span class="t">P24 Q1c(iv): TRUE</span>.</li>
+<li><code>range(stop)</code> = 0 to stop&minus;1; <code>range(start, stop)</code>; <code>range(start, stop, step)</code>. <b>The stop value is never included.</b></li>
+</ul>
+<figure class="wide"><svg viewBox="0 0 470 124" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">range(start, stop, step): stop is NOT included</text><line x1="20" y1="62" x2="450" y2="62" stroke="#333" stroke-width="1.4" marker-end="url(#a)"/><line x1="40" y1="56" x2="40" y2="68" stroke="#333" stroke-width="1"/><text x="40" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">0</text><line x1="78" y1="56" x2="78" y2="68" stroke="#333" stroke-width="1"/><text x="78" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">1</text><line x1="116" y1="56" x2="116" y2="68" stroke="#333" stroke-width="1"/><text x="116" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">2</text><line x1="154" y1="56" x2="154" y2="68" stroke="#333" stroke-width="1"/><text x="154" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">3</text><line x1="192" y1="56" x2="192" y2="68" stroke="#333" stroke-width="1"/><text x="192" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">4</text><line x1="230" y1="56" x2="230" y2="68" stroke="#333" stroke-width="1"/><text x="230" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">5</text><line x1="268" y1="56" x2="268" y2="68" stroke="#333" stroke-width="1"/><text x="268" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">6</text><line x1="306" y1="56" x2="306" y2="68" stroke="#333" stroke-width="1"/><text x="306" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">7</text><line x1="344" y1="56" x2="344" y2="68" stroke="#333" stroke-width="1"/><text x="344" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">8</text><line x1="382" y1="56" x2="382" y2="68" stroke="#333" stroke-width="1"/><text x="382" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">9</text><line x1="420" y1="56" x2="420" y2="68" stroke="#333" stroke-width="1"/><text x="420" y="80" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">10</text><circle cx="116" cy="62" r="6" fill="#2a7a3a" stroke="#fff" stroke-width="1.4"/><circle cx="230" cy="62" r="6" fill="#2a7a3a" stroke="#fff" stroke-width="1.4"/><circle cx="344" cy="62" r="6" fill="#2a7a3a" stroke="#fff" stroke-width="1.4"/><line x1="116" y1="44" x2="224" y2="44" stroke="#2a7a3a" stroke-width="1.4" marker-end="url(#a)"/><line x1="230" y1="44" x2="338" y2="44" stroke="#2a7a3a" stroke-width="1.4" marker-end="url(#a)"/><text x="173.0" y="38" font-size="8.58" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">+3</text><text x="287.0" y="38" font-size="8.58" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">+3</text><circle cx="420" cy="62" r="6" fill="#fff" stroke="#b3211b" stroke-width="1.6"/><text x="412" y="98" font-size="7.89" text-anchor="end" fill="#b3211b" font-weight="normal" font-style="normal">stop = 10 (not printed)</text><text x="235" y="112" font-size="8.12" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">range(2, 10, 3)  →  2  5  8        range(1, 4)  →  1  2  3        range(3, 0, -1)  →  3  2  1        range(5)  →  0 1 2 3 4</text></svg><figcaption>range() on a number line.</figcaption></figure>
+<pre class="code">for i in range(1, 4):      # 1 2 3
+    print(i)
+for j in range(3, 0, -1):  # 3 2 1
+    print(j)
+for i in range(2, 10, 3):  # 2 5 8
+    print(i, end=" ")      # end=" " keeps output on one line</pre>
+<ul>
+<li>Output of <code>for i in range(1,4)</code> followed by <code>for j in range(3,0,-1)</code> <span class="t">P25 Q3e</span>: <b>1 2 3 3 2 1</b> (each on its own line, six lines). <code>range(2,10,3)</code> with <code>end=" "</code> prints <b>2 5 8</b> <span class="t">P25 Q6c</span>.</li>
+<li><b>Even numbers 1 to 15:</b> <code>for i in range(1,15): if i % 2 == 0: print(i)</code> prints 2, 4, 6, 8, 10, 12, 14 &rarr; <b>A</b> <span class="t">P24 Q1a(iv)</span> (option C misses 14; D prints 0).</li>
+</ul>
+<h3>break, continue, pass</h3>
+<table class="tbl"><tr><th>Keyword</th><th>Effect</th></tr>
+<tr><td><b>break</b></td><td><b>stops the whole loop</b> immediately</td></tr>
+<tr><td><b>continue</b></td><td><b>skips the rest of this iteration</b> and moves to the next one <span class="t">P25 Q1b(iv): continue</span></td></tr>
+<tr><td><b>pass</b></td><td>does nothing; a placeholder where a statement is needed</td></tr></table>
+<pre class="code">for i in range(8):
+    if i == 1:
+        pass          # does nothing
+    elif i == 3:
+        continue      # skip 3
+    elif i == 5:
+        break         # stop the loop
+    else:
+        print(i)      # prints 0, 2, 4</pre>
+<h3>while loop</h3>
+<pre class="code">i = 0
+while i < 5:
+    if i == 3:
+        break
+    i += 1
+    print(i)      # prints 1 2 3</pre>
+<ul>
+<li>Trace <span class="t">P25 Q1a(ii)</span>: i = 0 &rarr; i becomes 1, print 1; &rarr; 2, print 2; &rarr; 3, print 3; now i == 3 so <b>break</b> before printing 4. Output <b>1, 2, 3</b> &rarr; <b>C</b>.</li>
+<li>Remember to <b>update the variable</b> (<code>i += 1</code>); otherwise the loop never stops (infinite loop).</li>
+</ul>
+<h3>Python Turtle graphics</h3>
+<figure class="wide"><svg viewBox="0 0 470 168" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Turtle: a regular polygon turns 360° / sides</text><path d="M120.0,28.0 L165.0,54.0 L165.0,106.0 L120.0,132.0 L75.0,106.0 L75.0,54.0 Z" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="2"/><circle cx="120.0" cy="28.0" r="3" fill="#b3211b" stroke="#b3211b" stroke-width="0"/><circle cx="165.03332099679082" cy="54.0" r="3" fill="#b3211b" stroke="#b3211b" stroke-width="0"/><circle cx="165.03332099679082" cy="106.0" r="3" fill="#b3211b" stroke="#b3211b" stroke-width="0"/><circle cx="120.0" cy="132.0" r="3" fill="#b3211b" stroke="#b3211b" stroke-width="0"/><circle cx="74.96667900320918" cy="106.0" r="3" fill="#b3211b" stroke="#b3211b" stroke-width="0"/><circle cx="74.9666790032092" cy="53.99999999999999" r="3" fill="#b3211b" stroke="#b3211b" stroke-width="0"/><text x="120" y="82" font-size="8.0" text-anchor="middle" fill="#1f5fa8" font-weight="bold" font-style="normal">hexagon</text><rect x="240" y="26" width="218" height="112" rx="3" fill="#f7f7f7" stroke="#888" stroke-width="1"/><text x="250" y="44" font-size="8.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">import turtle</text><text x="250" y="58" font-size="8.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">t = turtle.Turtle()</text><text x="250" y="72" font-size="8.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">for _ in range(6):</text><text x="250" y="86" font-size="8.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    t.forward(100)</text><text x="250" y="100" font-size="8.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    t.right(60)</text><text x="250" y="114" font-size="8.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">turtle.done()</text><text x="349" y="134.0" font-size="7.89" text-anchor="middle" fill="#b3211b" font-weight="bold" font-style="normal">6 sides, turns of 60° → HEXAGON (P24 Q1a(ix): D)</text><text x="235" y="158" font-size="7.89" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">Square: 4 sides, turn 90° (360/4).   Triangle: turn 120°.   Pentagon: 72°.   Octagon: 45°.</text></svg><figcaption>The turtle draws a regular polygon: turn = 360 &divide; number of sides.</figcaption></figure>
+<pre class="code">import turtle
+t = turtle.Turtle()
+
+def draw_square():
+    for _ in range(4):
+        t.forward(100)
+        t.right(90)
+
+draw_square()       # calling the function runs the drawing
+turtle.done()</pre>
+<ul>
+<li>Six sides with 60&deg; turns draw a <b>hexagon</b> <span class="t">P24 Q1a(ix): D</span>.</li>
+</ul>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q3e [2]</span> Output: <pre class="code">1
+2
+3
+3
+2
+1</pre></div>
+<div class="sol"><span class="l">P25 Q6b [2]</span> The <b>for loop</b> is more efficient for printing 1 to 5: (1) the number of repetitions is <b>known</b>, and <code>range(1,6)</code> controls the counter automatically; (2) it needs <b>fewer lines</b> and there is <b>no risk of forgetting to increment</b> (an infinite loop) as in a while loop.
+<pre class="code">for i in range(1, 6):      i = 1
+    print(i)               while i <= 5:
+                               print(i)
+                               i += 1</pre></div>
+<div class="sol"><span class="l">P24 Q3c [4]</span> (i) <pre class="code">total = 0
+for i in range(1, 51):
+    total += i
+print("Sum =", total)     # 1275</pre> (ii) <pre class="code">i = 0
+while i <= 10:
+    print(i)
+    i += 1</pre></div>
+<div class="sol"><span class="l">P24 Q4c [3]</span> (i)&ndash;(ii) Code above: <code>def draw_square():</code> with <code>for _ in range(4): t.forward(100); t.right(90)</code>. (iii) Call it by writing the function name with brackets: <b><code>draw_square()</code></b>.</div>
+<div class="sol"><span class="l">P24 Q5a [3]</span> (i) Output <b>0, 2, 4</b> (each on a new line): i = 0 prints 0; i = 1 &rarr; pass; i = 2 prints 2; i = 3 &rarr; continue; i = 4 prints 4; i = 5 &rarr; break. (ii) <b>pass</b> does nothing and the loop carries on (placeholder); <b>break</b> ends the loop when i = 5, so 6 and 7 are never reached. <b>(check)</b> the paper prints <code>Pass</code>/<code>Continue</code> with capitals &mdash; the correct Python keywords are lowercase.</div>
+<div class="sol"><span class="l">P24 Q5b [5]</span> (i) <code>while num &lt;= 5:</code> (ii) <code>num += 1</code> (or <code>num = num + 1</code>). Result of the product loop: 1&times;2&times;3&times;4&times;5 = 120. (iii) Sum 1 to 10: <pre class="code">total = 0
+num = 1
+while num <= 10:
+    total += num
+    num += 1
+print("The sum of the first 10 numbers is:", total)   # 55</pre></div>
+<div class="quick"><b>Quick:</b> P25 ii <b>C</b>; b(iv) <b>continue</b>. P24 iv <b>A</b>; vii <b>D</b>; ix <b>D</b>; c(iv) <b>TRUE</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">6 &middot; Strings &amp; Data Structures: List, Tuple, Set, Dictionary</div><div class="rf">P25 Q1a(v,viii),Q4a&ndash;g &middot; P24 Q1a(xi,xiii),b(i,iv),c(ii),Q4d,Q5c</div></div>
+<div class="cols">
+<h3>Overview</h3>
+<figure class="wide"><svg viewBox="0 0 470 162" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Python data structures at a glance</text><rect x="6" y="22" width="110" height="132" rx="6" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="61" y="40" font-size="9.0" text-anchor="middle" fill="#1f5fa8" font-weight="bold" font-style="normal">LIST</text><text x="61" y="64" font-size="15.0" text-anchor="middle" fill="#1f5fa8" font-weight="bold" font-style="normal">[ ]</text><text x="61" y="84.0" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">ordered, changeable,</text><text x="61" y="93.5" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">duplicates allowed</text><rect x="12" y="108" width="98" height="22" rx="2" fill="#fff" stroke="#1f5fa8" stroke-width="0.9"/><text x="61" y="122" font-size="6.5" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">fruits = ["apple","mango"]</text><text x="61" y="146" font-size="7.19" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">append, pop, index</text><rect x="122" y="22" width="110" height="132" rx="6" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.6"/><text x="177" y="40" font-size="9.0" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">TUPLE</text><text x="177" y="64" font-size="15.0" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">( )</text><text x="177" y="84.0" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">ordered, NOT changeable</text><text x="177" y="93.5" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">(immutable)</text><rect x="128" y="108" width="98" height="22" rx="2" fill="#fff" stroke="#2a7a3a" stroke-width="0.9"/><text x="177" y="122" font-size="6.5" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">pt = (10, 20, 30)</text><text x="177" y="146" font-size="7.19" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">index, count only</text><rect x="238" y="22" width="110" height="132" rx="6" fill="#fff4e0" stroke="#a05a00" stroke-width="1.6"/><text x="293" y="40" font-size="9.0" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">SET</text><text x="293" y="64" font-size="15.0" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">{ }</text><text x="293" y="84.0" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">unordered, unique items,</text><text x="293" y="93.5" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">no indexing</text><rect x="244" y="108" width="98" height="22" rx="2" fill="#fff" stroke="#a05a00" stroke-width="0.9"/><text x="293" y="122" font-size="6.5" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">s = {1, 2, 3}</text><text x="293" y="146" font-size="7.19" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">add, remove, union</text><rect x="354" y="22" width="110" height="132" rx="6" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.6"/><text x="409" y="40" font-size="9.0" text-anchor="middle" fill="#7a3b9b" font-weight="bold" font-style="normal">DICTIONARY</text><text x="409" y="64" font-size="15.0" text-anchor="middle" fill="#7a3b9b" font-weight="bold" font-style="normal">{k: v}</text><text x="409" y="84.0" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">key : value pairs,</text><text x="409" y="93.5" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">keys unique</text><rect x="360" y="108" width="98" height="22" rx="2" fill="#fff" stroke="#7a3b9b" stroke-width="0.9"/><text x="409" y="122" font-size="6.5" text-anchor="middle" font-family="DejaVu Sans Mono, monospace">st = {"name":"Jampel"}</text><text x="409" y="146" font-size="7.19" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">keys(), values(), get()</text></svg><figcaption>The four data structures: brackets, order, changeability.</figcaption></figure>
+<table class="tbl"><tr><th></th><th>List</th><th>Tuple</th><th>Set</th><th>Dictionary</th></tr>
+<tr><td>Brackets</td><td>[ ]</td><td>( )</td><td>{ }</td><td>{key: value}</td></tr>
+<tr><td>Ordered?</td><td>yes</td><td>yes</td><td>no</td><td>yes (3.7+)</td></tr>
+<tr><td>Changeable?</td><td><b>yes</b></td><td><b>no</b> (immutable)</td><td>yes</td><td>yes</td></tr>
+<tr><td>Duplicates</td><td>allowed</td><td>allowed</td><td><b>not allowed</b></td><td>keys unique</td></tr></table>
+<ul>
+<li>An <b>ordered, changeable collection that allows duplicates</b> is a <b>list</b> <span class="t">P24 Q1b(i)</span>. The structure that stores <b>key-value pairs with unique keys</b> is a <b>dictionary</b> <span class="t">P24 Q1b(iv)</span>. <b>Lists change; tuples stay fixed</b> &rarr; <b>C</b> <span class="t">P25 Q1a(v)</span>.</li>
+<li>To keep a collection with <b>no duplicates where order does not matter</b> use a <b>set</b> <span class="t">P24 Q1c(ii): TRUE</span>.</li>
+</ul>
+<h3>Strings</h3>
+<ul>
+<li>A string is a sequence of characters; it is <b>immutable</b>: <b>once created, its characters cannot be changed in place</b> <span class="t">P25 Q4a</span>. To &ldquo;change&rdquo; it you create a <b>new string</b>.</li>
+</ul>
+<pre class="code">car = "Alto"
+car[0] = "B"          # TypeError: strings are immutable
+car = "B" + car[1:]   # new string "Balto" (the old one is replaced)
+print(car)</pre>
+<ul><li><b>P25 Q4b:</b> modifying <code>car</code> shows immutability &mdash; direct item assignment fails, so a new string must be made (e.g. <code>car = car + " 800"</code> or <code>"B" + car[1:]</code>).</li></ul>
+<h3>Lists: index, slice, methods</h3>
+<figure class="wide"><svg viewBox="0 0 470 180" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Indexing and slicing a list</text><rect x="80" y="46" width="60" height="34" rx="0" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="110" y="68" font-size="11.0" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">10</text><text x="110" y="38" font-size="8.6" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">0</text><text x="110" y="96" font-size="8.6" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">-5</text><rect x="146" y="46" width="60" height="34" rx="0" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="176" y="68" font-size="11.0" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">20</text><text x="176" y="38" font-size="8.6" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">1</text><text x="176" y="96" font-size="8.6" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">-4</text><rect x="212" y="46" width="60" height="34" rx="0" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="242" y="68" font-size="11.0" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">30</text><text x="242" y="38" font-size="8.6" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">2</text><text x="242" y="96" font-size="8.6" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">-3</text><rect x="278" y="46" width="60" height="34" rx="0" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="308" y="68" font-size="11.0" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">40</text><text x="308" y="38" font-size="8.6" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">3</text><text x="308" y="96" font-size="8.6" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">-2</text><rect x="344" y="46" width="60" height="34" rx="0" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="374" y="68" font-size="11.0" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">50</text><text x="374" y="38" font-size="8.6" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">4</text><text x="374" y="96" font-size="8.6" text-anchor="middle" fill="#a05a00" font-weight="bold" font-style="normal">-1</text><text x="70" y="38" font-size="8.82" text-anchor="end" fill="#2a7a3a" font-weight="bold" font-style="normal">index</text><text x="70" y="96" font-size="8.82" text-anchor="end" fill="#a05a00" font-weight="bold" font-style="normal">negative</text><text x="32" y="68" font-size="8.0" text-anchor="end" fill="#111" font-weight="bold" font-style="normal">data =</text><path d="M146,106 L146,114 L344,114 L344,106" fill="none" stroke="#b3211b" stroke-width="1.8"/><text x="245" y="126" font-size="8.58" text-anchor="middle" fill="#b3211b" font-weight="bold" font-style="normal">data[1:4]  →  [20, 30, 40]   (start 1 included, stop 4 NOT included)</text><text x="235" y="146" font-size="7.66" text-anchor="middle" fill="#222" font-weight="normal" font-style="normal">data[0:3] → [10,20,30]      data[1:3] → [20,30]      data[2:5] → [30,40,50]      data[-1] → 50      data[:2] → [10,20]</text><text x="235" y="160" font-size="7.89" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">colors = ["red","green","blue"]  →  colors[-1] is "blue" (last item)  (P25 Q4c)</text></svg><figcaption>Positive and negative indexes, and slicing.</figcaption></figure>
+<pre class="code">data = [10, 20, 30, 40, 50]
+print(data[1:4])      # [20, 30, 40]  -> C
+colors = ["red", "green", "blue"]
+print(colors[-1])     # blue (last item)
+my_list = ["Range", "function", "inbuilt", "variable"]
+my_list.pop(2)        # removes index 2 ("inbuilt")
+print(my_list)        # ['Range', 'function', 'variable']</pre>
+<ul>
+<li>Slice <code>data[1:4]</code> gives <b>[20, 30, 40]</b> (start included, stop not) &rarr; <b>C</b> <span class="t">P25 Q1a(viii)</span>. <code>colors[-1]</code> counts from the end, so the output is <b>blue</b> <span class="t">P25 Q4c</span>. After <code>pop(2)</code> the list is <b>[&lsquo;Range&rsquo;, &lsquo;function&rsquo;, &lsquo;variable&rsquo;]</b> &rarr; <b>D</b> <span class="t">P24 Q1a(xi)</span>.</li>
+<li>Methods: <code>append(x)</code>, <code>insert(i,x)</code>, <code>remove(x)</code>, <code>pop(i)</code>, <code>sort()</code>, <code>len(list)</code>.</li>
+</ul>
+<h3>Tuples</h3>
+<pre class="code">my_tuple = (10, 20, 30, 40)
+print(my_tuple[1])    # 20 -> B</pre>
+<ul><li>Index starts at 0, so <code>my_tuple[1]</code> is <b>20</b> <span class="t">P24 Q1a(xiii)</span>. Tuples use <b>( )</b> and cannot be changed; dictionaries use <b>{ }</b> with key:value pairs and can be changed <span class="t">P25 Q4f</span>.</li></ul>
+<h3>Sets</h3>
+<pre class="code">attended  = {"Rina", "Karma", "Sonam", "Tashi"}
+submitted = {"Rina", "Sonam"}
+not_submitted = attended - submitted      # or attended.difference(submitted)
+print(not_submitted)                      # {'Karma', 'Tashi'}</pre>
+<ul><li>Set operations: union <code>|</code>, intersection <code>&amp;</code>, difference <code>-</code>. A set <b>has no duplicates and no order</b> <span class="t">P24 Q4d</span>.</li></ul>
+<h3>Dictionaries</h3>
+<pre class="code">student = {"name": "Jampel", "age": 20}
+student["grade"] = "A"          # add a new key
+print(student)
+vehicle = {'brand': 'Toyota', 'model': 'VigoHilux', 'year': 2021}
+print(vehicle['model'])         # VigoHilux  (or vehicle.get('model'))</pre>
+<ul>
+<li><code>vehicle</code> is a <b>dictionary</b> (keys and values) <span class="t">P24 Q5c(i)</span>; read a value with its key: <code>vehicle['model']</code> <span class="t">P24 Q5c(ii)</span>.</li>
+<li><b>Student names with scores:</b> a <b>dictionary is better than a list</b>: each name (key) is linked to a score (value) and the score is found instantly by name, while a list would need index positions or two parallel lists <span class="t">P25 Q4e</span>.</li>
+</ul>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q4a,b [3]</span> Immutability: <b>a string cannot be changed after it is created</b> (you cannot replace one letter). Example: <code>car = "Alto"; car[0] = "B"</code> gives a <b>TypeError</b>; the only way is to build a new string, <code>car = "B" + car[1:]</code>.</div>
+<div class="sol"><span class="l">P25 Q4d [2]</span> Code A &minus; code B using sets: <code>print(attended - submitted)</code> (or <code>attended.difference(submitted)</code>). The names displayed are <b>Karma</b> and <b>Tashi</b>.</div>
+<div class="sol"><span class="l">P25 Q4e,f [2]</span> (e) <b>Yes</b>, a dictionary is better: names are keys and scores are values, so a score is found directly by name. (f) A <b>tuple</b> is an ordered collection in <b>( )</b> that <b>cannot be changed</b>; a <b>dictionary</b> stores <b>key:value pairs</b> in <b>{ }</b> and <b>can be changed</b>.</div>
+<div class="sol"><span class="l">P25 Q4g [2]</span> <pre class="code">student = {"name": "Jampel", "age": 20}
+student["grade"] = "A"
+print(student)     # {'name': 'Jampel', 'age': 20, 'grade': 'A'}</pre></div>
+<div class="sol"><span class="l">P24 Q4d [3]</span> (i) A <b>set</b> is an <b>unordered collection of unique items</b> written in { }. (ii) <b>(check &mdash; scenario not in my copy)</b> If the data must have <b>no repeated items</b> and the order does not matter (e.g. student IDs or names who attended), recommend a <b>set</b>: (1) it <b>removes duplicates automatically</b>; (2) membership checks and operations (union, difference) are <b>fast and simple</b>. If order or duplicates matter, a list is better.</div>
+<div class="quick"><b>Quick:</b> P25 v <b>C</b>; viii <b>C</b>. P24 xi <b>D</b>; xiii <b>B</b>; b(i) <b>list</b>, (iv) <b>dictionary</b>; c(ii) <b>TRUE</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">7 &middot; Functions &amp; Recursion</div><div class="rf">P25 Q1a(vii),b(ii),Q5b&ndash;e &middot; P24 Q1a(xiv),b(v),Q2c,Q6c</div></div>
+<div class="cols">
+<h3>Functions</h3>
+<figure class="wide"><svg viewBox="0 0 470 184" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Anatomy of a function</text><rect x="10" y="24" width="216" height="120" rx="3" fill="#f7f7f7" stroke="#888" stroke-width="1"/><text x="20" y="42" font-size="9.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">def add(a, b=10):</text><text x="20" y="60" font-size="9.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    total = a + b</text><text x="20" y="78" font-size="9.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    return total</text><text x="20" y="114" font-size="9.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">result = add(5)</text><text x="20" y="132" font-size="9.0" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">print(result)</text><line x1="240" y1="36" x2="150" y2="38" stroke="#1f5fa8" stroke-width="0.9"/><text x="244" y="38.0" font-size="8.12" text-anchor="start" fill="#1f5fa8" font-weight="bold" font-style="normal">def = keyword</text><text x="244" y="47.5" font-size="8.12" text-anchor="start" fill="#1f5fa8" font-weight="bold" font-style="normal">add = function name</text><line x1="240" y1="64" x2="120" y2="42" stroke="#2a7a3a" stroke-width="0.9"/><text x="244" y="66.0" font-size="8.12" text-anchor="start" fill="#2a7a3a" font-weight="bold" font-style="normal">a, b = parameters</text><text x="244" y="75.5" font-size="8.12" text-anchor="start" fill="#2a7a3a" font-weight="bold" font-style="normal">(b = 10 is a default value)</text><line x1="240" y1="92" x2="120" y2="76" stroke="#a05a00" stroke-width="0.9"/><text x="244" y="94.0" font-size="8.12" text-anchor="start" fill="#a05a00" font-weight="bold" font-style="normal">return sends back the</text><text x="244" y="103.5" font-size="8.12" text-anchor="start" fill="#a05a00" font-weight="bold" font-style="normal">return value</text><line x1="240" y1="120" x2="120" y2="112" stroke="#7a3b9b" stroke-width="0.9"/><text x="244" y="122.0" font-size="8.12" text-anchor="start" fill="#7a3b9b" font-weight="bold" font-style="normal">add(5) = function CALL;</text><text x="244" y="131.5" font-size="8.12" text-anchor="start" fill="#7a3b9b" font-weight="bold" font-style="normal">5 = argument (b becomes 10)</text><text x="244" y="148" font-size="8.35" text-anchor="start" fill="#b3211b" font-weight="bold" font-style="normal">result = 15</text><text x="235" y="168" font-size="7.66" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">Local variables (total) exist only inside the function.</text><text x="235" y="178" font-size="7.66" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">If a function is defined twice with the same name, only the LAST definition is kept.</text></svg><figcaption>Anatomy of a function: keyword, name, parameters, return value, call and arguments.</figcaption></figure>
+<ul>
+<li>A <b>function</b> is a <b>reusable block of code that performs a specific task</b> and can be called many times <span class="t">P25 Q1b(ii): function</span> <span class="t">P24 Q1b(v): function</span>.</li>
+<li><b>Parameter</b> = the variable in the definition (<code>def hello(f_name)</code>); <b>argument</b> = the value passed when calling (<code>hello("Sonam")</code>).</li>
+<li><b><code>return</code></b> sends a value back to the caller; <code>print</code> only displays.</li>
+<li><b>Default argument:</b> <code>def add(a, b=10)</code> &mdash; if the caller leaves out <code>b</code>, it is 10. <code>add(5)</code> &rarr; 15 is valid; <code>add()</code> fails (a is required); passing 3 arguments fails (only 2 parameters) &rarr; <b>D</b> <span class="t">P25 Q1a(vii)</span>.</li>
+<li><b>Local variable:</b> created inside a function and usable only there; <b>global variable:</b> created outside.</li>
+</ul>
+<pre class="code">def add(a, b=10):
+    return a + b
+
+print(add(5))        # 15
+print(add(5, 20))    # 25</pre>
+<h3>Reading code (traces)</h3>
+<pre class="code">def mystery_function(a):
+    return a*2 + 3
+result = mystery_function(5)
+print(result)          # 5*2 + 3 = 13
+
+def addition(x, y):    # 1 = parameters (x, y)
+    add = x + y
+    return add
+cal = addition(10, 5)  # 2 = function call, arguments 10 and 5
+print(f'Addition:{cal}')   # Addition:15</pre>
+<h3>Recursion</h3>
+<ul>
+<li>A <b>recursive function calls itself</b> on a smaller problem until it reaches a <b>base case</b> that stops the calls. It needs (1) a base case and (2) a recursive case that moves toward it.</li>
+</ul>
+<figure class="wide"><svg viewBox="0 0 470 192" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">countConsonants("Bhutan") unfolds step by step</text><rect x="10" y="26" width="62" height="18" rx="3" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.2"/><text x="41" y="38" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">"Bhutan"</text><text x="82" y="38" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">B is a consonant</text><text x="212" y="38" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">1 + count("hutan")</text><rect x="10" y="48" width="62" height="18" rx="3" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.2"/><text x="41" y="60" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">"hutan"</text><text x="82" y="60" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">h is a consonant</text><text x="212" y="60" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">1 + count("utan")</text><rect x="10" y="70" width="62" height="18" rx="3" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.2"/><text x="41" y="82" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">"utan"</text><text x="82" y="82" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">u is a vowel</text><text x="212" y="82" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">count("tan")</text><rect x="10" y="92" width="62" height="18" rx="3" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.2"/><text x="41" y="104" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">"tan"</text><text x="82" y="104" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">t is a consonant</text><text x="212" y="104" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">1 + count("an")</text><rect x="10" y="114" width="62" height="18" rx="3" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.2"/><text x="41" y="126" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">"an"</text><text x="82" y="126" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">a is a vowel</text><text x="212" y="126" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">count("n")</text><rect x="10" y="136" width="62" height="18" rx="3" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.2"/><text x="41" y="148" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">"n"</text><text x="82" y="148" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">n is a consonant</text><text x="212" y="148" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">1 + count("")</text><rect x="10" y="158" width="62" height="18" rx="3" fill="#ffe8e8" stroke="#b3211b" stroke-width="1.2"/><text x="41" y="170" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">""</text><text x="82" y="170" font-size="8.35" text-anchor="start" fill="#222" font-weight="normal" font-style="normal">BASE CASE</text><text x="212" y="170" font-size="8.35" text-anchor="start" fill="#111" font-weight="bold" font-style="normal">return 0</text><rect x="318" y="26" width="144" height="160" rx="4" fill="#f4f8fd" stroke="#9db7d4" stroke-width="1"/><text x="390" y="40" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Going back up (unwinding):</text><text x="390" y="55" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("")    = 0</text><text x="390" y="70" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("n")   = 1 + 0 = 1</text><text x="390" y="85" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("an")  = 1</text><text x="390" y="100" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("tan") = 1 + 1 = 2</text><text x="390" y="115" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("utan")= 2</text><text x="390" y="130" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("hutan")= 1 + 2 = 3</text><text x="390" y="145" font-size="7.66" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">count("Bhutan")= 1 + 3 = 4</text><text x="390" y="176" font-size="8.58" text-anchor="middle" fill="#2a7a3a" font-weight="bold" font-style="normal">Answer: 4 (B, h, t, n)</text></svg><figcaption>The recursion for countConsonants(&ldquo;Bhutan&rdquo;).</figcaption></figure>
+<pre class="code">def countConsonants(text):
+    if text == "":                       # base case (paper shows " ")
+        return 0
+    elif text[0].isalpha() and text[0].lower() not in "aeiou":
+        return 1 + countConsonants(text[1:])
+    else:
+        return countConsonants(text[1:])
+
+print(countConsonants("Bhutan"))         # 4</pre>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q5b [2]</span> Parameter: <b>f_name</b> (in <code>def hello(f_name)</code>). Local variable: <b>message</b> (created inside the function). (<code>first_name</code> is a global variable outside the function.)</div>
+<div class="sol"><span class="l">P25 Q5c [1]</span> Python does not support two functions with the same name: the <b>second definition replaces the first</b>. So only <code>greet(name)</code> exists; <code>greet("Tashi")</code> prints &ldquo;Hello Tashi&rdquo;, but calling <code>greet()</code> gives a <b>TypeError</b> (missing argument).</div>
+<div class="sol"><span class="l">P25 Q5d [2]</span> <pre class="code">def square(n=5):          # default argument
+    return n * n
+
+print(square(4))          # called with a number -> 16
+print(square())           # called without -> uses 5 -> 25</pre></div>
+<div class="sol"><span class="l">P25 Q5e [4]</span> (i) <b>Base case:</b> when the text is empty (no characters left) the function returns <b>0</b> and stops the recursion. <b>(check)</b> the paper prints <code>" "</code>; with a space the empty string would not match and the function would fail. (ii) <b>Consonant check:</b> <code>text[0]</code> is the first letter; it must be a letter (<code>isalpha()</code>) <b>and</b> its lowercase must <b>not</b> be in &ldquo;aeiou&rdquo;. (iii) <b>Recursion:</b> if the first letter is a consonant it returns <b>1 + countConsonants(rest of the text)</b> (<code>text[1:]</code>), otherwise it returns the count of the rest without adding 1; each call handles one letter and passes the shorter text on until the base case; the 1s are added when the calls return. (iv) &ldquo;Bhutan&rdquo; has <b>4 consonants</b> (B, h, t, n); u and a are vowels.</div>
+<div class="sol"><span class="l">P24 Q2c [4]</span> (i) The call <code>add_numbers(5)</code> gives only <b>one argument</b> but the function needs two (<b>TypeError</b>). Corrected: <pre class="code">def add_numbers(a, b):
+    return a + b
+print(add_numbers(5, 3))     # 8   (or give b a default value: def add_numbers(a, b=0))</pre> (ii) <b>13</b>: <code>mystery_function(5)</code> returns 5 &times; 2 + 3 = 13, which is stored in <code>result</code> and printed.</div>
+<div class="sol"><span class="l">P24 Q6c [3]</span> (i) <b>1 = parameters</b> (x, y) of the function definition; <b>2 = function call</b> (with the arguments 10 and 5) <b>(check labels in your paper)</b>. (ii) Keyword: <b>def</b> (and <b>return</b>); function name: <b>addition</b>; return value: <b>add (= 15)</b>. Output: <b>Addition:15</b>.</div>
+<div class="sol"><span class="l">P24 Q1a(xiv) / P25 Q1a(vii)</span> Profit function with <code>sp - cp</code> &rarr; <b>D</b> (profit 20). <code>add(5)</code> with <code>b=10</code> default &rarr; valid call <b>D</b>.</div>
+<div class="quick"><b>Quick:</b> P25 vii <b>D</b>; b(ii) <b>function</b>. P24 xiv <b>D</b>; b(v) <b>function</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">8 &middot; Algorithms &amp; Flowcharts</div><div class="rf">P25 Q1a(xii),c(v),Q3d,Q6e &middot; P24 Q6a</div></div>
+<div class="cols">
+<h3>Algorithm vs flowchart</h3>
+<ul>
+<li>An <b>algorithm</b> is a <b>step-by-step set of instructions to solve a problem</b> (written in words or pseudocode) <span class="t">P25 Q1a(xii): D</span>. A <b>flowchart</b> is a <b>diagram of the algorithm</b> using standard symbols and arrows.</li>
+</ul>
+<table class="tbl"><tr><th></th><th>Algorithm</th><th>Flowchart</th></tr>
+<tr><td>Form</td><td>written <b>steps</b> in words / pseudocode</td><td><b>diagram</b> with symbols and arrows</td></tr>
+<tr><td>Easy to</td><td>write quickly</td><td>see the flow and decisions at a glance</td></tr>
+<tr><td>Uses</td><td>plan the logic before coding</td><td>explain the logic visually, find errors in the flow</td></tr></table>
+<figure class="wide"><svg viewBox="0 0 470 154" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Flowchart symbols</text><rect x="6" y="20" width="72" height="108" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><rect x="16" y="40" width="52" height="24" rx="12" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.6"/><text x="42" y="56" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">START</text><text x="42" y="86" font-size="8.35" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Start / Stop</text><text x="42" y="98" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">rounded box</text><rect x="84" y="20" width="72" height="108" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><rect x="94" y="40" width="52" height="24" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.6"/><text x="120" y="56" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">x = x + 1</text><text x="120" y="86" font-size="8.35" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Process</text><text x="120" y="98" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">rectangle: calculation,</text><text x="120" y="106" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">assignment (row = 1)</text><rect x="162" y="20" width="72" height="108" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><path d="M178,64 L186,40 L226,40 L218,64 Z" fill="#fff4e0" stroke="#a05a00" stroke-width="1.6"/><text x="202" y="56" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">INPUT n</text><text x="198" y="86" font-size="8.35" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Input / Output</text><text x="198" y="98" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">parallelogram:</text><text x="198" y="106" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">input / print</text><rect x="240" y="20" width="72" height="108" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><path d="M276,36 L306,52 L276,68 L246,52 Z" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.6"/><text x="276" y="55" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">n &gt; 0 ?</text><text x="276" y="86" font-size="8.35" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Decision</text><text x="276" y="98" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">diamond: yes / no</text><text x="276" y="106" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">(condition)</text><rect x="318" y="20" width="72" height="108" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><line x1="332" y1="52" x2="376" y2="52" stroke="#333" stroke-width="2" marker-end="url(#a)"/><text x="354" y="86" font-size="8.35" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Flow line</text><text x="354" y="98" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">arrow: order of steps</text><rect x="396" y="20" width="72" height="108" rx="4" fill="#fbfcfe" stroke="#b9c7d8" stroke-width="1"/><circle cx="432" cy="52" r="12" fill="#ffe8e8" stroke="#b3211b" stroke-width="1.6"/><text x="432" y="55" font-size="8.0" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">A</text><text x="432" y="86" font-size="8.35" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Connector</text><text x="432" y="98" font-size="6.96" text-anchor="middle" fill="#333" font-weight="normal" font-style="normal">circle: joins parts</text><text x="235" y="146" font-size="7.89" text-anchor="middle" fill="#b3211b" font-weight="normal" font-style="normal">Process = rectangle; Input/Output = parallelogram (P25 Q1c(v) is FALSE)</text></svg><figcaption>Standard flowchart symbols.</figcaption></figure>
+<ul>
+<li><b>Process</b> is a <b>rectangle</b>, not a parallelogram; the parallelogram is for input/output. &ldquo;In a flowchart, process is represented by a parallelogram&rdquo; is <b>FALSE</b> <span class="t">P25 Q1c(v)</span>.</li>
+</ul>
+<h3>Flowchart to code</h3>
+<ul>
+<li>Convert each symbol: <b>input</b> &rarr; <code>input()</code>; <b>process</b> &rarr; assignment or calculation; <b>decision</b> &rarr; <code>if</code> (or <code>while</code> when the arrow goes back); <b>print</b> &rarr; <code>print()</code>; <b>start/stop</b> &rarr; begin/end.</li>
+</ul>
+<figure class="wide"><svg viewBox="0 0 470 214" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Flowchart for the star triangle (P25 Q6e)</text><rect x="106" y="19" width="48" height="18" rx="9" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.4"/><text x="130" y="31" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Start</text><line x1="130" y1="37" x2="130" y2="46" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><rect x="98.0" y="46" width="64" height="18" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="130" y="58" font-size="8.35" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">row = 1</text><line x1="130" y1="64" x2="130" y2="74" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><path d="M130,75 L176,92 L130,109 L84,92 Z" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.4"/><text x="130" y="95" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">row &lt;= 5 ?</text><line x1="84" y1="92" x2="40" y2="92" stroke="#333" stroke-width="1.4"/><line x1="40" y1="92" x2="40" y2="102" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><rect x="16" y="103" width="48" height="18" rx="9" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.4"/><text x="40" y="115" font-size="8.58" text-anchor="middle" fill="#111" font-weight="bold" font-style="normal">Stop</text><text x="62" y="88" font-size="7.89" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">No</text><line x1="130" y1="109" x2="130" y2="120" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><text x="138" y="116" font-size="7.89" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Yes</text><rect x="98.0" y="121" width="64" height="18" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="130" y="133" font-size="8.35" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">col = 1</text><line x1="130" y1="139" x2="130" y2="150" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><path d="M130,151 L176,168 L130,185 L84,168 Z" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.4"/><text x="130" y="171" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">col &lt;= row ?</text><line x1="130" y1="185" x2="130" y2="192" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><text x="138" y="189" font-size="7.89" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">Yes</text><path d="M92,210 L100,192 L170,192 L162,210 Z" fill="#fff4e0" stroke="#a05a00" stroke-width="1.4"/><text x="131" y="204" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">print "*"</text><line x1="98" y1="201" x2="52" y2="201" stroke="#333" stroke-width="1.4"/><line x1="52" y1="201" x2="52" y2="168" stroke="#333" stroke-width="1.4"/><line x1="52" y1="168" x2="84" y2="168" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><text x="30" y="188" font-size="7.66" text-anchor="start" fill="#2a7a3a" font-weight="bold" font-style="normal">col = col + 1</text><line x1="176" y1="168" x2="220" y2="168" stroke="#333" stroke-width="1.4"/><text x="198" y="163" font-size="7.89" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">No</text><line x1="220" y1="168" x2="220" y2="135" stroke="#333" stroke-width="1.4"/><line x1="220" y1="135" x2="232" y2="135" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><path d="M230,144 L238,126 L308,126 L300,144 Z" fill="#fff4e0" stroke="#a05a00" stroke-width="1.4"/><text x="269" y="138" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">print newline</text><line x1="268" y1="144" x2="268" y2="154" stroke="#333" stroke-width="1.4"/><rect x="229.0" y="154" width="78" height="18" rx="0" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="268" y="166" font-size="8.35" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">row = row + 1</text><line x1="268" y1="172" x2="268" y2="190" stroke="#333" stroke-width="1.4"/><line x1="268" y1="190" x2="318" y2="190" stroke="#333" stroke-width="1.4"/><line x1="318" y1="190" x2="318" y2="92" stroke="#333" stroke-width="1.4"/><line x1="318" y1="92" x2="176" y2="92" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><rect x="336" y="26" width="128" height="108" rx="4" fill="#fff" stroke="#9db7d4" stroke-width="1"/><text x="400" y="40" font-size="8.82" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Python version</text><text x="342" y="54" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">row = 1</text><text x="342" y="64" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">while row &lt;= 5:</text><text x="342" y="74" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    col = 1</text><text x="342" y="84" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    while col &lt;= row:</text><text x="342" y="94" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">        print("*", end="")</text><text x="342" y="104" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">        col += 1</text><text x="342" y="114" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    print()</text><text x="342" y="124" font-size="7.66" font-family="DejaVu Sans Mono, monospace" xml:space="preserve">    row += 1</text></svg><figcaption>The 2025 flowchart (Q6e) and its Python program.</figcaption></figure>
+<h3>Solved questions</h3>
+<div class="sol"><span class="l">P25 Q3d [2]</span> Algorithm vs flowchart (any two differences): (1) an algorithm is a <b>written list of steps</b>, a flowchart is a <b>diagram</b>; (2) an algorithm uses <b>words or pseudocode</b>, a flowchart uses <b>symbols and arrows</b>; (3) a flowchart shows <b>decisions and loops visually</b>, which is easier for beginners; an algorithm is faster to write.</div>
+<div class="sol"><span class="l">P25 Q6e [4]</span> The flowchart sets row = 1; <b>while row &lt;= 5</b>: set col = 1, <b>while col &lt;= row</b> print &ldquo;*&rdquo; (same line) and add 1 to col; then print a newline and add 1 to row. Program (right-angled triangle of stars):
+<pre class="code">row = 1
+while row <= 5:
+    col = 1
+    while col <= row:
+        print("*", end="")
+        col += 1
+    print()          # newline
+    row += 1</pre>Output: <pre class="code">*
+**
+***
+****
+*****</pre></div>
+<div class="sol"><span class="l">P24 Q6a [4]</span> Smaller of two numbers (flowchart: input num1, input num2, decision <code>num1 &lt; num2</code>: yes &rarr; print num1, no &rarr; print num2):
+<pre class="code">num1 = int(input("Enter value of num1: "))
+num2 = int(input("Enter value of num2: "))
+if num1 < num2:
+    print("Smallest is", num1)
+else:
+    print("Smallest is", num2)</pre></div>
+<div class="quick"><b>Quick:</b> P25 xii <b>D</b>; c(v) <b>FALSE</b>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">9 &middot; Long Programs (Q7 every year)</div><div class="rf">P25 Q7 mobile banking &middot; P24 Q7 school mess system</div></div>
+<div class="cols">
+<h3>How to score full marks in Q7</h3>
+<ul>
+<li>Read the numbered steps (i)&ndash;(vii) and write <b>one block of code for each</b>, in order. Each step is worth the marks shown.</li>
+<li>Use <code>while True:</code> for a <b>menu that repeats until the user exits</b> and <code>break</code> to leave it. Use <code>if / elif / else</code> for the choices and <b>validate</b> inputs (amount &gt; 0, amount &le; balance).</li>
+<li>Convert input with <code>int()</code> or <code>float()</code>. Keep the <b>indentation</b> correct.</li>
+</ul>
+<figure class="wide"><svg viewBox="0 0 470 220" xmlns="http://www.w3.org/2000/svg" font-family="DejaVu Sans, Liberation Sans, Arial, sans-serif"><defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="context-stroke"/></marker></defs><text x="235" y="12" font-size="9.5" text-anchor="middle" fill="#0e3a66" font-weight="bold" font-style="normal">Mobile banking program: logic</text><rect x="160" y="24" width="150" height="20" rx="4" fill="#eaf3ff" stroke="#1f5fa8" stroke-width="1.4"/><text x="235.0" y="37.0" font-size="8.35" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">balance = 1000</text><line x1="235" y1="44" x2="235" y2="54" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><path d="M235,54 L300,72 L235,90 L170,72 Z" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.4"/><text x="235" y="75" font-size="8.12" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">while True: menu</text><line x1="235" y1="90" x2="235" y2="102" stroke="#333" stroke-width="1.6" marker-end="url(#a)"/><path d="M235,102 L300,120 L235,138 L170,120 Z" fill="#f3eaff" stroke="#7a3b9b" stroke-width="1.4"/><text x="235" y="123" font-size="8.58" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">choice ?</text><line x1="235" y1="138" x2="65" y2="158" stroke="#555" stroke-width="1.2"/><rect x="30" y="158" width="70" height="36" rx="4" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="65" y="172" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">1: print balance</text><line x1="235" y1="138" x2="157" y2="158" stroke="#555" stroke-width="1.2"/><rect x="122" y="158" width="70" height="36" rx="4" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="157" y="172" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">2: deposit</text><text x="157" y="181" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">(amount &gt; 0)</text><line x1="235" y1="138" x2="249" y2="158" stroke="#555" stroke-width="1.2"/><rect x="214" y="158" width="70" height="36" rx="4" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="249" y="172" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">3: withdraw</text><text x="249" y="181" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">(0 &lt; amt &lt;= bal.)</text><line x1="235" y1="138" x2="341" y2="158" stroke="#555" stroke-width="1.2"/><rect x="306" y="158" width="70" height="36" rx="4" fill="#ffe8e8" stroke="#b3211b" stroke-width="1.4"/><text x="341" y="172" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">4: print thanks</text><text x="341" y="181" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">break</text><line x1="235" y1="138" x2="433" y2="158" stroke="#555" stroke-width="1.2"/><rect x="398" y="158" width="70" height="36" rx="4" fill="#eaf6ec" stroke="#2a7a3a" stroke-width="1.4"/><text x="433" y="172" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">other:</text><text x="433" y="181" font-size="7.42" text-anchor="middle" fill="#111" font-weight="normal" font-style="normal">invalid selection</text><path d="M42,194 L42,214 L430,214 L430,72 L300,72" fill="none" stroke="#555" stroke-width="1.2" stroke-dasharray="4 3"/><text x="235" y="210" font-size="7.66" text-anchor="middle" fill="#444" font-weight="normal" font-style="normal">back to the menu (loop) until the user chooses 4</text></svg><figcaption>Logic of the mobile banking program.</figcaption></figure>
+<h3>2025 Q7: Mobile banking simulation [10]</h3>
+<pre class="code">balance = 1000                                   # (i) [1]
+
+while True:                                      # (ii) [2] menu repeats
+    print("===== Menu =====")
+    print("1. Check Balance")
+    print("2. Deposit Money")
+    print("3. Withdraw Money")
+    print("4. Exit")
+    choice = int(input("Enter your choice (1-4): "))
+
+    if choice == 1:                              # (iii) [1]
+        print("Current balance: Nu.", balance)
+
+    elif choice == 2:                            # (iv) [2]
+        amount = float(input("Enter amount to deposit: "))
+        if amount > 0:
+            balance += amount
+            print("New balance: Nu.", balance)
+        else:
+            print("Error: amount must be greater than zero.")
+
+    elif choice == 3:                            # (v) [2]
+        amount = float(input("Enter amount to withdraw: "))
+        if amount > 0 and amount <= balance:
+            balance -= amount
+            print("Updated balance: Nu.", balance)
+        else:
+            print("Error: invalid amount or insufficient balance.")
+
+    elif choice == 4:                            # (vi) [1]
+        print("Thank you for banking with us!")
+        break
+
+    else:                                        # (vii) [1]
+        print("Invalid selection. Please choose a valid option.")</pre>
+<ul>
+<li><b>Marking points:</b> balance variable (1); loop + menu + input (2); choice 1 (1); deposit with validation and update (2); withdraw with both conditions and update (2); exit message and break (1); invalid choice (1).</li>
+</ul>
+<h3>2024 Q7: School mess management [10]</h3>
+<pre class="code">def mess_system():
+    print("School Mess Management Program")            # (i)
+
+    items = ["rice", "pulses", "meat", "potato"]
+    mess_qty = []                                       # (iii) list
+    for item in items:                                  # (ii) ask 4 quantities
+        qty = float(input("Enter quantity of " + item + " (kg): "))
+        mess_qty.append(qty)
+
+    if mess_qty[0] >= 1200:                             # (iv) rice check
+        print("You have enough rice")
+    else:
+        mess_qty[0] = float(input("Enter new quantity of rice: "))
+        print(mess_qty)                                 # updated list
+
+    cost = [40, 50, 250, 30]                            # (v) cost per kg
+    total = 0
+    for i in range(4):
+        total = total + mess_qty[i] * cost[i]
+    print("Total expenditure: Nu.", total)
+
+    if total <= 50000:                                  # (vi) budget
+        print("You have enough budget")
+    else:
+        print("You don't have enough budget")
+
+mess_system()                                           # call the function</pre>
+<ul>
+<li>Total expenditure = quantity &times; cost for each item, added together. Example: rice 1300, pulses 200, meat 100, potato 500 &rarr; 52 000 + 10 000 + 25 000 + 15 000 = <b>Nu. 102 000</b> &rarr; &ldquo;You don&rsquo;t have enough budget&rdquo;.</li>
+</ul>
+<h3>Common mistakes to avoid</h3>
+<ul>
+<li>Missing <b>colon</b> after <code>if</code>, <code>while</code>, <code>def</code>; wrong <b>indentation</b>; using <code>=</code> instead of <code>==</code> in a condition.</li>
+<li>Forgetting <code>int()</code>/<code>float()</code> around <code>input()</code>; forgetting to <b>update</b> the balance; forgetting <code>break</code> for the Exit option; forgetting to <b>call</b> the function.</li>
+<li>Case: <code>True</code>, <code>False</code> start with capitals; <code>pass</code>, <code>continue</code>, <code>break</code> are lowercase.</li>
+</ul>
+<div class="warn"><b class="h">Practice:</b> without looking, rewrite (a) the banking menu, (b) the mess system, (c) the star triangle, (d) a function with a default argument, (e) sum 1&ndash;50 with <code>for</code> and <code>while</code>.</div>
+</div>
+</section>
+
+<section class="chapter">
+<div class="banner"><div class="n">Section A answer key &mdash; 2025 &amp; 2024</div><div class="rf">each MCQ is worth 2 marks &middot; (check) = faulty or reasoned answer</div></div>
+<div class="cols">
+<h3>2025 &mdash; Q1(a) MCQ [15 &times; 2]</h3>
+<table class="tbl"><tr><th>No.</th><th>Ans</th><th>Why (short)</th></tr>
+<tr><td>i</td><td><b>D</b></td><td>use of the song must match its licence</td></tr>
+<tr><td>ii</td><td><b>C</b></td><td>loop prints 1, 2, 3 then breaks at i == 3</td></tr>
+<tr><td>iii</td><td><b>B</b></td><td>Google Docs: simultaneous editing</td></tr>
+<tr><td>iv</td><td><b>C</b></td><td>APA 7: sentence-case italic title, initial T.</td></tr>
+<tr><td>v</td><td><b>C</b></td><td>lists change, tuples stay fixed</td></tr>
+<tr><td>vi</td><td><b>A</b></td><td>private cloud: control and security</td></tr>
+<tr><td>vii</td><td><b>D</b></td><td>add(5) uses default b = 10</td></tr>
+<tr><td>viii</td><td><b>C</b></td><td>data[1:4] = [20, 30, 40]</td></tr>
+<tr><td>ix</td><td><b>D</b></td><td>line chart shows a trend over months</td></tr>
+<tr><td>x</td><td><b>A</b></td><td>VLOOKUP("Tashi Dendup", B2:C5, 2, FALSE)</td></tr>
+<tr><td>xi</td><td><b>C</b></td><td>Python strings are case sensitive: False</td></tr>
+<tr><td>xii</td><td><b>D</b></td><td>algorithm = step-by-step instructions</td></tr>
+<tr><td>xiii</td><td><b>B</b></td><td>BY-NC: remix, not for profit</td></tr>
+<tr><td>xiv</td><td><b>D</b></td><td>number of books is an int</td></tr>
+<tr><td>xv</td><td>(check)</td><td>faulty item: AVERAGEIF would give 75; no option matches</td></tr></table>
+<h3>2025 &mdash; (b) blanks and (c) true/false [5 + 5]</h3>
+<table class="tbl"><tr><th></th><th>(b)</th><th>(c)</th></tr>
+<tr><td>i</td><td><b>servers</b></td><td><b>TRUE</b></td></tr>
+<tr><td>ii</td><td><b>function</b></td><td><b>FALSE</b> (RANK gives position, not alphabetical)</td></tr>
+<tr><td>iii</td><td><b>in-text</b></td><td><b>TRUE</b></td></tr>
+<tr><td>iv</td><td><b>continue</b></td><td><b>TRUE</b> (with the author&rsquo;s consent)</td></tr>
+<tr><td>v</td><td><b>NOT</b></td><td><b>FALSE</b> (process = rectangle)</td></tr></table>
+<h3>2024 &mdash; Q1(a) MCQ [15 &times; 2]</h3>
+<table class="tbl"><tr><th>No.</th><th>Ans</th><th>Why (short)</th></tr>
+<tr><td>i</td><td><b>C</b></td><td>Data Validation (whole numbers 1&ndash;100)</td></tr>
+<tr><td>ii</td><td><b>D</b></td><td>PaaS: develop and run apps</td></tr>
+<tr><td>iii</td><td><b>B</b></td><td>=C2*D2 (units sold &times; unit price)</td></tr>
+<tr><td>iv</td><td><b>A</b></td><td>range(1,15) with i % 2 == 0 prints 2&ndash;14</td></tr>
+<tr><td>v</td><td><b>B</b></td><td>APA 7 book: sentence-case italic title, no city</td></tr>
+<tr><td>vi</td><td><b>B</b></td><td>NOT reverses a logical value</td></tr>
+<tr><td>vii</td><td><b>D</b></td><td>for loop for a known number of times</td></tr>
+<tr><td>viii</td><td><b>D</b></td><td>Google Slides for a shared presentation</td></tr>
+<tr><td>ix</td><td><b>D</b></td><td>6 sides, 60&deg; turns: hexagon</td></tr>
+<tr><td>x</td><td><b>B</b></td><td>CC lets others use under conditions</td></tr>
+<tr><td>xi</td><td><b>D</b></td><td>pop(2) removes &ldquo;inbuilt&rdquo;</td></tr>
+<tr><td>xii</td><td><b>B</b></td><td>school_1 is a valid name</td></tr>
+<tr><td>xiii</td><td><b>B</b></td><td>my_tuple[1] = 20</td></tr>
+<tr><td>xiv</td><td><b>D</b></td><td>profit = sp &minus; cp</td></tr>
+<tr><td>xv</td><td><b>D</b></td><td>=SUMIF(B2:B6,"IT",C2:C6)</td></tr></table>
+<h3>2024 &mdash; (b) blanks and (c) true/false [5 + 5]</h3>
+<table class="tbl"><tr><th></th><th>(b)</th><th>(c)</th></tr>
+<tr><td>i</td><td><b>list</b></td><td><b>TRUE</b></td></tr>
+<tr><td>ii</td><td><b>plagiarism</b></td><td><b>TRUE</b> (set)</td></tr>
+<tr><td>iii</td><td><b>copyright</b></td><td><b>FALSE</b> (vague names are bad)</td></tr>
+<tr><td>iv</td><td><b>dictionary</b></td><td><b>TRUE</b></td></tr>
+<tr><td>v</td><td><b>function</b></td><td><b>FALSE</b> (check: creators keep copyright)</td></tr></table>
+</div>
+</section>
+
+<section class="chapter check">
+<div class="banner"><div class="n">Last-day checklist</div><div class="rf">tick when you can write or explain it without looking</div></div>
+<div class="cols">
+<ul>
+<li><b>Cloud:</b> IaaS / PaaS / SaaS (who manages what); private, public, hybrid; two benefits (no upfront cost, scalability, backup); Google Docs, Slides, Forms, Drive.</li>
+<li><b>Copyright &amp; citation:</b> copyright vs Creative Commons; BY, NC, SA, ND; plagiarism; APA book format (sentence case, italic title, no city); in-text vs reference list; legal use of images.</li>
+<li><b>Excel:</b> MAX, AVERAGE(B2:E2), SUMIF(range, criteria, sum range), VLOOKUP (first column, col number, FALSE), NOT, RANK, data validation, which chart for which data.</li>
+<li><b>Python basics:</b> valid names, case sensitivity, int / float / str / bool, == vs =, and / or / not, Boolean table, if / elif / else.</li>
+<li><b>Loops:</b> range(start, stop, step) (stop excluded), for vs while, break / continue / pass, tracing output, sum 1&ndash;50, Turtle polygon turns.</li>
+<li><b>Data structures:</b> list [ ], tuple ( ), set { }, dictionary {k: v}; immutability of strings and tuples; indexing, slicing, negative index; pop; set difference; add a key to a dictionary.</li>
+<li><b>Functions:</b> def, parameter vs argument, return, default argument, local variable, two functions with the same name, recursion (base case + recursive case).</li>
+<li><b>Flowcharts:</b> symbols (rectangle process, parallelogram I/O, diamond decision); algorithm vs flowchart; flowchart to code (star triangle, smaller of two numbers).</li>
+<li><b>Long programs:</b> menu loop with while True and break; validation (amount &gt; 0 and &le; balance); list of quantities; total = quantity &times; cost; call the function.</li>
+<li><b>In answers:</b> indentation and colons; write the exact output; explain with &ldquo;because&hellip;&rdquo;; count the marks and give that many points.</li>
+</ul>
+</div>
+</section>
+</body></html>

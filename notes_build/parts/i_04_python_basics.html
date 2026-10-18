@@ -1,0 +1,52 @@
+<section class="chapter">
+<div class="banner"><div class="n">4 &middot; Python Basics: Variables, Data Types, Operators &amp; Decisions</div><div class="rf">P25 Q1a(xi,xiv),c(i),Q3f,Q5a,Q6a,d &middot; P24 Q1a(xii,xiv),Q2c,Q6b</div></div>
+<div class="cols">
+<h3>Variables &amp; data types</h3>
+<ul>
+<li>A <b>variable</b> stores a value: <code>age = 15</code>. Python is <b>case sensitive</b>: <code>Fruit</code> and <code>fruit</code> are <b>different</b> variables &rarr; <b>TRUE</b> [[P25 Q1c(i)]]; <code>"Apple" == "apple"</code> is <b>False</b> [[P25 Q1a(xi): C]].</li>
+<li><b>Valid variable names:</b> letters, digits and underscore; <b>cannot start with a digit; no spaces or hyphens</b>; cannot be a keyword. <code>school_1</code> is valid; <code>school-1</code>, <code>school 1</code> and <code>1school</code> are not &rarr; <b>B</b> [[P24 Q1a(xii)]].</li>
+</ul>
+<table class="tbl"><tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+<tr><td><b>int</b></td><td>whole number</td><td>books = 120 &mdash; <b>number of books</b> [[P25 Q1a(xiv): D]]</td></tr>
+<tr><td><b>float</b></td><td>decimal number</td><td>price = 7.5</td></tr>
+<tr><td><b>str</b></td><td>text in quotes</td><td>name = "Karma"</td></tr>
+<tr><td><b>bool</b></td><td>True or False</td><td>passed = True</td></tr></table>
+<ul>
+<li><b>Election simulation [[P25 Q3f]]:</b> candidate name &rarr; <b>str</b> (text); number of votes &rarr; <b>int</b> (a whole number you can add and compare).</li>
+<li>Convert input: <code>n = int(input("Enter: "))</code> (<code>input()</code> always gives a string). Use <code>float()</code> for decimals.</li>
+</ul>
+<h3>Operators</h3>
+<table class="tbl"><tr><th>Kind</th><th>Operators</th></tr>
+<tr><td>Arithmetic</td><td><code>+ - * /</code> (divide), <code>//</code> (floor), <code>%</code> (remainder), <code>**</code> (power)</td></tr>
+<tr><td>Comparison</td><td><code>== != &lt; &gt; &lt;= &gt;=</code> &rarr; give True/False</td></tr>
+<tr><td>Logical</td><td><code>and</code>, <code>or</code>, <code>not</code></td></tr>
+<tr><td>Assignment</td><td><code>= += -= *=</code></td></tr></table>
+<h3>Boolean logic table (P24 Q6b)</h3>
+<table class="tbl"><tr><th>X</th><th>Y</th><th>NOT Y</th><th>X AND Y</th><th>X OR Y</th></tr>
+<tr><td>True</td><td>4 &gt;= 7 = <b>False</b></td><td><b>True</b></td><td><b>False</b></td><td><b>True</b></td></tr>
+<tr><td>False</td><td>5 != 9 = <b>True</b></td><td><b>False</b></td><td><b>False</b></td><td><b>True</b></td></tr></table>
+<ul><li><b>AND</b> is True only if both are True; <b>OR</b> is True if at least one is True; <b>NOT</b> flips the value.</li></ul>
+<h3>Decisions (if / elif / else)</h3>
+<pre class="code">num_1 = 7
+if num_1 > 0:
+    print("positive")
+elif num_1 == 0:
+    print("zero")
+else:
+    print("negative")</pre>
+<ul>
+<li>Indentation (4 spaces) shows which lines belong to the block; each condition line ends with a colon.</li>
+<li><b>Team A <code>num_1 &gt; 0</code> vs Team B <code>num_1 &gt;= 1</code> [[P25 Q6a]]:</b> a positive number is any number <b>greater than zero</b>, including decimals like 0.5 and 0.01. <code>&gt;= 1</code> wrongly rejects these, so <b>Team A is more appropriate</b> (it works for all real numbers and says exactly what &ldquo;positive&rdquo; means).</li>
+</ul>
+<h3>Solved questions</h3>
+<sol L="P25 Q3f [2]">Name: <b>string (str)</b> because a name is text. Votes: <b>integer (int)</b> because votes are counted in whole numbers and must be added and compared.</sol>
+<sol L="P25 Q6d [2]">Circumference of a circle with r = 20:
+<pre class="code">r = 20
+c = 2 * 3.14 * r
+print("Circumference =", c)    # 125.6</pre></sol>
+<sol L="P25 Q5a [1]">Store the price returned by the function: <pre class="code">laptop_cost = get_price("laptop")</pre></sol>
+<sol L="P24 Q1a(xiv) [2]">Profit = selling price &minus; cost price, so the function that <b>returns sp &minus; cp</b> is correct (option D): <code>profit = sp - cp</code>; <code>calculate_profit(50, 70)</code> gives <b>20</b>.</sol>
+<sol L="P24 Q6b [3]">See the Boolean table above: row 1 &rarr; False, True, False, True; row 2 &rarr; True, False, False, True (Y, NOT Y, X AND Y, X OR Y) &mdash; for row 1 Y = False (4 &gt;= 7), NOT Y = True, X AND Y = False, X OR Y = True; row 2 Y = True (5 != 9), NOT Y = False, X AND Y = False, X OR Y = True.</sol>
+<div class="quick"><b>Quick:</b> P25 xi <b>C</b>; xiv <b>D</b>; c(i) <b>TRUE</b>. P24 xii <b>B</b>; xiv <b>D</b>.</div>
+</div>
+</section>
