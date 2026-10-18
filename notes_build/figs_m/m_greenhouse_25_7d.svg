@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="410.4pt" height="158.4pt" viewBox="0 0 410.4 158.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-18T13:42:07.438504</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 158.4 
+L 410.4 158.4 
+L 410.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 168.133333 105.146667 
+L 168.074723 102.199384 
+L 167.898986 99.256761 
+L 167.606399 96.323451 
+L 167.197425 93.404093 
+L 166.672711 90.503302 
+L 166.033087 87.625666 
+L 165.279564 84.775733 
+L 164.413332 81.958012 
+L 163.435763 79.176956 
+L 162.348402 76.436964 
+L 161.152968 73.742367 
+L 159.851351 71.097428 
+L 158.44561 68.506327 
+L 156.937967 65.973162 
+L 155.330806 63.501938 
+L 153.626668 61.096564 
+L 151.828248 58.760841 
+L 149.938391 56.498464 
+L 147.960082 54.31301 
+L 145.896452 52.207935 
+L 143.750763 50.186566 
+L 141.526408 48.252101 
+L 139.226904 46.407597 
+L 136.855887 44.655973 
+L 134.417106 42.999996 
+L 131.914417 41.442286 
+L 129.351777 39.985306 
+L 126.73324 38.631359 
+L 124.062944 37.382587 
+L 121.345112 36.240963 
+L 118.584043 35.208294 
+L 115.7841 34.286212 
+L 112.949713 33.476174 
+L 110.085362 32.779463 
+L 107.195577 32.197178 
+L 104.284927 31.730242 
+L 101.358015 31.379393 
+L 98.419468 31.145184 
+L 95.473933 31.027987 
+L 92.526067 31.027987 
+L 89.580532 31.145184 
+L 86.641985 31.379393 
+L 83.715073 31.730242 
+L 80.804423 32.197178 
+L 77.914638 32.779463 
+L 75.050287 33.476174 
+L 72.2159 34.286212 
+L 69.415957 35.208294 
+L 66.654888 36.240963 
+L 63.937056 37.382587 
+L 61.26676 38.631359 
+L 58.648223 39.985306 
+L 56.085583 41.442286 
+L 53.582894 42.999996 
+L 51.144113 44.655973 
+L 48.773096 46.407597 
+L 46.473592 48.252101 
+L 44.249237 50.186566 
+L 42.103548 52.207935 
+L 40.039918 54.31301 
+L 38.061609 56.498464 
+L 36.171752 58.760841 
+L 34.373332 61.096564 
+L 32.669194 63.501938 
+L 31.062033 65.973162 
+L 29.55439 68.506327 
+L 28.148649 71.097428 
+L 26.847032 73.742367 
+L 25.651598 76.436964 
+L 24.564237 79.176956 
+L 23.586668 81.958012 
+L 22.720436 84.775733 
+L 21.966913 87.625666 
+L 21.327289 90.503302 
+L 20.802575 93.404093 
+L 20.393601 96.323451 
+L 20.101014 99.256761 
+L 19.925277 102.199384 
+L 19.866667 105.146667 
+" clip-path="url(#p74a4e530f8)" style="fill: none; stroke: #0e3a66; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 19.866667 105.146667 
+L 168.133333 105.146667 
+" clip-path="url(#p74a4e530f8)" style="fill: none; stroke: #0e3a66; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'" transform="translate(53.390625 65.891146)">end view: semicircle</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'" transform="translate(43.14375 75.493333)">radius r = 20 ÷ 2 = 10 m</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #b3211b" x="94" y="119.973333" transform="rotate(-0 94 119.973333)">diameter 20 m</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #0e3a66" transform="translate(186.666667 60.132865)">Roof = half of a cylinder's curved surface</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #0e3a66" transform="translate(186.666667 69.734427)">= ½ × 2πr × L = π × 10 × 80</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #0e3a66" transform="translate(186.666667 79.33599)">= 800π ≈ 2513.3 m²</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #0e3a66" transform="translate(186.666667 88.937552)">Cost = 2513.3 × 15 ≈ Nu 37 699</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #0e3a66" x="205.2" y="17.6" transform="rotate(-0 205.2 17.6)">Greenhouse: arch of diameter 20 m, length 80 m</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p74a4e530f8">
+   <rect x="5.04" y="23.6" width="400.32" height="111.2"/>
+  </clipPath>
+ </defs>
+</svg>

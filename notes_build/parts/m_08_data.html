@@ -1,0 +1,56 @@
+<section class="chapter">
+<div class="banner"><div class="n">8 &middot; Data Management &amp; Probability</div><div class="rf">P25 Q1xiii,xvi,xx,Q2c,Q3a,Q4a,Q5a,Q8b,Q9b &middot; P24 Q1vi,xvi,Q3c,Q5a,b,Q7a,Q9b &middot; P23 Q1xvii&ndash;xx,Q3a,Q5c,Q6c,Q7c,Q8d,Q9d</div></div>
+<div class="cols">
+<h3>Statistics: key ideas</h3>
+<ul>
+<li><b>Five-number summary:</b> minimum, Q<sub>1</sub>, median (Q<sub>2</sub>), Q<sub>3</sub>, maximum. For ungrouped data: sort, find the median; Q<sub>1</sub> = median of the lower half, Q<sub>3</sub> = median of the upper half (leave out the median when n is odd). <b>Range</b> = max &minus; min; <b>IQR</b> = Q<sub>3</sub> &minus; Q<sub>1</sub>.</li>
+<li><b>Grouped data:</b> Median = L + <f>i|f</f>(<f>n|2</f> &minus; c) &mdash; L lower boundary of the median class, i class width, f its frequency, c cumulative frequency before it. Q<sub>1</sub> uses <f>n|4</f>, Q<sub>3</sub> uses <f>3n|4</f>. Mean = <f>&Sigma;fx|&Sigma;f</f>.</li>
+<li><b>Box plot:</b> box from Q<sub>1</sub> to Q<sub>3</sub>, line at the median, whiskers to min and max. Equal whiskers and a central median &rarr; symmetric. <b>Right-skewed</b> (long tail to the right): median closer to Q<sub>1</sub> and the right whisker longer [[P25 Q1xx: D]]. A <b>smaller spread</b> (range, IQR) means more consistent / reliable data.</li>
+<li><b>Outliers</b> change the <b>mean</b> a lot but the <b>median</b> hardly at all.</li>
+<li><b>Scatter plot &amp; correlation:</b> points rising &rarr; positive; falling &rarr; negative; no pattern &rarr; none; the closer to a line the stronger (r near &plusmn;1). The <b>line of best fit</b> passes through the middle of the points (about equal points above and below) and is used for predictions. Independent variable on the x-axis.</li>
+</ul>
+[[fig:m_skew_25_20|Skewed histogram and its box plot.]]
+<h3>Probability: key ideas</h3>
+<ul>
+<li>P(event) = <f>favourable outcomes|total outcomes</f>. <b>Independent events:</b> one does not change the other (with replacement; separate rolls): P(A and B) = P(A) &times; P(B). <b>Dependent events</b> (without replacement): P(A and B) = P(A) &times; P(B | A). <b>Conditional:</b> P(B | A) = <f>P(A and B)|P(A)</f>.</li>
+<li>A dependent event <b>changes the sample space</b> and so changes the probability of the next event [[P25 Q3a]].</li>
+<li><b>Venn diagram:</b> for P(M given S) use only the S circle as the new total.</li>
+</ul>
+<h3>Solved questions &mdash; Section A</h3>
+<sol L="P25 Q1xiii / xx [2+2]">xiii: the points rise and are fairly close to a line &rarr; <span class="r">close to 1 (B)</span> (not exactly 1). xx: right-skewed &rarr; median near the lower quartile, right whisker longer &rarr; <span class="r">D</span>.</sol>
+[[fig:m_venn_25_16|2025 Q1(xvi): conditional probability from a Venn diagram.]]
+<sol L="P25 Q1xvi [2]">Given that the student plays a sport, the total is 25 + 78 = 103; of these 25 study music. P(M | S) = <span class="r"><f>25|103</f> (C)</span>.</sol>
+<sol L="P24 Q1vi / xvi [2+2]">vi: total = 8 + 2 + 4 + 6 = 20; archery = 8 + 2 = 10 &rarr; P = <span class="r"><f>10|20</f> (D)</span>. xvi: the points rise steeply along a line &rarr; <span class="r">close to 1 (D)</span>.</sol>
+<sol L="P23 Q1xvii [2]">n = 200, <f>n|2</f> = 100. Cumulative: 28, 74, 128 &rarr; median class 2000&ndash;3000 (c = 74, f = 54, L = 2000, i = 1000). Median = 2000 + <f>1000|54</f>(100 &minus; 74) = <span class="r">Nu 2481.48 (B)</span>.</sol>
+<sol L="P23 Q1xviii&ndash;xx [2+2+2]">xviii: as time passes the distance left <b>decreases</b> &rarr; <span class="r">D</span>. xix: P(both) = 0.2 &times; 0.6 = <span class="r">0.12 (A)</span>. xx: independent if the second roll does not depend on the first: &ldquo;3 or 4 on the first roll&rdquo; and &ldquo;number less than 5 on the second roll&rdquo; &rarr; <span class="r">C</span>.</sol>
+<h3>Solved questions &mdash; Section B</h3>
+[[fig:m_box_25_2c|2025 Q2(c): values read from the box plots.]]
+<sol L="P25 Q2c [2]">Both have about the same median (&asymp; 4.4), but source A has a much larger spread (range &asymp; 8, IQR &asymp; 3) than B (range &asymp; 4, IQR &asymp; 2). <span class="r">Source B is more reliable</span> because its values are more consistent (less spread).</sol>
+<sol L="P25 Q3a [1]">When an event is <b>dependent</b>, the first outcome <b>changes the number of possible outcomes</b>, so the probability of the second event <b>changes</b> (P(B | A) &ne; P(B)), e.g. drawing cards without replacement.</sol>
+<sol L="P25 Q4a [2]">MEASUREMENTS has 12 letters with E three times. (i) With replacement: P(E) = <span class="r"><f>3|12</f> = <f>1|4</f></span>. (ii) Without replacement: <span class="r"><f>2|11</f></span>. (iii) <span class="r">The events in question (ii)</span> are dependent (the second probability changes after the first draw).</sol>
+<sol L="P25 Q5a [2]">The outlier 98 pulls the <b>mean upward</b> (increases it), but the <b>median hardly changes</b> because it depends only on the middle values: the median is resistant to outliers.</sol>
+[[fig:m_scatter_25_8b|2025 Q8(b): scatter plot of Maths and English marks with the line of best fit.]]
+<sol L="P25 Q8b [4]">(i) Plot the 11 points (Maths on the x-axis, English on the y-axis). (ii) Draw a ruled line through the middle of the points (about y = &minus;0.89x + 102); at Maths = 60 read English &asymp; <span class="r">49 marks</span> (accept 45&ndash;52). (iii) As Maths goes up English goes down: <span class="r">strong negative correlation</span> (r &asymp; &minus;0.84).</sol>
+<sol L="P25 Q9b [3]">Sorted: 5, 8, 10, 15, 20, 25, 30 (n = 7). Median = 15. Upper half 20, 25, 30 &rarr; <span class="r">Q<sub>3</sub> = 25</span>. It means <b>75% of the students scored 25 or less</b> (only the top 25% scored above 25).</sol>
+[[fig:m_box_24_7a|2024 Q7(a): box plot of the midterm marks.]]
+<sol L="P24 Q7a [4]">(i) The median (65) is close to the middle of the box and the left whisker (26) is longer than the right whisker (15): <span class="r">approximately symmetric, slightly skewed to the left (negatively skewed)</span>. (ii) <span class="r">Median = 65 marks</span>. (iii) Any two: lowest mark about 32 and highest about 89; range &asymp; 57; the middle 50% scored between 58 and 74 (IQR 16); 25% scored above 74; the lower marks are more spread out than the higher marks. <b>(check)</b> values read from the plot.</sol>
+<sol L="P24 Q3c [4]">Back-to-back (double) stem and leaf plot, stems in tens (leaves = units):
+<table class="tbl"><tr><th>Messi (leaves)</th><th>Stem</th><th>Ronaldo (leaves)</th></tr>
+<tr><td>&nbsp;</td><td>2</td><td>3 6</td></tr><tr><td>&nbsp;</td><td>3</td><td>3</td></tr><tr><td>5 1 1</td><td>4</td><td>2 2 2</td></tr><tr><td>8 4 3 1</td><td>5</td><td>1 5</td></tr><tr><td>1 0</td><td>6</td><td>0 1</td></tr><tr><td>3</td><td>7</td><td>&nbsp;</td></tr></table>
+(ii) Modes: <span class="r">Messi 41; Ronaldo 42</span>. (iii) Ranges: Messi 73 &minus; 41 = <span class="r">32</span>; Ronaldo 61 &minus; 23 = <span class="r">38</span>.</sol>
+<sol L="P24 Q5a,b [4]">POSSIBLE has 8 tiles, 3 vowels (O, I, E). (i) Replaced: <span class="r"><f>3|8</f></span>. (ii) Not replaced: <span class="r"><f>2|7</f></span>. (b) P(Maths | English) = <f>P(both)|P(English)</f> = <f>0.6|0.8</f> = <span class="r">0.75</span>.</sol>
+[[fig:m_scatter_24_9b|2024 Q9(b): hours of revision against exam score.]]
+<sol L="P24 Q9b [3]">(i) Plot the 12 points (hours on the x-axis, score on the y-axis). (ii) The scores rise as the hours of revision increase: <span class="r">strong positive correlation</span> (r &asymp; 0.93); students who revised longer generally scored higher.</sol>
+<sol L="P23 Q3a [3]">(i) Heights in cm: stems 14&ndash;18, leaves = units.
+<table class="tbl"><tr><th>Girls</th><th>Stem</th><th>Boys</th></tr>
+<tr><td>5</td><td>14</td><td>&nbsp;</td></tr><tr><td>7 5 5 4</td><td>15</td><td>&nbsp;</td></tr><tr><td>8 5 4 2 0</td><td>16</td><td>7 5 5 2 0</td></tr><tr><td>1 0</td><td>17</td><td>9 7 6 2 2 0</td></tr><tr><td>&nbsp;</td><td>18</td><td>0</td></tr></table>
+(ii) <span class="r">The boys are generally taller than the girls</span>: median 171 cm against 161 cm (means 170.4 and 160.5), and boys&rsquo; heights are concentrated in 160&ndash;180 cm while the girls&rsquo; are in 145&ndash;171 cm.</sol>
+<sol L="P23 Q5c [3]">Total = 17 + 12 &minus; 5 + 2 = 26. Only cricket = 17 &minus; 5 = 12; only football = 12 &minus; 5 = 7; both = 5. (i) <span class="r"><f>12|26</f> = <f>6|13</f></span>. (ii) <span class="r"><f>7|26</f></span>. (iii) <span class="r"><f>5|26</f></span>.</sol>
+[[fig:m_scatter_23_6c|2023 Q6(c): age and weekly activity.]]
+<sol L="P23 Q6c [3]">(i) Plot the 10 points (age on the x-axis). (ii) Older people do fewer hours of activity: <span class="r">strong negative correlation</span> (r &asymp; &minus;0.92).</sol>
+<sol L="P23 Q7c [2]">Sorted: 9, 11, 11, 14, 17, 18, 19, 20, 20, 22. Min = 9; Q<sub>1</sub> = median of 9, 11, 11, 14, 17 = 11; median = <f>17 + 18|2</f> = 17.5; Q<sub>3</sub> = median of 18, 19, 20, 20, 22 = 20; max = 22. <span class="r">Five-number summary: 9, 11, 17.5, 20, 22</span>.</sol>
+<sol L="P23 Q8d [2]">(i) <span class="r">Independent variable: wind speed; dependent variable: mechanical power</span>. (ii) The points curve upward: power rises faster and faster as the wind speed increases &rarr; <span class="r">a non-linear (curved, increasing) relationship</span>, positive correlation.</sol>
+<sol L="P23 Q9d [2]">From the bag (counted from the figure): 6 black and 9 white counters, 15 in all. P(black then white, no replacement) = <f>6|15</f> &times; <f>9|14</f> = <f>54|210</f> = <span class="r"><f>9|35</f></span>. <b>(check)</b> recount the counters on your paper and use the same method.</sol>
+<div class="quick"><b>Quick:</b> P25 xiii <b>B</b>; xvi <b>C</b>; xx <b>D</b>. P24 vi <b>D</b>; xvi <b>D</b>. P23 xvii <b>B</b>; xviii <b>D</b>; xix <b>A</b>; xx <b>C</b>.</div>
+</div>
+</section>

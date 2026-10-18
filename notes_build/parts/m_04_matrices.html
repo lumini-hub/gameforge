@@ -1,0 +1,35 @@
+<section class="chapter">
+<div class="banner"><div class="n">4 &middot; Matrices &amp; Networks</div><div class="rf">P25 Q1i,vi,Q4c,Q9c &middot; P24 Q1i,xv,Q3b &middot; P23 Q1i,Q4b,Q9a</div></div>
+<div class="cols">
+<h3>Key ideas</h3>
+<ul>
+<li><b>Order</b> of a matrix = rows &times; columns. <b>Addition / subtraction</b> need the <b>same order</b> [[P24 Q1i: A]]; add or subtract matching entries. Scalar multiplication multiplies every entry; the order does not change, so (&frac12;A &minus; 2B) for two 3 &times; p matrices has order <b>3 &times; p</b> [[P24 Q1xv: C]].</li>
+<li><b>Identity matrix</b> I: 1s on the main diagonal, 0 elsewhere. For 2 &times; 2: [1 0; 0 1] [[P25 Q1i: B]]. AI = IA = A.</li>
+<li><b>Multiplication</b> AB needs (columns of A) = (rows of B); the product has order (rows of A) &times; (columns of B). Each entry = <b>row &times; column</b>. In general <b>AB &ne; BA</b>.</li>
+<li><b>Applications:</b> cost = (quantities row) &times; (price matrix); points = (results table) &times; (points column).</li>
+</ul>
+<h3>Networks and adjacency matrices</h3>
+<ul>
+<li><b>Adjacency matrix:</b> the entry in row X, column Y = the number of <b>direct edges (routes) from X to Y</b>. For an undirected link the entry is 1 in both directions.</li>
+<li><b>One stop-over trips</b> (two edges: X &rarr; Z &rarr; Y) = entries of the matrix <b>M&sup2; = M &times; M</b>.</li>
+<li>To match a matrix with a network, read row by row: row A gives the edges that <b>leave</b> A.</li>
+</ul>
+<h3>Solved questions</h3>
+<sol L="P25 Q1vi [2]">The matrix has A&rarr;B = 2 edges, B&rarr;C = 1 edge, C&rarr;A = 1 edge. Option D shows two arrows from A to B (the curved arc and the straight line), one arrow B&rarr;C and one arrow C&rarr;A &rarr; <span class="r">D</span>. (A, B and C each have a different number or direction of arrows.)</sol>
+<sol L="P25 Q4c [2]">Quantities [20 40 25] &times; prices (columns Shop A and Shop B):
+<div class="eq">[20 40 25] &times; [950 800; 400 500; 250 350] = [20(950) + 40(400) + 25(250), 20(800) + 40(500) + 25(350)] = [41 250, 44 750]</div>
+Shop A costs <b>Nu 41,250</b>, Shop B <b>Nu 44,750</b>. <span class="r">Buy from Shop A</span> (saves Nu 3,500).</sol>
+<sol L="P25 Q9c [3]">B + C = [0 1; 1 0] + [2 0; 0 2] = [2 1; 1 2].
+A(B + C) = [1 2; 3 4][2 1; 1 2] = [1&middot;2 + 2&middot;1, 1&middot;1 + 2&middot;2; 3&middot;2 + 4&middot;1, 3&middot;1 + 4&middot;2] = <b>[4 5; 10 11]</b>.
+(B + C)A = [2 1; 1 2][1 2; 3 4] = [2&middot;1 + 1&middot;3, 2&middot;2 + 1&middot;4; 1&middot;1 + 2&middot;3, 1&middot;2 + 2&middot;4] = <b>[5 8; 7 10]</b>.
+The results are different, so <span class="r">A(B + C) &ne; (B + C)A</span>: matrix multiplication is <b>not commutative</b>.</sol>
+[[fig:m_digraph_24_3b|2024 Q3(b): the network (links are two-way because my copy shows no arrowheads).]]
+<sol L="P24 Q3b [3]">(i) Order A, B, C. A&ndash;B: 1 link; A&ndash;C: 2 links (straight line and arc); B&ndash;C: 2 links. <span class="r">M = [0 1 2; 1 0 2; 2 2 0]</span>. (ii) One stop-over trips = M&sup2; = <span class="r">[5 4 2; 4 5 2; 2 2 8]</span>. Example: A to B via C = 2 &times; 2 = 4 trips. <b>(check)</b> the figure printed in my copy has no arrows; if your paper shows arrows, fill M with the number of arrows from the row vertex to the column vertex and square it in the same way.</sol>
+<sol L="P23 Q1i [2]">Count the arrows going from Paro to Phuntsholing: the two curved arrows point to Phuntsholing, and the plain straight line (no arrowhead) is a two-way link, giving <span class="r">3 services (B)</span>. <b>(check)</b> if the straight line is not counted the answer would be 2.</sol>
+<sol L="P23 Q4b [3]">(i) Matrix of results (Win, Draw, Loss): <span class="r">[14 3 1; 10 3 5; 2 1 15]</span>. (ii) Points per result [3; 1; 0]:
+<div class="eq">[14 3 1; 10 3 5; 2 1 15] &times; [3; 1; 0] = [14(3) + 3(1); 10(3) + 3(1); 2(3) + 1(1)] = [45; 33; 7]</div>
+<span class="r">Paro FC 45, Druk Lhayul FC 33, Gelephu FC 7 points</span>.</sol>
+<sol L="P23 Q9a [2]">Add and subtract entry by entry. Top-left: a + (&minus;4) &minus; 2 = &minus;5 &rarr; a &minus; 6 = &minus;5 &rarr; <span class="r">a = 1</span>. Bottom-left: &minus;3 + 2 &minus; 4 = &minus;5 = b &rarr; <span class="r">b = &minus;5</span>. (Check top-right 2 + 3 &minus; 1 = 4 &#10003;; bottom-right 4 &minus; 1 &minus; 3 = 0 &#10003;.)</sol>
+<div class="quick"><b>Quick:</b> P25 i <b>B</b>; vi <b>D</b>. P24 i <b>A</b>; xv <b>C</b>. P23 i <b>B</b> (check).</div>
+</div>
+</section>
