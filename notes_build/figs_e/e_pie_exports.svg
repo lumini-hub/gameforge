@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="410.4pt" height="201.6pt" viewBox="0 0 410.4 201.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-19T15:00:04.364742</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 201.6 
+L 410.4 201.6 
+L 410.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 271.850705 133.025627 
+C 276.043386 122.196779 277.534511 110.507536 276.194596 98.972929 
+C 274.854681 87.438322 270.723666 76.402173 264.160269 66.822803 
+C 257.596871 57.243433 248.796729 49.406381 238.524003 43.992177 
+C 228.251276 38.577972 216.812171 35.748 205.2 35.748 
+L 205.2 107.22 
+z
+" style="fill: #9bb7d9; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 149.745987 152.309901 
+C 157.641657 162.020426 167.951157 169.488823 179.638811 173.964831 
+C 191.326465 178.440838 203.987339 179.769377 216.349542 177.816986 
+C 228.711745 175.864596 240.346973 170.698918 250.086368 162.838888 
+C 259.825764 154.978859 267.331894 144.696798 271.850705 133.025627 
+L 205.2 107.22 
+z
+" style="fill: #1f5fa8; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 205.2 35.748 
+C 191.690186 35.748 178.453269 39.578487 167.031254 46.793238 
+C 155.609238 54.007988 146.46357 64.315528 140.659655 76.515103 
+C 134.85574 88.714678 132.628054 102.31343 134.236105 115.7272 
+C 135.844157 129.14097 141.222983 141.827847 149.745987 152.309901 
+L 205.2 107.22 
+z
+" style="fill: #0e3a66; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(231.575367 74.6503)">2021</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(229.048492 84.251863)">30.9%</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #111111" transform="translate(232.120367 93.853425)">111°</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(201.932716 143.466694)">2022</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(199.405841 153.068257)">33.3%</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(202.477716 162.669819)">120°</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(155.004986 80.659527)">2023</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(152.478111 90.261089)">35.9%</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #ffffff" transform="translate(155.549986 99.862652)">129°</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0e3a66" x="115.86" y="11.88" transform="rotate(-0 115.86 11.88)">2024 Q2(d): exports 2021–2023 (total Nu 23,145 million)</text>
+   </g>
+  </g>
+ </g>
+</svg>

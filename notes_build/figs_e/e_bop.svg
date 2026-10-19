@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="410.4pt" height="230.4pt" viewBox="0 0 410.4 230.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-19T15:00:05.028613</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 230.4 
+L 410.4 230.4 
+L 410.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 115.128 42.427636 
+L 295.272 42.427636 
+Q 299.2752 42.427636 299.2752 38.421818 
+L 299.2752 18.392727 
+Q 299.2752 14.386909 295.272 14.386909 
+L 115.128 14.386909 
+Q 111.1248 14.386909 111.1248 18.392727 
+L 111.1248 38.421818 
+Q 111.1248 42.427636 115.128 42.427636 
+z
+" clip-path="url(#pf629f60b09)" style="fill: #0e3a66; stroke: #0e3a66; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 18.384 95.838545 
+L 125.136 95.838545 
+Q 129.1392 95.838545 129.1392 91.832727 
+L 129.1392 71.803636 
+Q 129.1392 67.797818 125.136 67.797818 
+L 18.384 67.797818 
+Q 14.3808 67.797818 14.3808 71.803636 
+L 14.3808 91.832727 
+Q 14.3808 95.838545 18.384 95.838545 
+z
+" clip-path="url(#pf629f60b09)" style="fill: #fff3df; stroke: #b36200; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 203.24124 42.152008 
+Q 138.481674 55.112392 73.722107 68.072776 
+" clip-path="url(#pf629f60b09)" style="fill: none; stroke: #222222; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 151.824 95.838545 
+L 258.576 95.838545 
+Q 262.5792 95.838545 262.5792 91.832727 
+L 262.5792 71.803636 
+Q 262.5792 67.797818 258.576 67.797818 
+L 151.824 67.797818 
+Q 147.8208 67.797818 147.8208 71.803636 
+L 147.8208 91.832727 
+Q 147.8208 95.838545 151.824 95.838545 
+z
+" clip-path="url(#pf629f60b09)" style="fill: #eaf1fa; stroke: #1f5fa8; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 205.2 43.758345 
+Q 205.2 55.112094 205.2 66.465844 
+" clip-path="url(#pf629f60b09)" style="fill: none; stroke: #222222; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 285.264 95.838545 
+L 392.016 95.838545 
+Q 396.0192 95.838545 396.0192 91.832727 
+L 396.0192 71.803636 
+Q 396.0192 67.797818 392.016 67.797818 
+L 285.264 67.797818 
+Q 281.2608 67.797818 281.2608 71.803636 
+L 281.2608 91.832727 
+Q 281.2608 95.838545 285.264 95.838545 
+z
+" clip-path="url(#pf629f60b09)" style="fill: #e7f4ea; stroke: #2a7a3a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 207.15876 42.152008 
+Q 271.918326 55.112392 336.677893 68.072776 
+" clip-path="url(#pf629f60b09)" style="fill: none; stroke: #222222; stroke-width: 1.3; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 28.392 212.674909 
+L 181.848 212.674909 
+Q 185.8512 212.674909 185.8512 208.669091 
+L 185.8512 181.963636 
+Q 185.8512 177.957818 181.848 177.957818 
+L 28.392 177.957818 
+Q 24.3888 177.957818 24.3888 181.963636 
+L 24.3888 208.669091 
+Q 24.3888 212.674909 28.392 212.674909 
+z
+" clip-path="url(#pf629f60b09)" style="fill: #e7f4ea; stroke: #2a7a3a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 228.552 212.674909 
+L 382.008 212.674909 
+Q 386.0112 212.674909 386.0112 208.669091 
+L 386.0112 181.963636 
+Q 386.0112 177.957818 382.008 177.957818 
+L 228.552 177.957818 
+Q 224.5488 177.957818 224.5488 181.963636 
+L 224.5488 208.669091 
+Q 224.5488 212.674909 228.552 212.674909 
+z
+" clip-path="url(#pf629f60b09)" style="fill: #fbe4e2; stroke: #b3211b; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #ffffff" x="205.2" y="30.745163" transform="rotate(-0 205.2 30.745163)">BALANCE OF PAYMENTS (BoP)</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle" x="71.76" y="83.94826" transform="rotate(-0 71.76 83.94826)">CURRENT ACCOUNT</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(35.629125 111.721009)">goods (visible) and</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(35.177281 120.843087)">services (invisible),</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(23.524938 129.965165)">income, current transfers</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(19.242219 139.087244)">→ includes balance of trade</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle" x="205.2" y="83.94826" transform="rotate(-0 205.2 83.94826)">CAPITAL ACCOUNT</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(173.038344 111.721009)">capital transfers,</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(177.603094 120.843087)">non-produced,</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(167.316375 129.965165)">non-financial assets</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: middle" x="338.64" y="83.94826" transform="rotate(-0 338.64 83.94826)">FINANCIAL ACCOUNT</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(303.902656 111.721009)">direct investment,</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(298.87775 120.843087)">portfolio investment,</text>
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'" transform="translate(311.053188 129.964572)">reserve assets</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.8px; font-family: 'DejaVu Sans'" transform="translate(44.133141 192.661774)">SURPLUS: receipts &gt; payments</text>
+    <text style="font-size: 7.8px; font-family: 'DejaVu Sans'" transform="translate(51.85575 202.023907)">(credit &gt; debit)  favourable</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7.8px; font-family: 'DejaVu Sans'" transform="translate(247.305281 192.661774)">DEFICIT: payments &gt; receipts</text>
+    <text style="font-size: 7.8px; font-family: 'DejaVu Sans'" transform="translate(247.0725 202.023907)">(credit &lt; debit)  unfavourable</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf629f60b09">
+   <rect x="5.04" y="5.04" width="400.32" height="220.32"/>
+  </clipPath>
+ </defs>
+</svg>
